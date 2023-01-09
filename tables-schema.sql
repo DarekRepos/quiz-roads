@@ -43,6 +43,7 @@ CREATE TABLE participants (
   user_id INTEGER NOT NULL,
   time_start REAL,
   time_end REAL,
+  score INTEGER,
   FOREIGN KEY (quiz_id) REFERENCES quiz (quiz_id) ON DELETE CASCADE ON UPDATE NO ACTION,
   FOREIGN KEY (user_id) REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE NO ACTION
 );
