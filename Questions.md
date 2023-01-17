@@ -1,3 +1,5 @@
+# Basic Questions (without translation - only in polish)
+
 1.  Co to jest chudy beton?
 - Materiał budowlany powstałą przez wymieszanie mieszanki kruszyw z cementem  o niskiej wytrzymałości na ściskanie i niskiej zwartosci cementu.
 - Materiał budowlany powstałą przez wymieszanie mieszanki kruszyw z cementem  o wysokiej wytrzymałości na ściskanie i niskiej zawartosci cementu.
