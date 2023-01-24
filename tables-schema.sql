@@ -52,7 +52,6 @@ CREATE TABLE users (
   user_uid TEXT PRIMARY KEY,
   register_time REAL NOT NULL,
   last_login REAL NOT NULL,
-  --h(which data tapes) 
   user_name TEXT NOT NULL,
   user_email TEXT NOT NULL,
   user_password TEXT NOT NULL
