@@ -11,16 +11,18 @@
             </div>
         {% endif %}
         {% endwith %}
-        <form method="POST" action="/login">
+        {% from "_utilfield.html" import render_field %}
+        <form method="POST" action="/login" role="form">
+            {{ form.hidden_tag() }}
             <div class="field">
                 <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+                    {{ render_field(form.email, placeholder="email") }}
                 </div>
             </div>
 
             <div class="field">
                 <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Your Password">
+                    {{ render_field(form.password, placeholder="password") }}
                 </div>
             </div>
             <div class="field">
@@ -29,7 +31,7 @@
                     Remember me
                 </label>
             </div>
-            <button class="button is-block is-info is-large is-fullwidth">Login</button>
+            <p><input class="button is-block is-info is-large is-fullwidth" type="submit" value="Login"></p>
         </form>
     </div>
 </div>
