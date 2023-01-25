@@ -6,6 +6,7 @@ from flask_login import login_user, login_required, logout_user
 from . import db
 
 from .forms.loginform import LoginForm
+from .forms.signupform import SignUpForm
 
 
 auth = Blueprint('auth', __name__)
@@ -36,30 +37,32 @@ def login():
         
     return render_template('login.html', form=form)
 
-@auth.route('/signup')
+# @auth.route('/signup')
+# def signup():
+#     return render_template('signup.html')
+
+@auth.route('/signup', methods=["GET", "POST"])
 def signup():
-    return render_template('signup.html')
+    form = SignUpForm(request.form)
 
-@auth.route('/signup', methods=['POST'])
-def signup_post():
-    #TODO:add Validation for the input by using WTF Form
-    email = request.form.get('email')
-    name = request.form.get('name')
-    password = request.form.get('password')
-    register_time = datetime.datetime.utcnow()
+    if form.validate_on_submit():
+            
+        register_time = datetime.datetime.utcnow()
 
-    user = User.query.filter_by(user_email=email).first() 
+        user = User.query.filter_by(user_email=email).first() 
 
-    if user: 
-        flash('Email address already exists')
-        return redirect(url_for('auth.signup'))
+        if user: 
+            flash('Email address already exists')
+            return redirect(url_for('auth.signup'))
 
-    new_user = User(user_email=email, user_name=name, user_password=generate_password_hash(password, method='sha256'),register_time=register_time)
+        new_user = User(user_email=email, user_name=name, user_password=generate_password_hash(password, method='sha256'),register_time=register_time)
 
-    # add the new user to the database
-    db.session.add(new_user)
-    db.session.commit()
-    return redirect(url_for('auth.login'))
+        # add the new user to the database
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('auth.login'))
+ 
+    return render_template('signup.html', form=form)
 
 @auth.route('/logout')
 @login_required
