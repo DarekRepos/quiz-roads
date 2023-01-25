@@ -22,12 +22,14 @@ def login():
  
     form = LoginForm(request.form)
     
+    remember = True if form.remember_me.data else False
+
     if form.validate_on_submit():
         user = User.query.filter_by(user_email=form.email.data).first()
 
         # check if the user actually exists
         # take the user-supplied password, hash it, and compare it to the hashed password in the database
-        if not user or not check_password_hash(user.user_password, password):
+        if not user or not check_password_hash(user.user_password, form.password.data):
             flash('Please check your login details and try again.')
         
         # if the above check passes, then we know the user has the right credentials

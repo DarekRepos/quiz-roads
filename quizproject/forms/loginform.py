@@ -12,7 +12,7 @@ class LoginForm(Form):
             render_kw={'class':'input is-large','autofocus': True})
     password = PasswordField('Password', validators=[DataRequired()], render_kw={'class':'input is-large'})
     remember_me = BooleanField('Keep me logged in')
-    submit = SubmitField('Log In')
+    submit = SubmitField('Login')
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
