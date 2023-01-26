@@ -1,11 +1,6 @@
-from flask import Blueprint, render_template
-from flask_login import login_required, current_user
+from flask import Flask, Blueprint, render_template
+from flask_login import login_required, current_user, logout_user
 from . import db
-
-#    export FLASK_APP=project
-#    export FLASK_DEBUG=1
-
-
 
 main = Blueprint('main',__name__)
 
