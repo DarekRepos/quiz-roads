@@ -16,24 +16,24 @@
             {{ form.hidden_tag() }}
             <div class="field">
                 <div class="control">
-                    {{ render_field(form.username, placeholder="Username") }}
+                    {{ render_field(form.username, placeholder="Username",class='input is-large') }}
                 </div>
             </div>
 
             <div class="field">
                 <div class="control">
-                    {{ render_field(form.email, placeholder="Email") }}
+                    {{ render_field(form.email, placeholder="Email",class='input is-large') }}
                 </div>
             </div>
 
             <div class="field">
                 <div class="control">
-                    {{ render_field(form.password, placeholder="Password") }}
+                    {{ render_field(form.password, placeholder="Password",class='input is-large') }}
                 </div>
             </div>
 
             <div class="control">
-                {{ render_field(form.confirm, placeholder="Confirm Password") }}
+                {{ render_field(form.confirm, placeholder="Confirm Password",class='input is-large') }}
             </div>
         </div>
             <p><input class="button is-block is-info is-large is-fullwidth" type="submit" value="Sign Up"></p>
