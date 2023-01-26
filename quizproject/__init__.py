@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-from flask_migrate import Migrate
+#from flask_migrate import Migrate
 
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -19,15 +19,14 @@ session = Session()
 
 db=SQLAlchemy()
 
-def create_app():
+def create_app(config):
     app=Flask(__name__)
 
-    app.config['SECRET_KEY']='secret-key-goes-here'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///questions.db'
+    app.config.from_object(config)
 
     db.init_app(app)
     
-    migrate = Migrate(app, db)
+   # migrate = Migrate(app, db)
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
