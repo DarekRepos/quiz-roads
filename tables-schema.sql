@@ -1,4 +1,4 @@
-CREATE TABLE quiz (
+ CREATE TABLE quiz (
   quiz_id INTEGER PRIMARY KEY,
   quiz_name TEXT NOT NULL,
   quiz_text TEXT,
@@ -49,10 +49,10 @@ CREATE TABLE participants (
 );
 
 CREATE TABLE users (
-  user_uid TEXT PRIMARY KEY,
+  user_id INTEGER PRIMARY KEY,
   register_time REAL NOT NULL,
   last_login REAL NOT NULL,
-  user_name TEXT NOT NULL,
-  user_email TEXT NOT NULL,
+  user_name TEXT NOT NULL UNIQUE,
+  user_email TEXT NOT NULL UNIQUE ,
   user_password TEXT NOT NULL
 );
