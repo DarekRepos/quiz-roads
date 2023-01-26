@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
@@ -19,10 +19,23 @@ session = Session()
 
 db=SQLAlchemy()
 
+def access_forbidden(e):
+  return render_template('page-403.html'), 403
+
+def page_not_found(e):
+  return render_template('page-404.html'), 404
+
+def internal_error(e):
+  return render_template('page-500.html'), 500
+
 def create_app(config):
     app=Flask(__name__)
 
     app.config.from_object(config)
+
+    app.register_error_handler(403, access_forbidden)
+    app.register_error_handler(404, page_not_found)
+    app.register_error_handler(500, internal_error)
 
     db.init_app(app)
     
