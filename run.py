@@ -1,9 +1,8 @@
 # -*- encoding: utf-8 -*-
 
-
 import os
-from   flask_migrate import Migrate
-from   sys import exit
+from flask_migrate import Migrate
+from sys import exit
 
 from quizproject.config import config_dict
 from quizproject import create_app, db
@@ -27,11 +26,11 @@ Migrate(app, db)
 
 
 if DEBUG:
-    app.logger.info('DEBUG            = ' + str(DEBUG)             )
-    app.logger.info('FLASK_DEBUG        = ' + os.getenv('FLASK_DEBUG') )
-    app.logger.info('Page Compression = ' + 'FALSE' if DEBUG else 'TRUE' )
+    app.logger.info('DEBUG            = ' + str(DEBUG))
+    app.logger.info('FLASK_DEBUG        = ' + os.getenv('FLASK_DEBUG'))
+    app.logger.info('Page Compression = ' + 'FALSE' if DEBUG else 'TRUE')
     app.logger.info('DBMS             = ' + app_config.SQLALCHEMY_DATABASE_URI)
-    #app.logger.info('ASSETS_ROOT      = ' + app_config.ASSETS_ROOT )
+    # app.logger.info('ASSETS_ROOT      = ' + app_config.ASSETS_ROOT )
 
 if __name__ == "__main__":
     app.run()
