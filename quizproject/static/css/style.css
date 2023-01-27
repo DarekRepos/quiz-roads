@@ -122,6 +122,8 @@
     -moz-transform: scale(0.3);
     transform: scale(0.3);
     opacity: 0.9;
+
+    animation: moveclouds 15s linear infinite;
     -webkit-animation: moveclouds 15s linear infinite;
     -moz-animation: moveclouds 15s linear infinite;
     -o-animation: moveclouds 15s linear infinite;
@@ -133,6 +135,8 @@
     -webkit-transform: scale(0.3);
     -moz-transform: scale(0.3);
     transform: scale(0.3);
+
+    animation: moveclouds 17s linear infinite;
     -webkit-animation: moveclouds 17s linear infinite;
     -moz-animation: moveclouds 17s linear infinite;
     -o-animation: moveclouds 17s linear infinite;
@@ -145,6 +149,8 @@
     -moz-transform: scale(0.6);
     transform: scale(0.6);
     opacity: 0.6;
+
+    animation: moveclouds 25s linear infinite;
     -webkit-animation: moveclouds 25s linear infinite;
     -moz-animation: moveclouds 25s linear infinite;
     -o-animation: moveclouds 25s linear infinite;
@@ -159,6 +165,7 @@
     transform: scale(0.6);
     opacity: 0.8;
 
+    animation: moveclouds 25s linear infinite;
     -webkit-animation: moveclouds 25s linear infinite;
     -moz-animation: moveclouds 25s linear infinite;
     -o-animation: moveclouds 25s linear infinite;
@@ -166,13 +173,14 @@
 
 .x4 {
     left: 470px;
-    botttom: 20px;
+    bottom: 20px;
 
     -webkit-transform: scale(0.75);
     -moz-transform: scale(0.75);
     transform: scale(0.75);
     opacity: 0.75;
 
+    animation: moveclouds 18s linear infinite;
     -webkit-animation: moveclouds 18s linear infinite;
     -moz-animation: moveclouds 18s linear infinite;
     -o-animation: moveclouds 18s linear infinite;
@@ -187,9 +195,20 @@
     transform: scale(0.5);
     opacity: 0.8;
 
+    animation: moveclouds 20s linear infinite;
     -webkit-animation: moveclouds 20s linear infinite;
     -moz-animation: moveclouds 20s linear infinite;
     -o-animation: moveclouds 20s linear infinite;
+}
+
+@keyframes moveclouds {
+    0% {
+        margin-left: 1000px;
+    }
+
+    100% {
+        margin-left: -1000px;
+    }
 }
 
 @-webkit-keyframes moveclouds {
