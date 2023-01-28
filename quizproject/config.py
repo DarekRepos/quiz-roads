@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*-
 
+
 import os
+
 
 class Config(object):
     basedir = os.path.abspath(os.path.dirname(__file__))
@@ -9,13 +11,14 @@ class Config(object):
 
     CSRF_SECRET_KEY = os.getenv('CSRF_SECRET_KEY')
 
-       # This will create a file in <app> FOLDER
+    # This will create a file in <app> FOLDER
     SQLALCHEMY_DATABASE_URI = 'sqlite:///questions.db'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False 
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Assets Management
-    #ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/otherfolder')    
-    
+    # ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/otherfolder')
+
+
 class ProductionConfig(Config):
     DEBUG = False
 
@@ -24,6 +27,7 @@ class ProductionConfig(Config):
     REMEMBER_COOKIE_HTTPONLY = True
     REMEMBER_COOKIE_DURATION = 3600
 
+
 class DebugConfig(Config):
     DEBUG = True
 
@@ -31,5 +35,5 @@ class DebugConfig(Config):
 # Load all possible configurations
 config_dict = {
     'Production': ProductionConfig,
-    'Debug'     : DebugConfig
+    'Debug': DebugConfig
 }
