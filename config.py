@@ -32,6 +32,10 @@ class DebugConfig(Config):
     DEBUG = True
 
 
+class TestingConfig(Config):
+    TESTING = True
+
+
 # Load all possible configurations
 config_dict = {
     'Production': ProductionConfig,

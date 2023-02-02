@@ -4,7 +4,7 @@ import os
 from flask_migrate import Migrate
 from sys import exit
 
-from quizproject.config import config_dict
+from config import config_dict
 from quizproject import create_app, db
 
 # WARNING: Don't run with debug turned on in production!
