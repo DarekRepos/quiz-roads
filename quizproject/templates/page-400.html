@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="clouds">
+  <div class="cloud x1"></div>
+  <div class="cloud x1_5"></div>
+  <div class="cloud x2"></div>
+  <div class="cloud x3"></div>
+  <div class="cloud x4"></div>
+  <div class="cloud x5"></div>
+</div>
+<div class='error-box'>
+  <div class='error-code'>400</div>
+  <div class='tittle-message'>OOPS</div>
+  <div class='tittle-code'>You have submitted an invalid CSRF token</div>
+  <a class='button back-btn' href="{{ url_for('main.index') }}">BACK TO HOME</a>
+</div>
+{% endblock %}

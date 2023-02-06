@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
+from flask_wtf.csrf import CSRFProtect
 
 engine = create_engine("sqlite:///questions.db")
 Base = declarative_base()
@@ -16,6 +17,10 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 db = SQLAlchemy()
+
+
+def token_error(e):
+    return render_template('page-400.html'), 400
 
 
 def access_forbidden(e):
@@ -35,6 +40,7 @@ def create_app(config):
 
     app.config.from_object(config)
 
+    app.register_error_handler(400, token_error)
     app.register_error_handler(403, access_forbidden)
     app.register_error_handler(404, page_not_found)
     app.register_error_handler(500, internal_error)
@@ -52,6 +58,9 @@ def create_app(config):
         # since the user_id is just the primary key of our user table,
         # use it in the query for the user
         return User.query.get(int(user_id))
+
+    csrf = CSRFProtect()
+    csrf.init_app(app)
 
     from .auth import auth as auth_settings
     from .main import main as main_quizapp

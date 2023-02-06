@@ -14,10 +14,6 @@
         {% from "_utilfield.html" import render_field %}
         <form method="POST" action="/login" role="form">
             {{ form.hidden_tag() }}
-            {{ form.csrf_token }}
-            {% if form.csrf_token.errors %}
-                <div class="warning">You have submitted an invalid CSRF token</div>
-            {% endif %}
             <div class="field">
                 <div class="control">
                     {{ render_field(form.email, placeholder="email",class='input is-large') }}

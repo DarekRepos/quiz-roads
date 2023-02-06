@@ -1,11 +1,11 @@
 
-
-from quizproject.forms.baseform import MyBaseForm
+from flask_wtf import FlaskForm
+# from quizproject.forms.baseform import MyBaseForm
 from wtforms import BooleanField, PasswordField, SubmitField, EmailField
 from wtforms.validators import InputRequired, Email, Length
 
 
-class LoginForm(MyBaseForm):
+class LoginForm(FlaskForm):
     email = EmailField('Email',
                        validators=[InputRequired(),
                                    Length(min=6, max=120), Email()])
