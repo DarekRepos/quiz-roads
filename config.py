@@ -34,10 +34,12 @@ class DebugConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
+    WTF_CSRF_ENABLED = False
 
 
 # Load all possible configurations
 config_dict = {
     'Production': ProductionConfig,
-    'Debug': DebugConfig
+    'Debug': DebugConfig,
+    'Test': TestingConfig
 }
