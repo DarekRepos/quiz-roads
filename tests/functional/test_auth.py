@@ -1,5 +1,6 @@
 import pytest
 from flask import g, session, url_for
+from quizproject import engine
 
 
 def test_login(client, auth):
@@ -20,13 +21,19 @@ def test_login(client, auth):
     with client:
         client.get('/')
 
-        #TODO: implement session
+        # TODO: implement session
         # assert session['user_id'] == 1
         # assert g.user['username'] == 'dareczek011@gmail.com'
 
 
 def test_logout(client, auth):
-
+    """
+    GIVEN a Flask application configured for testing
+    WHEN the user is log in with VALID data
+    THEN check that existing user is successfully login out
+         check that there was one redirect response
+         check that user is successfully redirected to index page
+    """
     with client:
         # get index page
         client.get('/')
@@ -34,6 +41,9 @@ def test_logout(client, auth):
         auth.login()
 
         response = auth.logout()
+        # check user is successfuly loged out
+        assert response.status_code == 200
+
         # Check that there was one redirect response.
         assert len(response.history) == 1
         # Check that the second request was to the index page.
