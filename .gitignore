@@ -8,3 +8,6 @@ __pycache__
 
 # database files
 questions.db
+
+# coverage files
+.coverage
