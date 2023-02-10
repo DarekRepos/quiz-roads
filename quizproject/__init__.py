@@ -2,14 +2,7 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import MetaData, create_engine
 from flask_wtf.csrf import CSRFProtect
-
-engine = create_engine("sqlite:///questions.db")
-Session = sessionmaker(engine)
-session = Session()
 
 db = SQLAlchemy()
 
@@ -52,7 +45,7 @@ def create_app(config):
     def load_user(user_id):
         # since the user_id is just the primary key of our user table,
         # use it in the query for the user
-        return session.get(User, int(user_id))
+        return User.query.filter_by(user_id=user_id).first()
 
     csrf = CSRFProtect()
     csrf.init_app(app)
