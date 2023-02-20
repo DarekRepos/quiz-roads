@@ -21,6 +21,7 @@ def login():
 
     remember = True if form.remember_me.data else False
 
+    # TODO: implement session
     if form.validate_on_submit():
         user = User.query.filter_by(user_email=form.email.data).first()
 
@@ -49,7 +50,7 @@ def signup():
     form = SignUpForm(request.form)
 
     if form.validate_on_submit():
-
+        # TODO: validate errors save to logs
         register_time = datetime.datetime.utcnow()
 
         # Check if email exists
