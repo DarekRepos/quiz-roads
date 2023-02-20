@@ -1,12 +1,12 @@
 #  Quiz - Roads 
-This is short quiz app. Do you know Everything about roads?
+This is short quiz app. Do you know Everything about roads? Created by fun of road innovations.
 
 ## Python version
 tested with Python 3.10.6
 
 ## Features
 - user account
-- quiz Website for logged user
+- quiz only for logged users
 
 ## New Road Questions
 You can add new road's questions by editing file Questions.md. You can create PR.
