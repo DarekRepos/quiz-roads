@@ -39,7 +39,7 @@ def create_app(config):
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
-    from .models.Users import User
+    from .models.users import User
 
     @login_manager.user_loader
     def load_user(user_id):
