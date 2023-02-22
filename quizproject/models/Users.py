@@ -1,7 +1,7 @@
 import datetime
 from importlib.metadata import MetadataPathFinder
 from flask_login import UserMixin
-from . import db
+from .. import db
 
 
 metadata = MetadataPathFinder()

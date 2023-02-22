@@ -2,7 +2,7 @@ import pytest
 from flask import session
 from sqlalchemy import select
 
-from quizproject.models import User
+from quizproject.models.Users import User
 
 
 def test_login(client, auth, app_with_db, app_with_user):
@@ -12,7 +12,7 @@ def test_login(client, auth, app_with_db, app_with_user):
     WHEN the '/login' page is requested (POST) with VALID data
     THEN check that the user can enter login page (page loaded - 200 status code)
          check that existing user is successfully login (status 200)
-         check that user is successfully redirected to profile page
+         check that user is successfully redirected to profile pageB
     """
 
     assert client.get('/login').status_code == 200
