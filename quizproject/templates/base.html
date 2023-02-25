@@ -16,6 +16,17 @@
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
+                    <div class="navbar-brand">
+                        <a role="button" 
+                        id="burger"
+                        class="navbar-burger" 
+                        aria-label="menu" 
+                        aria-expanded="false">
+                         <span aria-hidden="true"></span>
+                         <span aria-hidden="true"></span>
+                         <span aria-hidden="true"></span>
+                     </a>
+                    </div>
                     <div id="navbarMenuHeroA" class="navbar-menu">
                         <div class="navbar-end">
                             <a href="{{ url_for('main.index') }}" class="navbar-item">
@@ -55,6 +66,7 @@
             </div>
         </div>
     </section>
+    <script src="{{ url_for('static',filename='js/mobile.js') }}"></script>
 </body>
 
 </html>

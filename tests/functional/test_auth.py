@@ -2,7 +2,7 @@ import pytest
 from flask import session
 from sqlalchemy import select
 
-from quizproject.models.Users import User
+from quizproject.models.users import User
 
 
 def test_login(client, auth, app_with_db, app_with_user):
