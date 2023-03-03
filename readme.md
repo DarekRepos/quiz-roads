@@ -1,4 +1,7 @@
 #  Quiz - Roads 
+[![Tests Status](./reports/junit/junit-badge.svg?dummy=8484744)](./reports/junit/report.html)
+[![Coverage Status](./reports/coverage/coverage-badge.svg?dummy=8484744)](./reports/coverage/index.html)
+[![Flake8 Status](./reports/flake8/flake8-badge.svg?dummy=8484744)](./reports/flake8/index.html)
 This is short quiz app. Do you know Everything about roads? Created by fun of road innovations.
 
 ## Python version
