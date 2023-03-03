@@ -30,7 +30,7 @@ jobs:
               cp coverage.xml reports/
           - name: Generate badge for counted tests
             run: |
-              genbadge tests -i - < reports/coverage.xml -o - > reports/coverage.xml
+              genbadge tests -i reports/coverage.xml -o reports/coverage.xml
           - name: Genertate coverage xml
             run: |
               coverage xml
