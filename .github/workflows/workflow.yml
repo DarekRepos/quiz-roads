@@ -26,11 +26,12 @@ jobs:
           - name: Generate report with coverage 
             run: |
               coverage xml coverage.xml
-              mkdir -p reports
-              cp coverage.xml reports/
+              mv coverage.xml junit.xml
+              mkdir -p reports/junit
+              cp junit.xml reports/junit
           - name: Generate badge for counted tests
             run: |
-              genbadge tests -i reports/coverage.xml -o reports/coverage.xml
+              genbadge tests
           - name: Genertate coverage xml
             run: |
               coverage xml
