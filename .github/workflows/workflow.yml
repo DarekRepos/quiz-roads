@@ -10,6 +10,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
+              # providing tests for "3.8", "3.9", "3.10"
               python-version: ["3.8", "3.9", "3.10"]
         steps:
           - uses: actions/checkout@v3
@@ -20,14 +21,16 @@ jobs:
           - name: Install dependencies
             run: |
               python -m pip install --upgrade pip
-              python -m pip install genbadge[all] pytest
+              python -m pip install genbadge[all] pytest coverage
               if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          - name: Generate report with pytest
+          - name: Generate report with coverage 
             run: |
-              pytest --junitxml=reports/junit/junit.xml --html=reports/junit/report.html
+              coverage xml coverage.xml
+              mkdir -p reports
+              cp coverage.xml reports/
           - name: Generate badge for counted tests
             run: |
-              genbadge tests
+              genbadge tests -i - < reports/coverage.xml -o - > reports/coverage.xml
           - name: Genertate coverage xml
             run: |
               coverage xml
