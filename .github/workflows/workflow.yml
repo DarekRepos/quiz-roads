@@ -23,10 +23,14 @@ jobs:
               python -m pip install --upgrade pip
               python -m pip install genbadge[all] pytest coverage
               if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          - name: Generate report with coverage 
+          - name: Generate report with coverage in the console
             run: |
               coverage report -m
+          - name: Generate xml report with coverage 
+            run: |    
               coverage xml
+          - name: Create input file that genbadg will satasfied
+            run: |
               mv coverage.xml junit.xml
               mkdir -p reports/junit
               cp junit.xml reports/junit
