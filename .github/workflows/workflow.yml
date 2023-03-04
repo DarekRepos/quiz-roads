@@ -25,16 +25,14 @@ jobs:
               if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           - name: Generate report with coverage 
             run: |
-              coverage xml coverage.xml
+              coverage report -m
+              coverage xml
               mv coverage.xml junit.xml
               mkdir -p reports/junit
               cp junit.xml reports/junit
-              ls
-              cd reports/junit
-              ls
           - name: Generate badge for counted tests
             run: |
-              genbadge tests
+              genbadge tests -v
           - name: Generate coverage xml
             run: |
               coverage xml
