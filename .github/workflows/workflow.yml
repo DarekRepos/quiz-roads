@@ -26,8 +26,9 @@ jobs:
           - name: show python path
             run: |
               python -c "import sys; print('\n'.join(sys.path))"
-          - name: added python path needed for tests
+          - name: added python paths needed for tests
             run: |
+              export PATH=$PWD/bin:$PATH
               export PYTHONPATH=quizproject
           - name: Generate report with coverage in the console
             run: |
