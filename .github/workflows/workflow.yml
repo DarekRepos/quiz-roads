@@ -23,6 +23,9 @@ jobs:
               python -m pip install --upgrade pip
               python -m pip install genbadge[all] pytest coverage
               if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          - name: added python path needed for tests
+            run: |
+              export PYTHONPATH=quizproject
           - name: Generate report with coverage in the console
             run: |
               coverage run -m pytest
