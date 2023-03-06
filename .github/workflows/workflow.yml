@@ -34,7 +34,7 @@ jobs:
           - name: Generate report with coverage in the console
             run: |
               pytest
-              coverage run -m pytest
+              coverage run -m pytest tests/
               coverage report -m
           - name: Generate xml report with coverage 
             run: |    
