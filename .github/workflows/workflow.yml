@@ -29,7 +29,7 @@ jobs:
           - name: added python paths needed for tests
             run: |
               export PATH=$PWD/bin:$PATH
-              export PYTHONPATH=quizproject
+              export PYTHONPATH="${PYTHONPATH}:/home/runner/work/quiz-roads/quiz-roads"
           - name: Generate report with coverage in the console
             run: |
               coverage run -m pytest
