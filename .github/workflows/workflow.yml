@@ -33,6 +33,8 @@ jobs:
               pytest tests/
               coverage run -m pytest tests/
               coverage report -m
+              cd ..
+              cd ..
           - name: Generate xml report with coverage 
             run: |    
               coverage xml
