@@ -30,6 +30,7 @@ jobs:
               export PYTHONPATH="${PYTHONPATH}:/home/runner/work/quiz-roads/quiz-roads/"
           - name: Generate report with coverage in the console
             run: |
+              ls
               pytest
               coverage run -m pytest tests/
               coverage report -m
