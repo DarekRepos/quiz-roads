@@ -31,9 +31,13 @@ jobs:
           - name: Generate report with coverage in the console
             run: |
               ls
+              cd quizproject
+              cd tests
               pytest
               coverage run -m pytest tests/
               coverage report -m
+              cd ..
+              cd ..
           - name: Generate xml report with coverage 
             run: |    
               coverage xml
