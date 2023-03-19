@@ -1,14 +1,14 @@
 import datetime
+
 import pytest
 from sqlalchemy import delete
 
-from config import TestingConfig
 
 # import the module
 from quizproject import create_app
 from quizproject import db as _db
 from quizproject.models.users import User as NewUser
-
+from config import TestingConfig
 from werkzeug.security import generate_password_hash
 
 
