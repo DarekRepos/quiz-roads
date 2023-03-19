@@ -25,14 +25,10 @@ jobs:
           - name: show python path
             run: |
               python -c "import sys; print('\n'.join(sys.path))"
-          - name: added python paths needed for tests
-            run: |
-              export PYTHONPATH=.
-              export PYTHONPATH="${PYTHONPATH}:/home/runner/work/quiz-roads/quiz-roads/"
           - name: Generate report with coverage in the console
             run: |
-              pytest quizproject/tests/
-              coverage run -m pytest quizprojekt/tests/
+              pytest
+              coverage run -m pytest
               coverage report -m
           - name: Generate xml report with coverage 
             run: |    
