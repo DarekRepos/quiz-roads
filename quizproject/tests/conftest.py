@@ -7,7 +7,7 @@ from config import TestingConfig
 # import the module
 from quizproject import create_app
 from quizproject import db as _db
-from ..models.users import User as NewUser
+from quizproject.models.users import User as NewUser
 
 from werkzeug.security import generate_password_hash
 

@@ -31,7 +31,7 @@ jobs:
               export PYTHONPATH="${PYTHONPATH}:/home/runner/work/quiz-roads/quiz-roads/"
           - name: Generate report with coverage in the console
             run: |
-              pytest quizproject/tests/
+              pytest --import-mode=importlib quizproject/tests/
               coverage run -m pytest quizprojekt/tests/
               coverage report -m
           - name: Generate xml report with coverage 
