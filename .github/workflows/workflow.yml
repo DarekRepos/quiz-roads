@@ -57,6 +57,7 @@ jobs:
               genbadge flake8 -i flake8stats.txt -o ./reports/flake8/flake8-badge.svg
           - name: Archive code coverage results
             uses: actions/upload-artifact@v3
+            with:
               name: code-coverage-report
               path: ./reports/flake8/flake8-badge.svg
   
