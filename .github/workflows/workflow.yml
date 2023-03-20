@@ -42,31 +42,24 @@ jobs:
               cp junit.xml reports/junit
           - name: Generate badge for counted tests
             run: |
-              # genbadge tests -i junit.xml
+              genbadge tests -i junit.xml -o ./reports/coverage/coverage-badge.svg
           - name: Generate coverage xml
             run: |
               coverage xml
-              ls
-              pwd
           - name: Generate coverage html
             run: |
               coverage html 
-              ls
-              pwd
           - name: Generate coverage badge
             run: | 
-              genbadge coverage -i ./coverage.xml
-              ls
-              pwd
+              genbadge coverage -i ./coverage.xml -o ./reports/coverage/coverage-badge.svg
+
           - name: Lint with flake8
             run: |
               # stop the build if there are Python syntax errors or undefined names
               flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
               # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
               flake8 . --exit-zero --format=html --htmldir ./reports/flake8 --statistics --tee --output-file flake8stats.txt
-              ls
-              pwd
           - name: generate flake8 badge
             run: |
-              genbadge flake8 -i flake8stats.txt
+              genbadge flake8 -i flake8stats.txt -o ./reports/flake8/flake8-badge.svg
   
