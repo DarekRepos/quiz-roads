@@ -33,6 +33,8 @@ jobs:
           - name: Generate xml report with coverage 
             run: |    
               coverage xml
+              ls
+              pwd
           - name: Create input file that genbadg will satasfied
             run: |
               mv coverage.xml junit.xml
@@ -44,12 +46,16 @@ jobs:
           - name: Generate coverage xml
             run: |
               coverage xml
+              ls
+              pwd
           - name: Generate coverage html
             run: |
               coverage html 
           - name: Generate coverage badge
             run: | 
               genbadge coverage
+              ls
+              pwd
           - name: Lint with flake8
             run: |
               # stop the build if there are Python syntax errors or undefined names
