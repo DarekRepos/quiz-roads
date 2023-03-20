@@ -27,7 +27,7 @@ jobs:
               python -c "import sys; print('\n'.join(sys.path))"
           - name: Generate report with coverage in the console
             run: |
-              pytest
+              python -m pytest
               coverage run -m pytest
               coverage report -m
           - name: Generate xml report with coverage 

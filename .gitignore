@@ -1,13 +1,13 @@
-# virtual enviroment
-# /venv
+virtual enviroment
+/venv
 
 
-# # cache
-# __pycache__
-# .pytest_cache
+# cache
+__pycache__
+.pytest_cache
 
-# # database files
-# questions.db
+# database files
+questions.db
 
-# # coverage files
-# .coverage
+# coverage files
+.coverage
