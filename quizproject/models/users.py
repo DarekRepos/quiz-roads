@@ -8,6 +8,7 @@ metadata = MetadataPathFinder()
 
 
 class User(UserMixin, db.Model):
+
     __tablename__ = "users",
     metadata,
     user_id = db.Column(db.Integer, primary_key=True)

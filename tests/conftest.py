@@ -1,14 +1,14 @@
 import datetime
+
 import pytest
 from sqlalchemy import delete
 
-from config import TestingConfig
 
 # import the module
 from quizproject import create_app
 from quizproject import db as _db
-from quizproject.models.users import User
-
+from quizproject.models.users import User as NewUser
+from config import TestingConfig
 from werkzeug.security import generate_password_hash
 
 
@@ -44,19 +44,19 @@ async def app_with_db(app):
 @pytest.fixture()
 def app_with_user(app_with_db):
     register_time = datetime.datetime.utcnow()
-    new_user = User(register_time=register_time,
-                    user_email="dareczek014@gmail.com",
-                    user_password=generate_password_hash(
+    new_user = NewUser(register_time=register_time,
+                       user_email="dareczek014@gmail.com",
+                       user_password=generate_password_hash(
                                   'dareczek014',
                                   method='sha256'),
-                    user_name='dareczek014')
+                       user_name='dareczek014')
 
     # add the new user to the database
     _db.session.add(new_user)
     _db.session.commit()
 
     yield app_with_db
-    _db.session.execute(delete(User))
+    _db.session.execute(delete(NewUser))
     _db.session.commit()
     _db.session.remove()
 
