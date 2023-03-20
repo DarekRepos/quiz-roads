@@ -32,15 +32,10 @@ jobs:
               coverage report -m
           - name: Generate xml report with coverage 
             run: |    
-              coverage xml
-          - name: Create input file that genbadg will satasfied
-            run: |
-              # mv coverage.xml junit.xml
-              # mkdir -p reports/junit
-              # cp junit.xml reports/junit
+              pytest --junitxml=reports/junit/junit.xml
           - name: Generate badge for counted tests
             run: |
-              genbadge tests -i ./coverage.xml -o ./reports/coverage/coverage-badge.svg
+              genbadge tests -o ./reports/coverage/coverage-badge.svg
           - name: Generate coverage xml
             run: |
               coverage xml
