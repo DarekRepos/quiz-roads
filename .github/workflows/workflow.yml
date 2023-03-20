@@ -58,4 +58,5 @@ jobs:
           - name: Archive code coverage results
             uses: JamesIves/github-pages-deploy-action@v4
             with:
+              BRANCH: badges
               folder: reports # The folder the action should deploy.
