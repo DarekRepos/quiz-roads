@@ -57,6 +57,5 @@ jobs:
               genbadge flake8 -i flake8stats.txt -o ./reports/flake8/flake8-badge.svg
           - name: Archive code coverage results
             uses: JamesIves/github-pages-deploy-action@v4
-              with:
-                folder: raport # The folder the action should deploy.
-  
+            with:
+              folder: raport # The folder the action should deploy.
