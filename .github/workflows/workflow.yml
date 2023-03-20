@@ -40,7 +40,7 @@ jobs:
               cp junit.xml reports/junit
           - name: Generate badge for counted tests
             run: |
-              genbadge tests -v
+              # genbadge tests -v
           - name: Generate coverage xml
             run: |
               coverage xml
