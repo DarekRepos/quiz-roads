@@ -33,16 +33,14 @@ jobs:
           - name: Generate xml report with coverage 
             run: |    
               coverage xml
-              ls
-              pwd
           - name: Create input file that genbadg will satasfied
             run: |
-              mv coverage.xml junit.xml
-              mkdir -p reports/junit
-              cp junit.xml reports/junit
+              # mv coverage.xml junit.xml
+              # mkdir -p reports/junit
+              # cp junit.xml reports/junit
           - name: Generate badge for counted tests
             run: |
-              genbadge tests -o ./reports/coverage/coverage-badge.svg
+              genbadge tests i ./coverage.xml -o ./reports/coverage/coverage-badge.svg
           - name: Generate coverage xml
             run: |
               coverage xml
