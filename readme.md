@@ -1,6 +1,6 @@
 #  Quiz - Roads 
 [![Build](https://github.com/DarekRepos/quiz-roads/actions/workflows/build.yml/badge.svg)](https://github.com/DarekRepos/quiz-roads/actions/workflows/build.yml)
-[![Tests Status](./reports/junit/junit-badge.svg?dummy=8484744)](./reports/junit/report.html)
+[![Tests Status](https://github.com/DarekRepos/quiz-roads/blob/badges/coverage/coverage-unit-badge.svg?dummy=8484744)](./reports/junit/report.html)
 [![Coverage Status](https://github.com/DarekRepos/quiz-roads/blob/badges/coverage/coverage-badge.svg?dummy=8484744)](./reports/coverage/index.html)
 [![Flake8 Status](https://github.com/DarekRepos/quiz-roads/blob/badges/flake8/flake8-badge.svg?dummy=8484744)](./reports/flake8/index.html)
 
