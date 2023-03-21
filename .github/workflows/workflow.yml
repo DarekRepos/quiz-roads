@@ -35,7 +35,7 @@ jobs:
               pytest --junitxml=reports/junit/junit.xml
           - name: Generate badge for counted tests
             run: |
-              genbadge tests -o ./reports/coverage/coverage-badge.svg
+              genbadge tests -o ./reports/coverage/coverage-unit-badge.svg
           - name: Generate coverage xml
             run: |
               coverage xml
