@@ -8,8 +8,10 @@ class Participants(db.Model):
     __tablename__ = "participants",
     metadata,
     participant_id = db.Column(db.Integer, primary_key=True)
-    quiz_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, primary_key=True)
+    quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.quiz_id'),
+                        nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
+                        nullable=False)
     time_start = db.Column(db.String(100), nullable=False)
     time_end = db.Column(db.String(100))
     total_score = db.Column(db.Integer)
