@@ -20,5 +20,7 @@ class User(UserMixin, db.Model):
     user_password = db.Column(db.String(100), nullable=False)
     user_name = db.Column(db.String(1000), unique=True, nullable=False)
 
+    participants = db.relationship('participants', backref='users')
+
     def get_id(self):
         return (self.user_id)
