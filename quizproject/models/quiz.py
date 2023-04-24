@@ -12,7 +12,9 @@ class Quiz(db.Model):
     quiz_text = db.Column(db.String(100))
     quiz_idifficulty = db.Column(db.Integer)
 
-    questions = db.relationship('Questions', backref='quiz')
+    questions = db.relationship('questions', backref='quiz')
+    questions = db.relationship('person_answers', backref='quiz')
+    questions = db.relationship('participants', backref='quiz')
 
     def __repr__(self) -> str:
         return f'<Quiz {self.quiz_name}>'
