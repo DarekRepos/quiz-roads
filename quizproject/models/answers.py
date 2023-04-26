@@ -5,12 +5,10 @@ class Answers(db.Model):
     __tablename__ = "answers"
     answer_id = db.Column(db.Integer, primary_key=True)
     question_id = db.Column(
-        db.String(100), db.ForeignKey("question.question_id"), nullable=False
+        db.Integer, db.ForeignKey("questions.question_id"), nullable=False
     )
     question_answer = db.Column(db.String(100))
     question_correct = db.Column(db.Integer)
-
-    questions = db.relationship("person_answers", backref="answers")
 
     def __repr__(self) -> str:
         return f"<Answer {self.question_answer}>"
