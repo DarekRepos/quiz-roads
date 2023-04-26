@@ -1,14 +1,10 @@
-from importlib.metadata import MetadataPathFinder
 from .. import db
-
-metadata = MetadataPathFinder()
 
 
 class Participants(db.Model):
-    __tablename__ = "participants",
-    metadata,
+    __tablename__ = "participants"
     participant_id = db.Column(db.Integer, primary_key=True)
-    quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.quiz_id'),
+    quiz_id = db.Column(db.Integer, db.ForeignKey("quiz.quiz_id"),
                         nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
                         nullable=False)

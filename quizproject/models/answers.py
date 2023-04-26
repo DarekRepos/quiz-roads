@@ -1,18 +1,14 @@
-from importlib.metadata import MetadataPathFinder
 from .. import db
-
-metadata = MetadataPathFinder()
 
 
 class Answers(db.Model):
-    __tablename__ = ("answers",)
-    metadata,
+    __tablename__ = "answers"
     answer_id = db.Column(db.Integer, primary_key=True)
     question_id = db.Column(
         db.String(100), db.ForeignKey("question.question_id"), nullable=False
     )
     question_answer = db.Column(db.String(100))
-    qquestion_correct = db.Column(db.Integer)
+    question_correct = db.Column(db.Integer)
 
     questions = db.relationship("person_answers", backref="answers")
 
