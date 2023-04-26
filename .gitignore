@@ -11,3 +11,7 @@ questions.db
 
 # coverage files
 .coverage
+
+# ignore vs code settings
+
+.vscode
