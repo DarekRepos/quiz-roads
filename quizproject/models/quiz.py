@@ -1,7 +1,6 @@
 from .. import db
 
 
-
 class Quiz(db.Model):
     __tablename__ = "quiz"
     quiz_id = db.Column(db.Integer, primary_key=True)
@@ -9,12 +8,10 @@ class Quiz(db.Model):
     quiz_text = db.Column(db.String(100))
     quiz_idifficulty = db.Column(db.Integer)
 
-    questions = db.relationship("Questions", backref="quiz")
-    # person_answers = db.relationship("PersonAnswer", back_populates="quiz")
-    # participants = db.relationship('Participants', backref='quiz')
+    questions = db.relationship("Questions", back_populates="quiz")
 
     def __repr__(self) -> str:
-        return f'<Quiz {self.quiz_name}>'
+        return f'<Quiz {self.quiz_name!r}>'
 
     def get_id(self):
         return (self.quiz_id)
