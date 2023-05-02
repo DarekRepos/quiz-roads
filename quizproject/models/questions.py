@@ -16,4 +16,5 @@ class Questions(db.Model):
         return f'<Question "{self.question_id!r}">'
 
     def get_id(self):
+
         return self.question_id
