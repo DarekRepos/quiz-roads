@@ -8,19 +8,19 @@ db = SQLAlchemy()
 
 
 def token_error(e):
-    return render_template('page-400.html'), 400
+    return render_template("page-400.html"), 400
 
 
 def access_forbidden(e):
-    return render_template('page-403.html'), 403
+    return render_template("page-403.html"), 403
 
 
 def page_not_found(e):
-    return render_template('page-404.html'), 404
+    return render_template("page-404.html"), 404
 
 
 def internal_error(e):
-    return render_template('page-500.html'), 500
+    return render_template("page-500.html"), 500
 
 
 def create_app(config):
@@ -36,7 +36,7 @@ def create_app(config):
     db.init_app(app)
 
     login_manager = LoginManager()
-    login_manager.login_view = 'auth.login'
+    login_manager.login_view = "auth.login"
     login_manager.init_app(app)
 
     from .models.users import User
@@ -53,8 +53,11 @@ def create_app(config):
     from .auth import auth as auth_settings
     from .main import main as main_quizapp
 
+    from .commands.question_manager import bp as questions_cli
+
     app.register_blueprint(auth_settings)
     app.register_blueprint(main_quizapp)
+    app.register_blueprint(questions_cli)
 
     with app.app_context():
         db.create_all()
