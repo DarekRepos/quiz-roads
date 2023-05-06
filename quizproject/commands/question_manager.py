@@ -60,7 +60,9 @@ def create(name):
         db.session.commit()
 
         click.echo("✅ Question {name} are created".format(name=name))
+
     except Exception:
+    
         db.session.rollback()
         click.echo("Question did not created")
 
@@ -100,6 +102,7 @@ def deleteall():
         question_rows_deleted = db.session.query(Questions).delete()
         answer_rows_deleted = db.session.query(Answers).delete()
         db.session.commit()
+
     except Exception:
         db.session.rollback()
 
