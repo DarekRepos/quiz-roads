@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired
 
 
 class MultipleCheckBoxField(SelectMultipleField):
-    """ Overided class for SelectedMulitiple field, 
+    """ Overdid class for SelectedMultiple field,
 
     Args:
         SelectMultipleField (FlaskForm): _description_
