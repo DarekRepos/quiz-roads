@@ -7,8 +7,8 @@ from .models.users import User
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
 
-from .forms.loginform import LoginForm
-from .forms.signupform import SignUpForm
+from .forms.login_form import LoginForm
+from .forms.signup_form import SignUpForm
 
 
 auth = Blueprint('auth', __name__)

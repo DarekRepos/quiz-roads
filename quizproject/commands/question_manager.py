@@ -1,5 +1,7 @@
 import click
 
+from quizproject.models.question_collection import QCollection
+
 from ..models.quiz import Quiz
 from .. import db
 from ..models.questions import Questions
@@ -23,48 +25,96 @@ def create(name):
     Added sample example tests questions
 
     """
-    try:
-        question = Questions(
-            quiz_id=2,
-            question_dificulty=5,
-            question_multianswer=1,
-            question_text=name,
-            is_active=1,
-        )
 
-        db.session.add(question)
+    # Create two quiz categories
+    roads = Quiz(quiz_name="Roads")
+    railway = Quiz(quiz_name="Railway")
+
+    try:
+        roads.questions = [
+            Questions(
+                question_difficulty=5,
+                question_multianswer=1,
+                question_text="Question 3",
+                is_active=1,
+            ),
+        ]
+
+        railway.questions = [
+            Questions(
+                question_difficulty=5,
+                question_multianswer=0,
+                question_text="Question 1",
+                is_active=1,
+            ),
+            Questions(
+                question_difficulty=5,
+                question_multianswer=0,
+                question_text="Question 2",
+                is_active=1,
+            ),
+        ]
+
+        db.session.add(roads)
+        db.session.add(railway)
         db.session.flush()
         # At this point, the object has been pushed to the DB,
         # and has been automatically assigned a unique primary key id
 
-        id = question.get_id()
+        three = roads.get_item_by_name("Question 3")
+        two = railway.get_item_by_name("Question 2")
+        one = railway.get_item_by_name("Question 1")
 
-        answer1 = Answers(
-            question_id=id, question_answer="test_answer 1", question_correct=1
-        )
-        answer2 = Answers(
-            question_id=id, question_answer="test_answer 2", question_correct=0
-        )
-        answer3 = Answers(
-            question_id=id, question_answer="test_answer 3", question_correct=0
-        )
-        answer4 = Answers(
-            question_id=id, question_answer="test_ answer 4", question_correct=0
-        )
+        # Create  test1 collection give name from the console
+        test1 = QCollection(name=name, items=[one, two, three])
+        db.session.add(test1)
+        db.session.flush()
 
-        db.session.add(question)
-        db.session.add(answer1)
-        db.session.add(answer2)
-        db.session.add(answer3)
-        db.session.add(answer4)
+        # get all questions
+        q = db.session.query(Questions).all()
+
+        for item in q:
+            # Create one answer with multiple solutions, check is 1
+            if item.question_multianswer == 1:
+                check = 1
+            else:
+                check = 0
+
+            # Create  answers with one valid solution if check is 0
+            answer1 = Answers(
+                question_id=item.question_id,
+                question_answer="test_answer 1",
+                question_correct=1,
+            )
+            answer2 = Answers(
+                question_id=item.question_id,
+                question_answer="test_answer 2",
+                question_correct=0,
+            )
+            answer3 = Answers(
+                question_id=item.question_id,
+                question_answer="test_answer 3",
+                question_correct=0,
+            )
+            answer4 = Answers(
+                question_id=item.question_id,
+                question_answer="test_ answer 4",
+                question_correct=check,
+            )
+
+            db.session.add(answer1)
+            db.session.add(answer2)
+            db.session.add(answer3)
+            db.session.add(answer4)
+
         db.session.commit()
 
-        click.echo("✅ Question {name} are created".format(name=name))
 
-    except Exception:
-    
+        click.echo("✅ Questions collections {name} are created".format(name=name))
+    except Exception as e:
         db.session.rollback()
         click.echo("Question did not created")
+        click.echo(e)
 
 
 @bp.cli.command("count")
@@ -84,30 +134,25 @@ def question_count():
     )
 
 
-"""
-remove items db
-"""
-
-
 @bp.cli.command("deleteall")
 @with_appcontext
 def deleteall():
     """
     Delete all examples questions and answers from database
     """
-    message = 'Do you want to continue to delete all questions and answers?'
+    message = "Do you want to continue to delete all questions and answers?"
     click.confirm(message, abort=True)
 
     try:
         question_rows_deleted = db.session.query(Questions).delete()
         answer_rows_deleted = db.session.query(Answers).delete()
         db.session.commit()
-
-    except Exception:
+    except Exception as e:
         db.session.rollback()
-
-    click.echo(
-        "total {questions} questions deleted with total {answers} answers deleted".format(
-            questions=question_rows_deleted, answers=answer_rows_deleted
+        click.echo(e)
+    finally:
+        click.echo(
+            "total {questions} questions deleted with total {answers} answers deleted".format(
+                questions=question_rows_deleted, answers=answer_rows_deleted
+            )
         )
-    )
