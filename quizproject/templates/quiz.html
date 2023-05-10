@@ -2,6 +2,11 @@
 
 {% block content %}
 <h1 class="title">
-  Quiz
+ Quiz about roads
 </h1>
+<p>In this quiz you’ll review topics covered in the An Intro to Threading in Python tutorial.
+The quiz contains {{ question_number }} questions and there is no time limit. You’ll get 1 point for each correct answer. At the end of the quiz, you’ll receive a total score. The maximum score is 100%. Good luck!</p>
+    <a href="{{url_for('main.quiz_viewer')}}">
+      <button class="button is-light is-large is-responsive">START</Button>
+    </a>
 {% endblock %}
