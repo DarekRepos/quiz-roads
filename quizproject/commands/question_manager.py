@@ -109,8 +109,15 @@ def create(name):
 
         db.session.commit()
 
+<<<<<<< HEAD
         click.echo("✅ Questions collections {name} are created".format(name=name))
     except Exception as e:
+=======
+        click.echo("✅ Question {name} are created".format(name=name))
+
+    except Exception:
+    
+>>>>>>> 13aa491df6391bd2cb595101dfa160e1b2713496
         db.session.rollback()
         click.echo("Question did not created")
         click.echo(e)
@@ -146,7 +153,12 @@ def deleteall():
         question_rows_deleted = db.session.query(Questions).delete()
         answer_rows_deleted = db.session.query(Answers).delete()
         db.session.commit()
+<<<<<<< HEAD
     except Exception as e:
+=======
+
+    except Exception:
+>>>>>>> 13aa491df6391bd2cb595101dfa160e1b2713496
         db.session.rollback()
         click.echo(e)
     finally:
