@@ -32,43 +32,43 @@
                class="code sev- "><tt><i>5</i> &nbsp;</tt>
             </div>
             <div id="l6"
-               class="code sev- "><tt><i>6</i> <span class="k">def</span> <span class="nf">test_questions_count_command</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">app_with_db</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>6</i> <span class="k">def</span> <span class="nf">test_create_command</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">app_with_db</span><span class="p">):</span></tt>
             </div>
             <div id="l7"
-               class="code sev- "><tt><i>7</i>     <span class="c1"># full command: flask question count</span></tt>
+               class="code sev- "><tt><i>7</i> &nbsp;</tt>
             </div>
             <div id="l8"
-               class="code sev- "><tt><i>8</i>     <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;questions&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span></tt>
+               class="code sev- "><tt><i>8</i>     <span class="c1"># full command: flask questions create example</span></tt>
             </div>
             <div id="l9"
-               class="code sev- "><tt><i>9</i>     <span class="k">assert</span> <span class="s2">&quot;total 0 questions with total 0 answers&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span></tt>
+               class="code sev- "><tt><i>9</i>     <span class="c1"># example - can be diffrent string</span></tt>
             </div>
             <div id="l10"
-               class="code sev- "><tt><i>10</i>     <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span></tt>
+               class="code sev- "><tt><i>10</i>     <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;questions&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;example&#39;</span><span class="p">])</span></tt>
             </div>
             <div id="l11"
-               class="code sev- "><tt><i>11</i> &nbsp;</tt>
+               class="code sev- "><tt><i>11</i>     <span class="k">assert</span> <span class="s2">&quot;Questions collections example are created&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span></tt>
             </div>
             <div id="l12"
-               class="code sev- "><tt><i>12</i> &nbsp;</tt>
+               class="code sev- "><tt><i>12</i>     <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span></tt>
             </div>
             <div id="l13"
-               class="code sev- "><tt><i>13</i> <span class="k">def</span> <span class="nf">test_create_command</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">app_with_db</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>13</i> &nbsp;</tt>
             </div>
             <div id="l14"
                class="code sev- "><tt><i>14</i> &nbsp;</tt>
             </div>
             <div id="l15"
-               class="code sev- "><tt><i>15</i>     <span class="c1"># full command: flask questions create example</span></tt>
+               class="code sev- "><tt><i>15</i> <span class="k">def</span> <span class="nf">test_questions_count_command</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">app_with_db</span><span class="p">):</span></tt>
             </div>
             <div id="l16"
-               class="code sev- "><tt><i>16</i>     <span class="c1"># example - can be diffrent string</span></tt>
+               class="code sev- "><tt><i>16</i>     <span class="c1"># full command: flask question count</span></tt>
             </div>
             <div id="l17"
-               class="code sev- "><tt><i>17</i>     <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;questions&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;example&#39;</span><span class="p">])</span></tt>
+               class="code sev- "><tt><i>17</i>     <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;questions&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span></tt>
             </div>
             <div id="l18"
-               class="code sev- "><tt><i>18</i>     <span class="k">assert</span> <span class="s2">&quot;Question example are created&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span></tt>
+               class="code sev- "><tt><i>18</i>     <span class="k">assert</span> <span class="s2">&quot;total 3 questions with total 12 answers&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span></tt>
             </div>
             <div id="l19"
                class="code sev- "><tt><i>19</i>     <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span></tt>
@@ -141,9 +141,9 @@
                      <span class="count sev-2">
                         E501
                      </span>
-                     Line too long (84 > 79 characters)</li>
+                     Line too long (85 > 79 characters)</li>
                
-               </ul><tt><i>40</i>     <span class="k">assert</span> <span class="s2">&quot;total 1 questions deleted with total 4 answers deleted&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span></tt>
+               </ul><tt><i>40</i>     <span class="k">assert</span> <span class="s2">&quot;total 3 questions deleted with total 12 answers deleted&quot;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span></tt>
             </div>
             
          </div>
