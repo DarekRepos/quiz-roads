@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- progress bar -->
+<h1 class="title">
+ Quiz about roads
+</h1>
+<!-- Quiz Questions - wyswiretl wszystkie pytania gdzie quiz = 1 -->
+<!-- Quiz Card -->
+
+
+  <ul>
+    {% for question in questions.items %}
+      <li>{{ question.question_text }}
+    {% endfor %}
+  </ul>
+
+  {% for a in multianswer %}
+  <ul>
+    {% if  a.question_multianswer == 1 %}
+      <li>It is multianswer question</li>
+  </ul>
+  {{ form2.hidden_tag() }}
+  {% for option in form2.user_answers %}
+      <div>{{ option }} {{ option.label }}</div>
+  {% endfor %}
+
+    {% else %}
+    {{ form1.hidden_tag() }}
+    {% for option in form1.user_answers %}
+        <div>{{ option }} {{ option.label }}</div>
+    {% endfor %}
+    {% endif %}
+  {% endfor %}
+
+
+  
+
+  <!-- Pagination Links-->
+  <nav class="pagination is-right" role="navigation" aria-label="pagination">
+   
+    <a href="{{ url_for('main.quiz_viewer', page=questions.prev_num) }}"
+       class="pagination-previous 
+       {% if questions.page == 1 %}disabled{% endif %}">
+        &laquo;
+    </a>
+    
+    <a href="{{ url_for('main.quiz_viewer', page=questions.next_num) }}"
+    class="pagination-next
+    {% if questions.page == questions.pages %}disabled{% endif %}">
+     &raquo;
+    </a>
+
+
+    <ul class="pagination-list">
+    <!-- Loop through the number of pages to display a link for each-->
+    {% for page_num in questions.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}{% if page_num %}
+    <!-- Check for the active page and set the link to "Active"-->
+            {% if questions.page == page_num %}
+            <li><a href="{{ url_for('main.quiz_viewer', page=page_num) }}"
+               class="pagination-link"
+               aria-label="Goto page {{ page_num }}">
+                {{ page_num }}
+            </a></li>
+            {% else %}
+            <li><a href="{{ url_for('main.quiz_viewer', page=page_num) }}"
+               class="pagination-link is-current" 
+               aria-label="Page {{ page_num }}" aria-current="page">
+                {{ page_num }}
+            </a></li>
+            {% endif %}
+        {% else %}
+        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        {% endif %}
+    {% endfor %} 
+    </ul>
+
+</nav>
+<p class="text-right mt-3">
+   Showing question {{ questions.page }} of {{ questions.pages }}
+</p>
+
+<!-- Quiz control (next, check answer=)-->
+{% endblock %}
