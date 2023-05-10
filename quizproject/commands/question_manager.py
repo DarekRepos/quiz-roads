@@ -109,6 +109,7 @@ def create(name):
 
         db.session.commit()
 
+
         click.echo("✅ Questions collections {name} are created".format(name=name))
     except Exception as e:
         db.session.rollback()
