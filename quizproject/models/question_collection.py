@@ -32,3 +32,4 @@ class QCollection(db.Model):
     
     def get_id(self):
         return self.question_id
+
