@@ -1,11 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import widgets, SelectMultipleField
+from wtforms import widgets, SelectMultipleField,  SubmitField
 
 from wtforms.validators import DataRequired
 
 
 class MultipleCheckBoxField(SelectMultipleField):
-    """ Overdid class for SelectedMultiple field,
+    """ Override class for SelectedMultiple field,
 
     Args:
         SelectMultipleField (FlaskForm): _description_
@@ -21,5 +21,6 @@ class MultipleValidAnswersForm(FlaskForm):
         FlaskForm (_type_): _description_
     """
     user_answers = MultipleCheckBoxField(
-        "Label", coerce=int, choices=[], validators=[DataRequired()]
+        "Label", coerce=int, choices=[], validators=[]
     )
+    submit = SubmitField('Save')
