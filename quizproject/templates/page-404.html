@@ -1,18 +1,17 @@
 {% extends "base.html" %}
-
 {% block content %}
-<div id="clouds">
-  <div class="cloud x1"></div>
-  <div class="cloud x1_5"></div>
-  <div class="cloud x2"></div>
-  <div class="cloud x3"></div>
-  <div class="cloud x4"></div>
-  <div class="cloud x5"></div>
-</div>
-<div class='error-box'>
-  <div class='error-code'>404</div>
-  <div class='tittle-message'>OPPS</div>
-  <div class='tittle-code'>WAS NOT FOUND</div>
-  <a class='button back-btn' href="{{ url_for('main.index') }}">BACK TO INDEX</a>
-</div>
+  <div id="clouds">
+    <div class="cloud x1"></div>
+    <div class="cloud x1_5"></div>
+    <div class="cloud x2"></div>
+    <div class="cloud x3"></div>
+    <div class="cloud x4"></div>
+    <div class="cloud x5"></div>
+  </div>
+  <div class='error-box'>
+    <div class='error-code'>404</div>
+    <div class='tittle-message'>OPPS</div>
+    <div class='tittle-code'>WAS NOT FOUND</div>
+    <a class='button back-btn' href="{{ url_for("main.index") }}">BACK TO INDEX</a>
+  </div>
 {% endblock %}

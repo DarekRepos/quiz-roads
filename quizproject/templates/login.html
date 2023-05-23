@@ -1,38 +1,32 @@
 {% extends "base.html" %}
-
 {% block content %}
-<div class="column is-4 is-offset-4">
-    <h3 class="title">Login</h3>
-    <div class="box">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="notification is-danger">
-                {{ messages[0] }}
-            </div>
-        {% endif %}
-        {% endwith %}
-        {% from "_util-field.html" import render_field %}
-        <form method="POST" action="/login" role="form">
-            {{ form.hidden_tag() }}
-            <div class="field">
-                <div class="control">
-                    {{ render_field(form.email, placeholder="email",class='input is-large') }}
+    <div class="column is-4 is-offset-4">
+        <h3 class="title">Login</h3>
+        <div class="box">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}<div class="notification is-danger">{{ messages[0] }}</div>{% endif %}
+            {% endwith %}
+            {% from "_util-field.html" import render_field %}
+            <form method="POST" action="/login" role="form">
+                {{ form.hidden_tag() }}
+                <div class="field">
+                    <div class="control">{{ render_field(form.email, placeholder="email",class='input is-large') }}</div>
                 </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    {{ render_field(form.password, placeholder="password", class='input is-large') }}
+                <div class="field">
+                    <div class="control">{{ render_field(form.password, placeholder="password", class='input is-large') }}</div>
                 </div>
-            </div>
-            <div class="field">
-                <label class="checkbox">
-                    <input type="checkbox" name="remember">
-                    Remember me
-                </label>
-            </div>
-            <p><input class="button is-block is-info is-large is-fullwidth" type="submit" value="Login"></p>
-        </form>
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember">
+                        Remember me
+                    </label>
+                </div>
+                <p>
+                    <input class="button is-block is-info is-large is-fullwidth"
+                           type="submit"
+                           value="Login">
+                </p>
+            </form>
+        </div>
     </div>
-</div>
 {% endblock %}
