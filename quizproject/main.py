@@ -1,9 +1,12 @@
+
 from flask import Blueprint, redirect, render_template, request, session, url_for
+
 from flask_login import login_required, current_user
 from sqlalchemy import func
 from quizproject import db
 from quizproject.forms.answer_multi_form import MultipleValidAnswersForm
 from quizproject.forms.answer_one_form import OneValidAnswerForm
+
 from quizproject.forms.result_form import ResultForm
 
 from quizproject.models.answers import Answers
@@ -15,6 +18,7 @@ from quizproject.models.quiz import Quiz
 
 main = Blueprint("main", __name__)
 QUESTIONS_PER_PAGE = 1
+
 
 
 @main.route("/")
@@ -37,7 +41,9 @@ def quiz():
 
 
 # TODO: add tests to route
+
 @main.route("/quiz/viewer", methods=["GET", "POST"])
+
 @login_required
 def quiz_viewer():
     """get all questions with answers
@@ -45,6 +51,7 @@ def quiz_viewer():
     Returns:
        html: view for quiz
     """
+
     session["checked"] = "checked"
 
     page = request.args.get("page", 1, type=int)
@@ -84,6 +91,7 @@ def quiz_viewer():
 
     form1.user_answers.choices = groups_list
     form2.user_answers.choices = groups_list
+
 
     # if submitet display same view witch check
 
@@ -209,3 +217,4 @@ def results():
 
 
 # TODO: validate answers
+

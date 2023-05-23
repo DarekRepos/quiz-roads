@@ -111,6 +111,7 @@ def create(name):
 
         click.echo("✅ Questions collections {name} are created".format(
             name=name))
+        
     except Exception as e:
         db.session.rollback()
         click.echo("Question did not created")

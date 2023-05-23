@@ -38,3 +38,4 @@ def test_deleteall_command_when_confirmed_to_yes(runner, app_with_db, capsys):
     assert result.exit_code == 0
     assert not result.exception
     assert "total 3 questions and total 12 answers was deleted" in result.output
+
