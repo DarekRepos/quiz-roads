@@ -29,3 +29,7 @@ class QCollection(db.Model):
     items = db.relationship(Questions,
                             secondary=t_collection_item,
                             backref="collections")
+    
+    def get_id(self):
+        return self.question_id
+

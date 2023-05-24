@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-
+import redis
 import os
 
 
@@ -14,6 +14,13 @@ class Config(object):
     # This will create a file in <app> FOLDER
     SQLALCHEMY_DATABASE_URI = 'sqlite:///questions.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # redis conf
+    SESSION_TYPE = 'redis'
+    SESSION_PERMANENT = False
+    SESSION_USE_SIGNER = True
+    SESSION_REDIS = redis.from_url('redis://localhost:6379')
+
 
     # Assets Management
     # ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/otherfolder')

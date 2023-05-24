@@ -3,6 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
 from flask_wtf.csrf import CSRFProtect
+# from flasgger import Swagger
+from flask_session import Session
+
 
 db = SQLAlchemy()
 
@@ -25,8 +28,10 @@ def internal_error(e):
 
 def create_app(config):
     app = Flask(__name__)
-
+   
     app.config.from_object(config)
+    server_session = Session(app)
+  #  swagger = Swagger(app, config=config)
 
     app.register_error_handler(400, token_error)
     app.register_error_handler(403, access_forbidden)
@@ -49,16 +54,17 @@ def create_app(config):
 
     csrf = CSRFProtect()
     csrf.init_app(app)
-
+    
     from .auth import auth as auth_settings
     from .main import main as main_quizapp
+    from .api import question_api as apis
 
     from .commands.question_manager import bp as questions_cli
 
     app.register_blueprint(auth_settings)
     app.register_blueprint(main_quizapp)
-    app.register_blueprint(questions_cli)
-
+    app.register_blueprint(questions_cli)  
+    app.register_blueprint(apis)
     with app.app_context():
         db.create_all()
 

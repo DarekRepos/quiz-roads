@@ -109,8 +109,9 @@ def create(name):
 
         db.session.commit()
 
-
-        click.echo("✅ Questions collections {name} are created".format(name=name))
+        click.echo("✅ Questions collections {name} are created".format(
+            name=name))
+        
     except Exception as e:
         db.session.rollback()
         click.echo("Question did not created")
@@ -152,7 +153,7 @@ def deleteall():
         click.echo(e)
     finally:
         click.echo(
-            "total {questions} questions deleted with total {answers} answers deleted".format(
-                questions=question_rows_deleted, answers=answer_rows_deleted
+            "total {q} questions and total {a} answers was deleted".format(
+                q=question_rows_deleted, a=answer_rows_deleted
             )
         )
