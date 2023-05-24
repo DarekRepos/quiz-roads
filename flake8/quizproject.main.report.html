@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function () {
 </script>
    </head>
    <body>
-      <div id="masthead" class="sev-2"></div>
+      <div id="masthead" class="sev-1"></div>
       <div id="page">
          <p id="srclink">
             <a title="View full annotated source"
@@ -50,29 +50,107 @@ window.addEventListener('DOMContentLoaded', function () {
          <ul id="index">
          
          <li>
-            <a data-code="E501">
-               <span class="count sev-2">
-                  2
+            <a data-code="F401">
+               <span class="count sev-1">
+                  1
                </span>
-               <strong>E501:</strong> line too long (82 > 79 characters)
-               
-                  (and 1 similar)
+               <strong>F401:</strong> 'quizproject.models.quiz.Quiz' imported but unused
                
             </a>
             <ul class="details">
             <li>
                
-               <p>Line too long (82 > 79 characters):</p>
+               <a href="quizproject.main.source.html#l16">
+                  <tt><i>16</i> &nbsp;</tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="F841">
+               <span class="count sev-1">
+                  1
+               </span>
+               <strong>F841:</strong> local variable 'match' is assigned to but never used
                
-               <a href="quizproject.main.source.html#l32">
-                  <tt><i>32</i>     <span class="n">question_number</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Questions</span><span class="o">.</span><span class="n">question_id</span><span class="p">))</span><span class="o">.</span><span class="n">scalar</span><span class="p">()</span></tt>
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="quizproject.main.source.html#l76">
+                  <tt><i>76</i>     <span class="c1"># last_record = match.records.order_by(None).order_by(Record.id.desc()).first()</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E501">
+               <span class="count sev-2">
+                  8
+               </span>
+               <strong>E501:</strong> line too long (81 > 79 characters)
+               
+                  (and 5 similar)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="quizproject.main.source.html#l2">
+                  <tt><i>2</i> &nbsp;</tt>
                </a>
             </li><li>
                
-               <p>Line too long (104 > 79 characters):</p>
+               <p>Line too long (82 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l61">
-                  <tt><i>61</i>     <span class="n">multianswer</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Questions</span><span class="o">.</span><span class="n">question_multianswer</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Questions</span><span class="o">.</span><span class="n">question_id</span> <span class="o">==</span> <span class="n">page</span><span class="p">)</span></tt>
+               <a href="quizproject.main.source.html#l39">
+                  <tt><i>39</i>     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;quiz.html&quot;</span><span class="p">,</span> <span class="n">question_number</span><span class="o">=</span><span class="n">question_number</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="quizproject.main.source.html#l77">
+                  <tt><i>77</i> &nbsp;</tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (84 > 79 characters):</p>
+               
+               <a href="quizproject.main.source.html#l79">
+                  <tt><i>79</i> &nbsp;</tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="quizproject.main.source.html#l131">
+                  <tt><i>131</i> &nbsp;</tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="quizproject.main.source.html#l153">
+                  <tt><i>153</i> &nbsp;</tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="quizproject.main.source.html#l180">
+                  <tt><i>180</i>             <span class="n">Answers</span><span class="o">.</span><span class="n">question_id</span> <span class="o">==</span> <span class="n">item</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="quizproject.main.source.html#l215">
+                  <tt><i>215</i>     <span class="p">)</span></tt>
                </a>
             </li>
             </ul>
@@ -81,16 +159,63 @@ window.addEventListener('DOMContentLoaded', function () {
          <li>
             <a data-code="E303">
                <span class="count sev-2">
-                  1
+                  2
                </span>
-               <strong>E303:</strong> too many blank lines (2)
+               <strong>E303:</strong> too many blank lines (3)
+               
+                  (and 1 similar)
                
             </a>
             <ul class="details">
             <li>
                
-               <a href="quizproject.main.source.html#l70">
-                  <tt><i>70</i>     <span class="c1"># parse to view</span></tt>
+               <p>Too many blank lines (3):</p>
+               
+               <a href="quizproject.main.source.html#l24">
+                  <tt><i>24</i> <span class="k">def</span> <span class="nf">index</span><span class="p">():</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Too many blank lines (2):</p>
+               
+               <a href="quizproject.main.source.html#l96">
+                  <tt><i>96</i> &nbsp;</tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E304">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E304:</strong> blank lines found after function decorator
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="quizproject.main.source.html#l47">
+                  <tt><i>47</i> <span class="k">def</span> <span class="nf">quiz_viewer</span><span class="p">():</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="W391">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>W391:</strong> blank line at end of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="quizproject.main.source.html#l220">
+                  <tt><i>220</i> &nbsp;</tt>
                </a>
             </li>
             </ul>
