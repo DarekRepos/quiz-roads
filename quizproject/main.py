@@ -1,4 +1,3 @@
-
 from flask import Blueprint, redirect, render_template, request, session, url_for
 
 from flask_login import login_required, current_user
@@ -18,7 +17,6 @@ from quizproject.models.quiz import Quiz
 
 main = Blueprint("main", __name__)
 QUESTIONS_PER_PAGE = 1
-
 
 
 @main.route("/")
@@ -42,8 +40,8 @@ def quiz():
 
 # TODO: add tests to route
 
-@main.route("/quiz/viewer", methods=["GET", "POST"])
 
+@main.route("/quiz/viewer", methods=["GET", "POST"])
 @login_required
 def quiz_viewer():
     """get all questions with answers
@@ -51,7 +49,6 @@ def quiz_viewer():
     Returns:
        html: view for quiz
     """
-
     session["checked"] = "checked"
 
     page = request.args.get("page", 1, type=int)
@@ -72,18 +69,14 @@ def quiz_viewer():
 
     # TODO: sanitize page arguments
     # TODO: validation arguments
-    # select all answers where question.id = question id on current page
-    match = questions.items.__getitem__
-    # last_record = match.records.order_by(None).order_by(Record.id.desc()).first()
 
     available_groups = db.session.query(Answers).filter(Answers.question_id == page)
 
     groups_list = [(i.answer_id, i.question_answer) for i in available_groups]
-    print(groups_list)
+
     multianswer = db.session.query(Questions.question_multianswer).filter(
         Questions.question_id == page
     )
-    print(page)
 
     form1 = OneValidAnswerForm(request.form)
     form2 = MultipleValidAnswersForm(request.form.getlist("user_answers"))
@@ -92,66 +85,41 @@ def quiz_viewer():
     form1.user_answers.choices = groups_list
     form2.user_answers.choices = groups_list
 
-
-    # if submitet display same view witch check
-
-    # print("odpowiedzi", session["answers"][page])
-
     pages = questions.pages
+
     session["total_pages"] = pages
-    print(session["total_pages"])
+    session["current_question"] = [page]
 
-    # for item in range(1, questions.pages + 1):
-    #     print("wszystkie", session["answers"][item])
-
-    session["current_question"] = page
     selections = []
 
-    print("sesja ", session["current_question"])
+    if "answers" in session:
+        if page in session["answers"]:
+            selections = session["answers"][page]
+        else:
+            session["answers"][page] = []
+    else:
+        session["answers"] = {page: []}
+
+    session.modified = True
 
     # if next display view with nezt questions
     if form2.validate_on_submit() and (request.method == "POST"):
-        # session['current_question']['answer'] = form1.data
         op1 = request.form.getlist("user_answers")
-        print(op1)
         user_answers = dict(groups_list)
+
         for key in user_answers:
             for answer_item in op1:
                 if int(answer_item) == key:
-                    print(user_answers[key])
-                    if "answers" in session:
-                        # session["answers"][page].extend([op1])
-                        session["answers"][page].extend([op1])
-                    # else:
-                    #     session["answers"][page].extend([op1])
-        # print("answers", session["answers"][page])
-
-        selections = 1
-
-        return redirect(url_for("main.quiz_viewer", page=page, selections=selections))
+                    if "answers" in session and page in session["answers"]:
+                        session["answers"][page] = op1
+                    else:
+                        session["answers"] = {page: [op1]}
+        return redirect(url_for(
+            "main.quiz_viewer", page=page, selections=selections))
 
     if form1.validate_on_submit() and (request.method == "POST"):
-        # old_answer = session['questions'][page]['answer'] \
-        # if 'answer' in session['questions'][page] \
-        # else None
-        op2 = request.form.getlist("user_answers")
-        print(op2)
-        user_answers = dict(groups_list)
-        for key in user_answers:
-            if key:
-                print(user_answers[key])
-                if "answers" in session:
-                    # session["answers"][page].extend([op1])
-                    session["answers"][page].extend([op2])
-                else:
-                    session["answers"][page] = op2
-        print("answers", session["answers"][page])
-
-        selections = session["answers"][page]
-        # curr_answer = request.form['answer_python']
-        # quiz_answers=
-        return redirect(url_for("main.quiz_viewer", page=page, selections=selections))
-
+        return redirect(url_for(
+            "main.quiz_viewer", page=page, selections=selections))
     # parse to view
     return render_template(
         "quiz-viewer.html",
@@ -180,33 +148,28 @@ def results():
         answers = db.session.query(Answers.answer_id, Answers.question_correct).filter(
             Answers.question_id == item
         )
+
+        # TODO: fix result page
+        # TODO: Refactor to class based 
         for a, b in answers:
             for k in session["answers"][item]:
                 # question have multiple answers
                 if len(k) > 1:
                     for v in k:
-                        # print(a)
                         if int(b) == 1:
-                            # jesli nie zaznaczone zwro
                             count = count + 1
                         if int(v) == int(a):
-                            # answers check
                             if int(b) == 1:
-                                print("zaznaczono")
                                 valid = valid + 1
-
                                 correct = True
                             print("OK")
                 if correct is True and count == valid:
                     points = points + 1
-
                 else:
                     print(k[0])
                     if int(k[0]) == a:
-                        print("zanzaczono")
                         if int(b) == 1:
                             points = points + 1
-                            print("1 point")
 
                 print(a, " i ", b, " i ")
 
@@ -217,4 +180,3 @@ def results():
 
 
 # TODO: validate answers
-
