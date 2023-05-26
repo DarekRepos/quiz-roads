@@ -6,7 +6,7 @@
       <link rel="stylesheet" href="styles.css">
    </head>
    <body>
-      <div id="masthead" class="sev-1"></div>
+      <div id="masthead" class="sev-2"></div>
       <div id="page">
          <h1>
             <a href="quizproject.__init__.report.html">
@@ -122,18 +122,6 @@
                class="code sev- "><tt><i>32</i>     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="n">config</span><span class="p">)</span></tt>
             </div>
             <div id="l33"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F841
-                     </span>
-                     Local variable 'server_session' is assigned to but never used</li>
-               
-               </ul><tt><i>33</i>     <span class="n">server_session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
-            </div>
-            <div id="l34"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -143,34 +131,64 @@
                      </span>
                      Indentation is not a multiple of 4 (comment)</li>
                
-               </ul><tt><i>34</i>   <span class="c1">#  swagger = Swagger(app, config=config)</span></tt>
+               </ul><tt><i>33</i>   <span class="c1">#  swagger = Swagger(app, config=config)</span></tt>
+            </div>
+            <div id="l34"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E225
+                     </span>
+                     Missing whitespace around operator</li>
+               
+               </ul><tt><i>34</i>     <span class="n">sess</span><span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
             </div>
             <div id="l35"
-               class="code sev- "><tt><i>35</i> &nbsp;</tt>
+               class="code sev- "><tt><i>35</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_error_handler</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="n">token_error</span><span class="p">)</span></tt>
             </div>
             <div id="l36"
-               class="code sev- "><tt><i>36</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_error_handler</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="n">token_error</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>36</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_error_handler</span><span class="p">(</span><span class="mi">403</span><span class="p">,</span> <span class="n">access_forbidden</span><span class="p">)</span></tt>
             </div>
             <div id="l37"
-               class="code sev- "><tt><i>37</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_error_handler</span><span class="p">(</span><span class="mi">403</span><span class="p">,</span> <span class="n">access_forbidden</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>37</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_error_handler</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="n">page_not_found</span><span class="p">)</span></tt>
             </div>
             <div id="l38"
-               class="code sev- "><tt><i>38</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_error_handler</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="n">page_not_found</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>38</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_error_handler</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">internal_error</span><span class="p">)</span></tt>
             </div>
             <div id="l39"
-               class="code sev- "><tt><i>39</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_error_handler</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">internal_error</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>39</i> &nbsp;</tt>
             </div>
             <div id="l40"
-               class="code sev- "><tt><i>40</i> &nbsp;</tt>
+               class="code sev- "><tt><i>40</i>     <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
             </div>
             <div id="l41"
-               class="code sev- "><tt><i>41</i>     <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        W293
+                     </span>
+                     Blank line contains whitespace</li>
+               
+               </ul><tt><i>41</i>     </tt>
             </div>
             <div id="l42"
                class="code sev- "><tt><i>42</i> &nbsp;</tt>
             </div>
             <div id="l43"
-               class="code sev- "><tt><i>43</i>     <span class="n">login_manager</span> <span class="o">=</span> <span class="n">LoginManager</span><span class="p">()</span></tt>
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E303
+                     </span>
+                     Too many blank lines (2)</li>
+               
+               </ul><tt><i>43</i>     <span class="n">login_manager</span> <span class="o">=</span> <span class="n">LoginManager</span><span class="p">()</span></tt>
             </div>
             <div id="l44"
                class="code sev- "><tt><i>44</i>     <span class="n">login_manager</span><span class="o">.</span><span class="n">login_view</span> <span class="o">=</span> <span class="s2">&quot;auth.login&quot;</span></tt>
@@ -263,16 +281,19 @@
                class="code sev- "><tt><i>67</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">apis</span><span class="p">)</span></tt>
             </div>
             <div id="l68"
-               class="code sev- "><tt><i>68</i>     <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span></tt>
+               class="code sev- "><tt><i>68</i>     <span class="n">sess</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
             </div>
             <div id="l69"
-               class="code sev- "><tt><i>69</i>         <span class="n">db</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>69</i>     <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span></tt>
             </div>
             <div id="l70"
-               class="code sev- "><tt><i>70</i> &nbsp;</tt>
+               class="code sev- "><tt><i>70</i>         <span class="n">db</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span></tt>
             </div>
             <div id="l71"
-               class="code sev- "><tt><i>71</i>     <span class="k">return</span> <span class="n">app</span></tt>
+               class="code sev- "><tt><i>71</i> &nbsp;</tt>
+            </div>
+            <div id="l72"
+               class="code sev- "><tt><i>72</i>     <span class="k">return</span> <span class="n">app</span></tt>
             </div>
             
          </div>

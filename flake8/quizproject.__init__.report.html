@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function () {
 </script>
    </head>
    <body>
-      <div id="masthead" class="sev-1"></div>
+      <div id="masthead" class="sev-2"></div>
       <div id="page">
          <p id="srclink">
             <a title="View full annotated source"
@@ -50,27 +50,9 @@ window.addEventListener('DOMContentLoaded', function () {
          <ul id="index">
          
          <li>
-            <a data-code="F841">
-               <span class="count sev-1">
-                  1
-               </span>
-               <strong>F841:</strong> local variable 'server_session' is assigned to but never used
-               
-            </a>
-            <ul class="details">
-            <li>
-               
-               <a href="quizproject.__init__.source.html#l33">
-                  <tt><i>33</i>     <span class="n">server_session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
-               </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
             <a data-code="W293">
                <span class="count sev-2">
-                  2
+                  3
                </span>
                <strong>W293:</strong> blank line contains whitespace
                
@@ -80,6 +62,11 @@ window.addEventListener('DOMContentLoaded', function () {
                
                <a href="quizproject.__init__.source.html#l31">
                   <tt><i>31</i>    </tt>
+               </a>
+            </li><li>
+               
+               <a href="quizproject.__init__.source.html#l41">
+                  <tt><i>41</i>     </tt>
                </a>
             </li><li>
                
@@ -101,8 +88,44 @@ window.addEventListener('DOMContentLoaded', function () {
             <ul class="details">
             <li>
                
+               <a href="quizproject.__init__.source.html#l33">
+                  <tt><i>33</i>   <span class="c1">#  swagger = Swagger(app, config=config)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E225">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E225:</strong> missing whitespace around operator
+               
+            </a>
+            <ul class="details">
+            <li>
+               
                <a href="quizproject.__init__.source.html#l34">
-                  <tt><i>34</i>   <span class="c1">#  swagger = Swagger(app, config=config)</span></tt>
+                  <tt><i>34</i>     <span class="n">sess</span><span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E303">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E303:</strong> too many blank lines (2)
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="quizproject.__init__.source.html#l43">
+                  <tt><i>43</i>     <span class="n">login_manager</span> <span class="o">=</span> <span class="n">LoginManager</span><span class="p">()</span></tt>
                </a>
             </li>
             </ul>

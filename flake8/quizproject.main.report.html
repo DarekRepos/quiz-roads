@@ -60,26 +60,8 @@ window.addEventListener('DOMContentLoaded', function () {
             <ul class="details">
             <li>
                
-               <a href="quizproject.main.source.html#l16">
-                  <tt><i>16</i> &nbsp;</tt>
-               </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
-            <a data-code="F841">
-               <span class="count sev-1">
-                  1
-               </span>
-               <strong>F841:</strong> local variable 'match' is assigned to but never used
-               
-            </a>
-            <ul class="details">
-            <li>
-               
-               <a href="quizproject.main.source.html#l76">
-                  <tt><i>76</i>     <span class="c1"># last_record = match.records.order_by(None).order_by(Record.id.desc()).first()</span></tt>
+               <a href="quizproject.main.source.html#l15">
+                  <tt><i>15</i> <span class="kn">from</span> <span class="nn">quizproject.models.quiz</span> <span class="kn">import</span> <span class="n">Quiz</span></tt>
                </a>
             </li>
             </ul>
@@ -88,11 +70,11 @@ window.addEventListener('DOMContentLoaded', function () {
          <li>
             <a data-code="E501">
                <span class="count sev-2">
-                  8
+                  5
                </span>
                <strong>E501:</strong> line too long (81 > 79 characters)
                
-                  (and 5 similar)
+                  (and 4 similar)
                
             </a>
             <ul class="details">
@@ -100,122 +82,54 @@ window.addEventListener('DOMContentLoaded', function () {
                
                <p>Line too long (81 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l2">
-                  <tt><i>2</i> &nbsp;</tt>
+               <a href="quizproject.main.source.html#l1">
+                  <tt><i>1</i> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">url_for</span></tt>
                </a>
             </li><li>
                
                <p>Line too long (82 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l39">
-                  <tt><i>39</i>     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s2">&quot;quiz.html&quot;</span><span class="p">,</span> <span class="n">question_number</span><span class="o">=</span><span class="n">question_number</span><span class="p">)</span></tt>
-               </a>
-            </li><li>
-               
-               <p>Line too long (83 > 79 characters):</p>
-               
-               <a href="quizproject.main.source.html#l77">
-                  <tt><i>77</i> &nbsp;</tt>
+               <a href="quizproject.main.source.html#l37">
+                  <tt><i>37</i>     <span class="n">question_number</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Questions</span><span class="o">.</span><span class="n">question_id</span><span class="p">))</span><span class="o">.</span><span class="n">scalar</span><span class="p">()</span></tt>
                </a>
             </li><li>
                
                <p>Line too long (84 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l79">
-                  <tt><i>79</i> &nbsp;</tt>
-               </a>
-            </li><li>
-               
-               <p>Line too long (86 > 79 characters):</p>
-               
-               <a href="quizproject.main.source.html#l131">
-                  <tt><i>131</i> &nbsp;</tt>
-               </a>
-            </li><li>
-               
-               <p>Line too long (86 > 79 characters):</p>
-               
-               <a href="quizproject.main.source.html#l153">
-                  <tt><i>153</i> &nbsp;</tt>
+               <a href="quizproject.main.source.html#l73">
+                  <tt><i>73</i>     <span class="n">available_groups</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Answers</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Answers</span><span class="o">.</span><span class="n">question_id</span> <span class="o">==</span> <span class="n">page</span><span class="p">)</span></tt>
                </a>
             </li><li>
                
                <p>Line too long (87 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l180">
-                  <tt><i>180</i>             <span class="n">Answers</span><span class="o">.</span><span class="n">question_id</span> <span class="o">==</span> <span class="n">item</span></tt>
+               <a href="quizproject.main.source.html#l148">
+                  <tt><i>148</i>         <span class="n">answers</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Answers</span><span class="o">.</span><span class="n">answer_id</span><span class="p">,</span> <span class="n">Answers</span><span class="o">.</span><span class="n">question_correct</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span></tt>
                </a>
             </li><li>
                
                <p>Line too long (86 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l215">
-                  <tt><i>215</i>     <span class="p">)</span></tt>
+               <a href="quizproject.main.source.html#l178">
+                  <tt><i>178</i>         <span class="s2">&quot;result.html&quot;</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="n">points</span><span class="p">,</span> <span class="n">total_questions</span><span class="o">=</span><span class="n">total_questions</span><span class="p">,</span> <span class="n">procent</span><span class="o">=</span><span class="n">procent</span></tt>
                </a>
             </li>
             </ul>
          </li>
          
          <li>
-            <a data-code="E303">
-               <span class="count sev-2">
-                  2
-               </span>
-               <strong>E303:</strong> too many blank lines (3)
-               
-                  (and 1 similar)
-               
-            </a>
-            <ul class="details">
-            <li>
-               
-               <p>Too many blank lines (3):</p>
-               
-               <a href="quizproject.main.source.html#l24">
-                  <tt><i>24</i> <span class="k">def</span> <span class="nf">index</span><span class="p">():</span></tt>
-               </a>
-            </li><li>
-               
-               <p>Too many blank lines (2):</p>
-               
-               <a href="quizproject.main.source.html#l96">
-                  <tt><i>96</i> &nbsp;</tt>
-               </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
-            <a data-code="E304">
+            <a data-code="W291">
                <span class="count sev-2">
                   1
                </span>
-               <strong>E304:</strong> blank lines found after function decorator
+               <strong>W291:</strong> trailing whitespace
                
             </a>
             <ul class="details">
             <li>
                
-               <a href="quizproject.main.source.html#l47">
-                  <tt><i>47</i> <span class="k">def</span> <span class="nf">quiz_viewer</span><span class="p">():</span></tt>
-               </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
-            <a data-code="W391">
-               <span class="count sev-2">
-                  1
-               </span>
-               <strong>W391:</strong> blank line at end of file
-               
-            </a>
-            <ul class="details">
-            <li>
-               
-               <a href="quizproject.main.source.html#l220">
-                  <tt><i>220</i> &nbsp;</tt>
+               <a href="quizproject.main.source.html#l153">
+                  <tt><i>153</i>         <span class="c1"># TODO: Refactor to class based </span></tt>
                </a>
             </li>
             </ul>
