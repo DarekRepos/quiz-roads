@@ -12,8 +12,7 @@ from quizproject.models.answers import Answers
 from quizproject.models.question_collection import QCollection
 
 from quizproject.models.questions import Questions
-from quizproject.models.quiz import Quiz
-
+from quizproject.services.answer_scorer import AnswerScorer
 
 main = Blueprint("main", __name__)
 QUESTIONS_PER_PAGE = 1
@@ -44,11 +43,7 @@ def quiz():
 @main.route("/quiz/viewer", methods=["GET", "POST"])
 @login_required
 def quiz_viewer():
-    """get all questions with answers
 
-    Returns:
-       html: view for quiz
-    """
     session["checked"] = "checked"
 
     page = request.args.get("page", 1, type=int)
@@ -128,38 +123,14 @@ def quiz_viewer():
 @main.route("/results", methods=["POST"])
 @login_required
 def results():
-    total_questions = session["total_pages"]
 
-    total_points = 0
+    scorer = AnswerScorer(session, db)
+    percent = scorer.score_answers()
 
-    for item in range(1, session["total_pages"] + 1):
-        # Session["answers"][item] contains the user's answer for the current question
-        user_answer = session["answers"][item]
-
-        # Answers is a SQLAlchemy model representing the answers table
-        correct_answers = (
-            db.session.query(Answers.question_correct, Answers.answer_id)
-            .filter(Answers.question_id == item)
-            .all()
-        )
-
-        # Extract the correct answer values from the query results
-        correct_answers = [
-            str(answer[1]) for answer in correct_answers if answer[0] == 1
-        ]
-
-        valid_answers = [x in correct_answers for x in user_answer]
-
-        # Check if the user's answer exists in the list of correct answers
-        if all(valid_answers) and valid_answers:
-            # Increment the total points if the answer is correct
-            total_points += 1
-
-    percent = round((total_points / total_questions) * 100, 2)
     return render_template(
         "result.html",
-        total_points=total_points,
-        total_questions=total_questions,
+        total_points=scorer.total_points,
+        total_questions=scorer.total_questions,
         percent=percent,
     )
 
