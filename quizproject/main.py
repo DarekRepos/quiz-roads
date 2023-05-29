@@ -54,7 +54,6 @@ def quiz_viewer():
     page = request.args.get("page", 1, type=int)
 
     # get collections which has "Raods" question
-
     questions = db.paginate(
         db.session.query(QCollection)
         .join(Questions, QCollection.items)
@@ -62,10 +61,6 @@ def quiz_viewer():
         page=page,
         per_page=QUESTIONS_PER_PAGE,
     )
-    for coll in questions:
-        print(coll)
-        for item in coll.items:
-            print(item.question_text)
 
     # TODO: sanitize page arguments
     # TODO: validation arguments
@@ -114,12 +109,10 @@ def quiz_viewer():
                         session["answers"][page] = op1
                     else:
                         session["answers"] = {page: [op1]}
-        return redirect(url_for(
-            "main.quiz_viewer", page=page, selections=selections))
+        return redirect(url_for("main.quiz_viewer", page=page, selections=selections))
 
     if form1.validate_on_submit() and (request.method == "POST"):
-        return redirect(url_for(
-            "main.quiz_viewer", page=page, selections=selections))
+        return redirect(url_for("main.quiz_viewer", page=page, selections=selections))
     # parse to view
     return render_template(
         "quiz-viewer.html",
@@ -135,47 +128,39 @@ def quiz_viewer():
 @main.route("/results", methods=["POST"])
 @login_required
 def results():
-    print(session["total_pages"])
-
-    points = 0
-    correct = False
-    count = 0
-    valid = 0
     total_questions = session["total_pages"]
 
+    total_points = 0
+
     for item in range(1, session["total_pages"] + 1):
-        print("wszystkie", session["answers"][item])
-        answers = db.session.query(Answers.answer_id, Answers.question_correct).filter(
-            Answers.question_id == item
+        # Session["answers"][item] contains the user's answer for the current question
+        user_answer = session["answers"][item]
+
+        # Answers is a SQLAlchemy model representing the answers table
+        correct_answers = (
+            db.session.query(Answers.question_correct, Answers.answer_id)
+            .filter(Answers.question_id == item)
+            .all()
         )
 
-        # TODO: fix result page
-        # TODO: Refactor to class based 
-        for a, b in answers:
-            for k in session["answers"][item]:
-                # question have multiple answers
-                if len(k) > 1:
-                    for v in k:
-                        if int(b) == 1:
-                            count = count + 1
-                        if int(v) == int(a):
-                            if int(b) == 1:
-                                valid = valid + 1
-                                correct = True
-                            print("OK")
-                if correct is True and count == valid:
-                    points = points + 1
-                else:
-                    print(k[0])
-                    if int(k[0]) == a:
-                        if int(b) == 1:
-                            points = points + 1
+        # Extract the correct answer values from the query results
+        correct_answers = [
+            str(answer[1]) for answer in correct_answers if answer[0] == 1
+        ]
 
-                print(a, " i ", b, " i ")
+        valid_answers = [x in correct_answers for x in user_answer]
 
-    procent = round((points / total_questions) * 100)
+        # Check if the user's answer exists in the list of correct answers
+        if all(valid_answers) and valid_answers:
+            # Increment the total points if the answer is correct
+            total_points += 1
+
+    percent = round((total_points / total_questions) * 100, 2)
     return render_template(
-        "result.html", points=points, total_questions=total_questions, procent=procent
+        "result.html",
+        total_points=total_points,
+        total_questions=total_questions,
+        percent=percent,
     )
 
 
