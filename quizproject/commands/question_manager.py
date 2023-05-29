@@ -35,6 +35,18 @@ def create(name):
             Questions(
                 question_difficulty=5,
                 question_multianswer=1,
+                question_text="Question 1",
+                is_active=1,
+            ),
+            Questions(
+                question_difficulty=5,
+                question_multianswer=1,
+                question_text="Question 2",
+                is_active=1,
+            ),
+            Questions(
+                question_difficulty=5,
+                question_multianswer=1,
                 question_text="Question 3",
                 is_active=1,
             ),
@@ -44,13 +56,25 @@ def create(name):
             Questions(
                 question_difficulty=5,
                 question_multianswer=0,
-                question_text="Question 1",
+                question_text="Question 4",
                 is_active=1,
             ),
             Questions(
                 question_difficulty=5,
                 question_multianswer=0,
-                question_text="Question 2",
+                question_text="Question 5",
+                is_active=1,
+            ),
+            Questions(
+                question_difficulty=5,
+                question_multianswer=0,
+                question_text="Question 6",
+                is_active=1,
+            ),
+            Questions(
+                question_difficulty=5,
+                question_multianswer=0,
+                question_text="Question 7",
                 is_active=1,
             ),
         ]
@@ -61,12 +85,17 @@ def create(name):
         # At this point, the object has been pushed to the DB,
         # and has been automatically assigned a unique primary key id
 
+        one = roads.get_item_by_name("Question 1")
+        two = roads.get_item_by_name("Question 2")
         three = roads.get_item_by_name("Question 3")
-        two = railway.get_item_by_name("Question 2")
-        one = railway.get_item_by_name("Question 1")
+
+        four = railway.get_item_by_name("Question 4")
+        five = railway.get_item_by_name("Question 5")
+        six = railway.get_item_by_name("Question 6")
+        seven = railway.get_item_by_name("Question 7")
 
         # Create  test1 collection give name from the console
-        test1 = QCollection(name=name, items=[one, two, three])
+        test1 = QCollection(name=name, items=[one, two, three, four, five, six, seven])
         db.session.add(test1)
         db.session.flush()
 
@@ -109,13 +138,12 @@ def create(name):
 
         db.session.commit()
 
-        click.echo("✅ Questions collections {name} are created".format(
-            name=name))
-        
-    except Exception as e:
+        click.echo("✅ Questions collections {name} are created".format(name=name))
+
+    except Exception as ex:
         db.session.rollback()
         click.echo("Question did not created")
-        click.echo(e)
+        click.echo(ex)
 
 
 @bp.cli.command("count")

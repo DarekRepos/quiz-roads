@@ -1,7 +1,7 @@
 import datetime
 
 
-from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask import Blueprint, render_template, redirect, session, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models.users import User
 from flask_login import login_user, login_required, logout_user, current_user
@@ -19,9 +19,8 @@ def login():
 
     form = LoginForm(request.form)
 
-    remember = True if form.remember_me.data else False
+    remember = bool(form.remember_me.data)
 
-    # TODO: implement session
     if form.validate_on_submit():
         user = User.query.filter_by(user_email=form.email.data).first()
 
@@ -87,4 +86,5 @@ def signup():
 @login_required
 def logout():
     logout_user()
+    session.clear()
     return redirect(url_for('main.index'))

@@ -30,15 +30,15 @@ def create_app(config):
     app = Flask(__name__)
    
     app.config.from_object(config)
-    server_session = Session(app)
   #  swagger = Swagger(app, config=config)
-
+    sess= Session(app)
     app.register_error_handler(400, token_error)
     app.register_error_handler(403, access_forbidden)
     app.register_error_handler(404, page_not_found)
     app.register_error_handler(500, internal_error)
 
     db.init_app(app)
+    
 
     login_manager = LoginManager()
     login_manager.login_view = "auth.login"
@@ -65,6 +65,7 @@ def create_app(config):
     app.register_blueprint(main_quizapp)
     app.register_blueprint(questions_cli)  
     app.register_blueprint(apis)
+    sess.init_app(app)
     with app.app_context():
         db.create_all()
 
