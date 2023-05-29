@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function () {
 </script>
    </head>
    <body>
-      <div id="masthead" class="sev-1"></div>
+      <div id="masthead" class="sev-2"></div>
       <div id="page">
          <p id="srclink">
             <a title="View full annotated source"
@@ -50,27 +50,9 @@ window.addEventListener('DOMContentLoaded', function () {
          <ul id="index">
          
          <li>
-            <a data-code="F401">
-               <span class="count sev-1">
-                  1
-               </span>
-               <strong>F401:</strong> 'quizproject.models.quiz.Quiz' imported but unused
-               
-            </a>
-            <ul class="details">
-            <li>
-               
-               <a href="quizproject.main.source.html#l15">
-                  <tt><i>15</i> <span class="kn">from</span> <span class="nn">quizproject.models.quiz</span> <span class="kn">import</span> <span class="n">Quiz</span></tt>
-               </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
             <a data-code="E501">
                <span class="count sev-2">
-                  6
+                  5
                </span>
                <strong>E501:</strong> line too long (81 > 79 characters)
                
@@ -89,36 +71,29 @@ window.addEventListener('DOMContentLoaded', function () {
                
                <p>Line too long (82 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l37">
-                  <tt><i>37</i>     <span class="n">question_number</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Questions</span><span class="o">.</span><span class="n">question_id</span><span class="p">))</span><span class="o">.</span><span class="n">scalar</span><span class="p">()</span></tt>
+               <a href="quizproject.main.source.html#l36">
+                  <tt><i>36</i>     <span class="n">question_number</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Questions</span><span class="o">.</span><span class="n">question_id</span><span class="p">))</span><span class="o">.</span><span class="n">scalar</span><span class="p">()</span></tt>
                </a>
             </li><li>
                
                <p>Line too long (84 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l68">
-                  <tt><i>68</i>     <span class="n">available_groups</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Answers</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Answers</span><span class="o">.</span><span class="n">question_id</span> <span class="o">==</span> <span class="n">page</span><span class="p">)</span></tt>
+               <a href="quizproject.main.source.html#l63">
+                  <tt><i>63</i>     <span class="n">available_groups</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Answers</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Answers</span><span class="o">.</span><span class="n">question_id</span> <span class="o">==</span> <span class="n">page</span><span class="p">)</span></tt>
                </a>
             </li><li>
                
                <p>Line too long (86 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l112">
-                  <tt><i>112</i>         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;main.quiz_viewer&quot;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">,</span> <span class="n">selections</span><span class="o">=</span><span class="n">selections</span><span class="p">))</span></tt>
+               <a href="quizproject.main.source.html#l107">
+                  <tt><i>107</i>         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;main.quiz_viewer&quot;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">,</span> <span class="n">selections</span><span class="o">=</span><span class="n">selections</span><span class="p">))</span></tt>
                </a>
             </li><li>
                
                <p>Line too long (86 > 79 characters):</p>
                
-               <a href="quizproject.main.source.html#l115">
-                  <tt><i>115</i>         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;main.quiz_viewer&quot;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">,</span> <span class="n">selections</span><span class="o">=</span><span class="n">selections</span><span class="p">))</span></tt>
-               </a>
-            </li><li>
-               
-               <p>Line too long (86 > 79 characters):</p>
-               
-               <a href="quizproject.main.source.html#l136">
-                  <tt><i>136</i>         <span class="c1"># Session[&quot;answers&quot;][item] contains the user&#39;s answer for the current question</span></tt>
+               <a href="quizproject.main.source.html#l110">
+                  <tt><i>110</i>         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s2">&quot;main.quiz_viewer&quot;</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">,</span> <span class="n">selections</span><span class="o">=</span><span class="n">selections</span><span class="p">))</span></tt>
                </a>
             </li>
             </ul>
