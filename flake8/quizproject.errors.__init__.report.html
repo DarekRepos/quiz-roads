@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>flake8 violations: quizproject/__init__.py</title>
+      <title>flake8 violations: quizproject/errors/__init__.py</title>
       <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
       <link rel="stylesheet" href="styles.css">
 <script>
@@ -37,13 +37,13 @@ window.addEventListener('DOMContentLoaded', function () {
       <div id="page">
          <p id="srclink">
             <a title="View full annotated source"
-               href="quizproject.__init__.source.html">
+               href="quizproject.errors.__init__.source.html">
                <img src="file.svg" alt="&#x2261;">
             </a></p>
          <h1>
             <a href="index.html">
                <img src="back.svg" alt="&#x2B05;">
-               quizproject/__init__.py
+               quizproject/errors/__init__.py
             </a>
          </h1>
 
@@ -54,14 +54,32 @@ window.addEventListener('DOMContentLoaded', function () {
                <span class="count sev-1">
                   1
                </span>
-               <strong>F401:</strong> 'flask.render_template' imported but unused
+               <strong>F401:</strong> 'quizproject.errors.handlers' imported but unused
                
             </a>
             <ul class="details">
             <li>
                
-               <a href="quizproject.__init__.source.html#l1">
-                  <tt><i>1</i> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span></tt>
+               <a href="quizproject.errors.__init__.source.html#l5">
+                  <tt><i>5</i> <span class="kn">from</span> <span class="nn">quizproject.errors</span> <span class="kn">import</span> <span class="n">handlers</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E402">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E402:</strong> module level import not at top of file
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="quizproject.errors.__init__.source.html#l5">
+                  <tt><i>5</i> <span class="kn">from</span> <span class="nn">quizproject.errors</span> <span class="kn">import</span> <span class="n">handlers</span></tt>
                </a>
             </li>
             </ul>
