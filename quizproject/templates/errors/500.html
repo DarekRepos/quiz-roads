@@ -8,10 +8,10 @@
     <div class="cloud x4"></div>
     <div class="cloud x5"></div>
   </div>
-  <div class='error-box'>
-    <div class='error-code'>403</div>
-    <div class='tittle-message'>OOPS</div>
-    <div class='tittle-code'>FORBIDDEN</div>
-    <a class='button back-btn' href="{{ url_for("main.index") }}">BACK TO INDEX</a>
+  <div class="error-box">
+    <div class="error-code">500</div>
+    <div class="tittle-message">OOPS</div>
+    <div class="tittle-code">BAD REQUEST</div>
+    <a class="button back-btn" href="{{ url_for("main.index") }}">BACK TO INDEX</a>
   </div>
-{% endblock %}
+{% endblock content %}
