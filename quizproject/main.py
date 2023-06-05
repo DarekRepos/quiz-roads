@@ -1,4 +1,12 @@
-from flask import Blueprint, redirect, render_template, request, session, url_for
+from flask import (
+    Blueprint,
+    current_app,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
+)
 
 from flask_login import login_required, current_user
 from sqlalchemy import func
@@ -43,7 +51,6 @@ def quiz():
 @main.route("/quiz/viewer", methods=["GET", "POST"])
 @login_required
 def quiz_viewer():
-
     session["checked"] = "checked"
 
     page = request.args.get("page", 1, type=int)
@@ -96,6 +103,7 @@ def quiz_viewer():
     if form2.validate_on_submit() and (request.method == "POST"):
         op1 = request.form.getlist("user_answers")
         user_answers = dict(groups_list)
+        current_app.logger.info("User answers", user_answers)
 
         for key in user_answers:
             for answer_item in op1:
@@ -123,7 +131,6 @@ def quiz_viewer():
 @main.route("/results", methods=["POST"])
 @login_required
 def results():
-
     scorer = AnswerScorer(session, db)
     percent = scorer.score_answers()
 
