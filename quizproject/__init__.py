@@ -39,13 +39,12 @@ def create_app():
     register_blueprints(app)
 
     sess.init_app(app)
-    
 
     with app.app_context():
         db.create_all()
-    
+
     configure_logging(app)
-    
+
     return app
 
 
