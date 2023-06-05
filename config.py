@@ -2,51 +2,73 @@
 
 import redis
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-    basedir = os.path.abspath(os.path.dirname(__file__))
+    """
+    Base configuration class. Contains default configuration settings + configuration settings applicable to all environments.
+    """
 
-    SECRET_KEY = os.getenv('SECRET_KEY')
+    # Default settings
+    FLASK_ENV = "development"
+    DEBUG = False
+    TESTING = False
+    WTF_CSRF_ENABLED = True
+    WTF_CSRF_CHECK_DEFAULT = True
 
-    CSRF_SECRET_KEY = os.getenv('CSRF_SECRET_KEY')
+    # Settings applicable to all environments
 
-    # This will create a file in <app> FOLDER
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///questions.db'
+    SECRET_KEY = os.getenv("SECRET_KEY", default="A very terrible secret key")
+    CSRF_SECRET_KEY = os.getenv("CSRF_SECRET_KEY", default="A very terrible secret key")
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    # redis conf
-    SESSION_TYPE = 'redis'
+    MAIL_SERVER = "smtp.googlemail.com"
+    MAIL_PORT = 465
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True
+    MAIL_USERNAME = os.getenv("MAIL_USERNAME", default="")
+    MAIL_PASSWORD = os.getenv("MAIL_PASSWORD", default="")
+    MAIL_DEFAULT_SENDER = os.getenv("MAIL_USERNAME", default="")
+    MAIL_SUPPRESS_SEND = False
+
+    #   Redis conf
+    SESSION_TYPE = "redis"
     SESSION_PERMANENT = False
     SESSION_USE_SIGNER = True
-    SESSION_REDIS = redis.from_url('redis://localhost:6379')
-
+    SESSION_REDIS = redis.from_url(os.getenv("SESSION_REDIS"))
 
     # Assets Management
     # ASSETS_ROOT = os.getenv('ASSETS_ROOT', '/static/otherfolder')
 
 
-class ProductionConfig(Config):
-    DEBUG = False
-
-    # Security
-    SESSION_COOKIE_HTTPONLY = True
-    REMEMBER_COOKIE_HTTPONLY = True
-    REMEMBER_COOKIE_DURATION = 3600
-
-
-class DebugConfig(Config):
+class DevelopmentConfig(Config):
     DEBUG = True
+    PASSTHROUGH_ERRORS = True
+    USE_DEBUGGER = True
+    USE_RELOADER = False
+    SQLALCHEMY_DATABASE_URI = "sqlite:///dev.db"
 
 
 class TestingConfig(Config):
     TESTING = True
     WTF_CSRF_ENABLED = False
+    WTF_CSRF_CHECK_DEFAULT = False
+    MAIL_SUPPRESS_SEND = True
+    SQLALCHEMY_DATABASE_URI = "sqlite:///testdatabase.db"
 
 
-# Load all possible configurations
-config_dict = {
-    'Production': ProductionConfig,
-    'Debug': DebugConfig,
-    'Test': TestingConfig
-}
+class ProductionConfig(Config):
+    FLASK_ENV = "production"
+    #   This will create a file in <app> FOLDER
+    SQLALCHEMY_DATABASE_URI = os.getenv(
+        "PROD_DATABASE_URI", default="sqlite:///" + os.path.join(basedir, "prod.db")
+    )
+    # Security
+    SESSION_COOKIE_HTTPONLY = True
+    REMEMBER_COOKIE_HTTPONLY = True
+    REMEMBER_COOKIE_DURATION = 3600
