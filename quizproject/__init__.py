@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+import os
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
@@ -7,14 +8,14 @@ from flask_wtf.csrf import CSRFProtect
 # from flasgger import Swagger
 from flask_session import Session
 
-
 db = SQLAlchemy()
 
 
-def create_app(config):
+def create_app():
     app = Flask(__name__)
 
-    app.config.from_object(config)
+    CONFIG_TYPE = os.getenv('CONFIG_TYPE', default='config.DevelopmentConfig')
+    app.config.from_object(CONFIG_TYPE)
     #  swagger = Swagger(app, config=config)
     sess = Session(app)
 
@@ -35,17 +36,7 @@ def create_app(config):
     csrf = CSRFProtect()
     csrf.init_app(app)
 
-    from .auth import auth as auth_settings
-    from .main import main as main_quizapp
-    from .api import question_api as apis
-    from .errors import bp as errors_bp
-    from .commands.question_manager import bp as questions_cli
-
-    app.register_blueprint(errors_bp)
-    app.register_blueprint(auth_settings)
-    app.register_blueprint(main_quizapp)
-    app.register_blueprint(questions_cli)
-    app.register_blueprint(apis)
+    register_blueprints(app)
 
     sess.init_app(app)
 
@@ -53,3 +44,20 @@ def create_app(config):
         db.create_all()
 
     return app
+
+
+## Helper function
+
+
+def register_blueprints(app):
+    from .auth import auth as auth_settings
+    from .main import main as main_quizapp
+    from .api import question_api as apis
+    from .errors import bp as errors_handlers
+    from .commands.question_manager import bp as questions_cli
+
+    app.register_blueprint(errors_handlers)
+    app.register_blueprint(auth_settings)
+    app.register_blueprint(main_quizapp)
+    app.register_blueprint(questions_cli)
+    app.register_blueprint(apis)
