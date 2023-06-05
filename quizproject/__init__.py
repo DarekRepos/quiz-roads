@@ -14,7 +14,7 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
 
-    CONFIG_TYPE = os.getenv('CONFIG_TYPE', default='config.DevelopmentConfig')
+    CONFIG_TYPE = os.getenv("CONFIG_TYPE", default="config.DevelopmentConfig")
     app.config.from_object(CONFIG_TYPE)
     #  swagger = Swagger(app, config=config)
     sess = Session(app)
@@ -39,10 +39,13 @@ def create_app():
     register_blueprints(app)
 
     sess.init_app(app)
+    
 
     with app.app_context():
         db.create_all()
-
+    
+    configure_logging(app)
+    
     return app
 
 
@@ -61,3 +64,29 @@ def register_blueprints(app):
     app.register_blueprint(main_quizapp)
     app.register_blueprint(questions_cli)
     app.register_blueprint(apis)
+
+
+def configure_logging(app):
+    import logging
+    from flask.logging import default_handler
+    from logging.handlers import RotatingFileHandler
+
+    # Deactivate the default flask logger so that log messages don't get duplicated
+    app.logger.removeHandler(default_handler)
+
+    # Create a file handler object
+    file_handler = RotatingFileHandler("flaskapp.log", maxBytes=16384, backupCount=20)
+
+    # Set the logging level of the file handler object so that it logs INFO and up
+    file_handler.setLevel(logging.INFO)
+
+    # Create a file formatter object
+    file_formatter = logging.Formatter(
+        "%(asctime)s %(levelname)s: %(message)s [in %(filename)s: %(lineno)d]"
+    )
+
+    # Apply the file formatter object to the file handler object
+    file_handler.setFormatter(file_formatter)
+
+    # Add file handler object to the logger
+    app.logger.addHandler(file_handler)
