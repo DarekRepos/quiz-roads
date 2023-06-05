@@ -1,4 +1,6 @@
 import datetime
+import os
+import flask
 
 import pytest
 from sqlalchemy import delete
@@ -7,9 +9,9 @@ from sqlalchemy import delete
 # import the module
 from quizproject import create_app
 from quizproject import db as _db
-from quizproject.models.users import User as NewUser
-from config import TestingConfig
+from quizproject.models.users import User
 from werkzeug.security import generate_password_hash
+from flask_wtf.csrf import CSRFProtect
 
 
 @pytest.fixture(scope="session")
@@ -17,13 +19,11 @@ def app():
     """
     Returns session-wide application.
     """
+    app = create_app()
 
-    app = create_app(TestingConfig)
-
-    app.config.update({
-        "TESTING": True,
-        "SECRET_KEY": 'test',
-    })
+    app.config.from_object('config.TestingConfig')
+    
+    # app.config.setdefault('WTF_CSRF_METHODS', ['POST', 'PUT', 'PATCH'])
 
     ctx = app.test_request_context()
     ctx.push()
@@ -44,19 +44,19 @@ async def app_with_db(app):
 @pytest.fixture()
 def app_with_user(app_with_db):
     register_time = datetime.datetime.utcnow()
-    new_user = NewUser(register_time=register_time,
-                       user_email="dareczek014@gmail.com",
-                       user_password=generate_password_hash(
-                                  'dareczek014',
-                                  method='sha256'),
-                       user_name='dareczek014')
+    new_user = User(
+        user_email="dareczek014@gmail.com",
+        user_name="dareczek014",
+        user_password=generate_password_hash("dareczek014", method="sha256"),
+        register_time=register_time,
+    )
 
     # add the new user to the database
     _db.session.add(new_user)
     _db.session.commit()
 
     yield app_with_db
-    _db.session.execute(delete(NewUser))
+    _db.session.execute(delete(User))
     _db.session.commit()
     _db.session.remove()
 
@@ -72,19 +72,16 @@ def runner(app):
 
 
 class AuthActions(object):
-
     def __init__(self, client):
         self._client = client
 
     def login(self, email, password):
         return self._client.post(
-            '/login',
-            data={'email': email, 'password': password},
-            follow_redirects=True
+            "/login", data={"email": email, "password": password}, follow_redirects=True
         )
 
     def logout(self):
-        return self._client.get('/logout',  follow_redirects=True)
+        return self._client.get("/logout", follow_redirects=True)
 
 
 @pytest.fixture
