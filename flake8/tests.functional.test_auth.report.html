@@ -52,70 +52,41 @@ window.addEventListener('DOMContentLoaded', function () {
          <li>
             <a data-code="F401">
                <span class="count sev-1">
-                  3
+                  4
                </span>
-               <strong>F401:</strong> 'flask.session' imported but unused
+               <strong>F401:</strong> 'flask' imported but unused
                
-                  (and 2 similar)
+                  (and 3 similar)
                
             </a>
             <ul class="details">
             <li>
                
+               <p>'flask' imported but unused:</p>
+               
+               <a href="tests.functional.test_auth.source.html#l1">
+                  <tt><i>1</i> <span class="kn">import</span> <span class="nn">flask</span></tt>
+               </a>
+            </li><li>
+               
                <p>'flask.session' imported but unused:</p>
                
-               <a href="tests.functional.test_auth.source.html#l2">
-                  <tt><i>2</i> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">session</span></tt>
+               <a href="tests.functional.test_auth.source.html#l4">
+                  <tt><i>4</i> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">session</span></tt>
                </a>
             </li><li>
                
                <p>'sqlalchemy.select' imported but unused:</p>
                
-               <a href="tests.functional.test_auth.source.html#l3">
-                  <tt><i>3</i> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">select</span></tt>
+               <a href="tests.functional.test_auth.source.html#l5">
+                  <tt><i>5</i> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">select</span></tt>
                </a>
             </li><li>
                
                <p>'quizproject.models.users.User' imported but unused:</p>
                
-               <a href="tests.functional.test_auth.source.html#l5">
-                  <tt><i>5</i> <span class="kn">from</span> <span class="nn">quizproject.models.users</span> <span class="kn">import</span> <span class="n">User</span></tt>
-               </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
-            <a data-code="E128">
-               <span class="count sev-2">
-                  1
-               </span>
-               <strong>E128:</strong> continuation line under-indented for visual indent
-               
-            </a>
-            <ul class="details">
-            <li>
-               
-               <a href="tests.functional.test_auth.source.html#l88">
-                  <tt><i>88</i>  <span class="p">[</span></tt>
-               </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
-            <a data-code="E201">
-               <span class="count sev-2">
-                  1
-               </span>
-               <strong>E201:</strong> whitespace after '('
-               
-            </a>
-            <ul class="details">
-            <li>
-               
-               <a href="tests.functional.test_auth.source.html#l57">
-                  <tt><i>57</i> <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span> <span class="p">(</span><span class="s1">&#39;username, email, password, confirm, message&#39;</span><span class="p">),</span> <span class="p">[</span></tt>
+               <a href="tests.functional.test_auth.source.html#l7">
+                  <tt><i>7</i> <span class="kn">from</span> <span class="nn">quizproject.models.users</span> <span class="kn">import</span> <span class="n">User</span></tt>
                </a>
             </li>
             </ul>
@@ -124,52 +95,41 @@ window.addEventListener('DOMContentLoaded', function () {
          <li>
             <a data-code="E501">
                <span class="count sev-2">
-                  1
+                  4
                </span>
                <strong>E501:</strong> line too long (81 > 79 characters)
                
+                  (and 3 similar)
+               
             </a>
             <ul class="details">
             <li>
                
-               <a href="tests.functional.test_auth.source.html#l13">
-                  <tt><i>13</i> <span class="sd">    THEN check that the user can enter login page (page loaded - 200 status code)</span></tt>
+               <p>Line too long (81 > 79 characters):</p>
+               
+               <a href="tests.functional.test_auth.source.html#l15">
+                  <tt><i>15</i> <span class="sd">    THEN check that the user can enter login page (page loaded - 200 status code)</span></tt>
                </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
-            <a data-code="W291">
-               <span class="count sev-2">
-                  1
-               </span>
-               <strong>W291:</strong> trailing whitespace
+            </li><li>
                
-            </a>
-            <ul class="details">
-            <li>
+               <p>Line too long (80 > 79 characters):</p>
                
-               <a href="tests.functional.test_auth.source.html#l10">
-                  <tt><i>10</i> <span class="sd">    GIVEN a Flask application configured for testing </span></tt>
+               <a href="tests.functional.test_auth.source.html#l22">
+                  <tt><i>22</i>     <span class="n">response</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;dareczek014@gmail.com&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;dareczek014&quot;</span><span class="p">)</span></tt>
                </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
-            <a data-code="W293">
-               <span class="count sev-2">
-                  1
-               </span>
-               <strong>W293:</strong> blank line contains whitespace
+            </li><li>
                
-            </a>
-            <ul class="details">
-            <li>
+               <p>Line too long (83 > 79 characters):</p>
                
-               <a href="tests.functional.test_auth.source.html#l73">
-                  <tt><i>73</i> <span class="sd">         </span></tt>
+               <a href="tests.functional.test_auth.source.html#l86">
+                  <tt><i>86</i>     <span class="n">client</span><span class="p">,</span> <span class="n">app_with_db</span><span class="p">,</span> <span class="n">app_with_user</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">confirm</span><span class="p">,</span> <span class="n">message</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (87 > 79 characters):</p>
+               
+               <a href="tests.functional.test_auth.source.html#l136">
+                  <tt><i>136</i>     <span class="n">client</span><span class="p">,</span> <span class="n">app_with_db</span><span class="p">,</span> <span class="n">app_with_user</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">confirm</span><span class="p">,</span> <span class="n">redirection</span></tt>
                </a>
             </li>
             </ul>

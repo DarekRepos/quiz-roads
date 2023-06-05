@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function () {
 </script>
    </head>
    <body>
-      <div id="masthead" class="sev-1"></div>
+      <div id="masthead" class="sev-2"></div>
       <div id="page">
          <p id="srclink">
             <a title="View full annotated source"
@@ -50,18 +50,54 @@ window.addEventListener('DOMContentLoaded', function () {
          <ul id="index">
          
          <li>
-            <a data-code="F401">
-               <span class="count sev-1">
-                  1
+            <a data-code="E501">
+               <span class="count sev-2">
+                  3
                </span>
-               <strong>F401:</strong> 'flask.render_template' imported but unused
+               <strong>E501:</strong> line too long (83 > 79 characters)
+               
+                  (and 2 similar)
                
             </a>
             <ul class="details">
             <li>
                
-               <a href="quizproject.__init__.source.html#l1">
-                  <tt><i>1</i> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span></tt>
+               <p>Line too long (83 > 79 characters):</p>
+               
+               <a href="quizproject.__init__.source.html#l73">
+                  <tt><i>73</i>     <span class="c1"># Deactivate the default flask logger so that log messages don&#39;t get duplicated</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (86 > 79 characters):</p>
+               
+               <a href="quizproject.__init__.source.html#l77">
+                  <tt><i>77</i>     <span class="n">file_handler</span> <span class="o">=</span> <span class="n">RotatingFileHandler</span><span class="p">(</span><span class="s2">&quot;flaskapp.log&quot;</span><span class="p">,</span> <span class="n">maxBytes</span><span class="o">=</span><span class="mi">16384</span><span class="p">,</span> <span class="n">backupCount</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span></tt>
+               </a>
+            </li><li>
+               
+               <p>Line too long (82 > 79 characters):</p>
+               
+               <a href="quizproject.__init__.source.html#l79">
+                  <tt><i>79</i>     <span class="c1"># Set the logging level of the file handler object so that it logs INFO and up</span></tt>
+               </a>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E266">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E266:</strong> too many leading '#' for block comment
+               
+            </a>
+            <ul class="details">
+            <li>
+               
+               <a href="quizproject.__init__.source.html#l51">
+                  <tt><i>51</i> <span class="c1">## Helper function</span></tt>
                </a>
             </li>
             </ul>
