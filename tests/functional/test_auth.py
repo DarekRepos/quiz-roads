@@ -1,13 +1,15 @@
+import flask
 import pytest
+
 from flask import session
 from sqlalchemy import select
 
 from quizproject.models.users import User
 
 
-def test_login(client, auth, app_with_db, app_with_user):
+def test_login(client, auth, app_with_user):
     """
-    GIVEN a Flask application configured for testing 
+    GIVEN a Flask application configured for testing
           (test user are created with app_with_user)
     WHEN the '/login' page is requested (POST) with VALID data
     THEN check that the user can enter login page (page loaded - 200 status code)
@@ -15,15 +17,15 @@ def test_login(client, auth, app_with_db, app_with_user):
          check that user is successfully redirected to profile pageB
     """
 
-    assert client.get('/login').status_code == 200
+    assert client.get("/login").status_code == 200
 
-    response = auth.login("dareczek014@gmail.com", "dareczek014")
+    response = auth.login(email="dareczek014@gmail.com", password="dareczek014")
 
     assert response.status_code == 200
-    assert response.request.path == '/profile'
+    assert response.request.path == "/profile"
 
 
-def test_logout(client, auth):
+def test_logout(client, auth, app_with_user):
     """
     GIVEN a Flask application configured for testing
     WHEN the user is log in with VALID data
@@ -33,7 +35,7 @@ def test_logout(client, auth):
     """
     with client:
         # get index page
-        client.get('/')
+        client.get("/")
 
         # login to existing account
         auth.login("dareczek014@gmail.com", "dareczek014")
@@ -54,48 +56,85 @@ def test_logout(client, auth):
         # assert 'user_id' not in session
 
 
-@pytest.mark.parametrize( ('username, email, password, confirm, message'), [
-    ('dareczek046', 'dareczek046@gmail.com',
-     'dareczek046', 'dareczek046', b'login'),
-    ('dareczek014', 'newdareczek014@gmail.com',
-     'dareczek14', 'dareczek014', b'already registered'),
-    ('newdareczek014', 'dareczek014@gmail.com',
-     'dareczek14', 'dareczek014', b'already registered')
-],
-
+@pytest.mark.parametrize(
+    ("username, email, password, confirm, message"),
+    [
+        (
+            "dareczek046",
+            "dareczek046@gmail.com",
+            "dareczek046",
+            "dareczek046",
+            b"login",
+        ),
+        (
+            "dareczek014",
+            "newdareczek014@gmail.com",
+            "dareczek14",
+            "dareczek014",
+            b"already registered",
+        ),
+        (
+            "newdareczek014",
+            "dareczek014@gmail.com",
+            "dareczek14",
+            "dareczek014",
+            b"already registered",
+        ),
+    ],
 )
-def test_register_validation(client, app_with_db, app_with_user,
-                             username, email, password, confirm, message):
+def test_register_validation(
+    client, app_with_db, app_with_user, username, email, password, confirm, message
+):
     """
     GIVEN a Flask application configured for testing and existing user in db
     WHEN login with valid data
     THEN check that existing user is successfully created (status code 200)
-         
+
     """
 
-    assert client.get('/signup').status_code == 200
+    assert client.get("/signup").status_code == 200
     response = client.post(
-        '/signup', data={'username': username,
-                         'email': email,
-                         'password': password,
-                         'confirm': confirm},
-        follow_redirects=True
+        "/signup",
+        data={
+            "username": username,
+            "email": email,
+            "password": password,
+            "confirm": confirm,
+        },
+        follow_redirects=True,
     )
     assert response.status_code == 200
 
 
-@pytest.mark.parametrize(('username, email, password, confirm, redirection'),
- [
-    ('dareczek046', 'dareczek046@gmail.com',
-     'dareczek046', 'dareczek046', '/login'),
-    ('dareczek014', 'newdareczek014@gmail.com',
-     'dareczek14', 'dareczek014', '/signup'),
-    ('newdareczek014', 'dareczek014@gmail.com',
-     'dareczek14', 'dareczek014', '/signup')
-],
+@pytest.mark.parametrize(
+    ("username, email, password, confirm, redirection"),
+    [
+        (
+            "dareczek046",
+            "dareczek046@gmail.com",
+            "dareczek046",
+            "dareczek046",
+            "/login",
+        ),
+        (
+            "dareczek014",
+            "newdareczek014@gmail.com",
+            "dareczek14",
+            "dareczek014",
+            "/signup",
+        ),
+        (
+            "newdareczek014",
+            "dareczek014@gmail.com",
+            "dareczek14",
+            "dareczek014",
+            "/signup",
+        ),
+    ],
 )
-def test_register(client, app_with_db, app_with_user,
-                  username, email, password, confirm, redirection):
+def test_register(
+    client, app_with_db, app_with_user, username, email, password, confirm, redirection
+):
     """
     GIVEN a Flask application configured for testing and existing user in db
     WHEN user register with valid data
@@ -106,13 +145,16 @@ def test_register(client, app_with_db, app_with_user,
          check that user was redirect to page that he can change USERNAME
     """
 
-    assert client.get('/signup').status_code == 200
+    assert client.get("/signup").status_code == 200
     response = client.post(
-        '/signup', data={'username': username,
-                         'email': email,
-                         'password': password,
-                         'confirm': confirm},
-        follow_redirects=True
+        "/signup",
+        data={
+            "username": username,
+            "email": email,
+            "password": password,
+            "confirm": confirm,
+        },
+        follow_redirects=True,
     )
     assert response.status_code == 200
     assert response.request.path == redirection

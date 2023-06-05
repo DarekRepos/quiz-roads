@@ -3,7 +3,8 @@ from quizproject.models.answers import Answers
 
 class AnswerScorer:
     """
-    Encapsulate the functionality and data related to scoring the user's answers
+    Encapsulate the functionality and data related
+    to scoring the user's answers
 
     ...
 
@@ -36,10 +37,10 @@ class AnswerScorer:
 
     def score_answers(self) -> float:
         """
-        Return percentage score from user answers 
+        Return percentage score from user answers
 
         Returns:
-            float: Value is in percent [%] unit ex. 43.89  
+            float: Value is in percent [%] unit ex. 43.89
         """
         for item in range(1, self.total_questions + 1):
             user_answer = self.session["answers"][item]
@@ -54,10 +55,11 @@ class AnswerScorer:
 
     def _get_correct_answers(self, question_id) -> list[str]:
         """
-        Private method that get all correct amswers for the selected id from database
+        Private method that get all correct answers
+        for the selected id from database
 
         Args:
-            question_id ( int ): it is from Questions. question_id 
+            question_id ( int ): it is from Questions. question_id
                 it is id number for a question
         Returns:
             list[str]: it is a list with all correct answers

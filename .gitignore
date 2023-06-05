@@ -8,10 +8,14 @@ __pycache__
 
 # database files
 questions.db
+testdatabase.db
+dev.db
 
 # coverage files
 .coverage
 
-# ignore vs code settings
+# ingore log files
+*.log
 
+# ignore vs code settings
 .vscode

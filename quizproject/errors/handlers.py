@@ -6,11 +6,11 @@ SOURCE = "/errors/"
 
 
 @bp.app_errorhandler(400)
-def token_error(e):
+def bad_request(e):
     return render_template(f"{SOURCE}400.html"), 400
 
 
-@bp.app_errorhandler(503)
+@bp.app_errorhandler(403)
 def access_forbidden(e):
     return render_template(f"{SOURCE}403.html"), 403
 
@@ -18,6 +18,11 @@ def access_forbidden(e):
 @bp.app_errorhandler(404)
 def page_not_found(e):
     return render_template(f"{SOURCE}404.html"), 404
+
+
+@bp.app_errorhandler(405)
+def method_not_allowed(e):
+    return render_template(f"{SOURCE}404.html"), 405
 
 
 @bp.app_errorhandler(500)
