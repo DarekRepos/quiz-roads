@@ -2,13 +2,23 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-
+from flask_mail import Mail
 from flask_wtf.csrf import CSRFProtect
 
 # from flasgger import Swagger
 from flask_session import Session
+from celery import Celery
+from config import Config
 
 db = SQLAlchemy()
+
+### Flask extension objects instantiation ###
+mail = Mail()
+
+### Instantiate Celery ###
+celery = Celery(
+    __name__, broker=Config.CELERY_BROKER_URL, result_backend=Config.RESULT_BACKEND
+)
 
 
 def create_app():
@@ -16,6 +26,9 @@ def create_app():
 
     CONFIG_TYPE = os.getenv("CONFIG_TYPE", default="config.DevelopmentConfig")
     app.config.from_object(CONFIG_TYPE)
+    # Configure celery
+    celery.conf.update(app.config)
+
     #  swagger = Swagger(app, config=config)
     sess = Session(app)
 
