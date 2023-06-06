@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>flake8 violations: quizproject/auth.py</title>
+      <title>flake8 violations: quizproject/services/answer_scorer.py</title>
       <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
       <link rel="stylesheet" href="styles.css">
 <script>
@@ -37,13 +37,13 @@ window.addEventListener('DOMContentLoaded', function () {
       <div id="page">
          <p id="srclink">
             <a title="View full annotated source"
-               href="quizproject.auth.source.html">
+               href="quizproject.services.answer_scorer.source.html">
                <img src="file.svg" alt="&#x2261;">
             </a></p>
          <h1>
             <a href="index.html">
                <img src="back.svg" alt="&#x2B05;">
-               quizproject/auth.py
+               quizproject/services/answer_scorer.py
             </a>
          </h1>
 
@@ -52,27 +52,34 @@ window.addEventListener('DOMContentLoaded', function () {
          <li>
             <a data-code="E501">
                <span class="count sev-2">
-                  2
+                  1
                </span>
-               <strong>E501:</strong> line too long (87 > 79 characters)
-               
-                  (and 1 similar)
+               <strong>E501:</strong> line too long (91 > 79 characters)
                
             </a>
             <ul class="details">
             <li>
                
-               <p>Line too long (87 > 79 characters):</p>
-               
-               <a href="quizproject.auth.source.html#l40">
-                  <tt><i>40</i>         <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">check_password_hash</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">user_password</span><span class="p">,</span> <span class="n">form</span><span class="o">.</span><span class="n">password</span><span class="o">.</span><span class="n">data</span><span class="p">):</span></tt>
+               <a href="quizproject.services.answer_scorer.source.html#l50">
+                  <tt><i>50</i>                     <span class="sa">f</span><span class="s2">&quot;I got a KeyError - reason:  empty answer for questions </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;</span></tt>
                </a>
-            </li><li>
+            </li>
+            </ul>
+         </li>
+         
+         <li>
+            <a data-code="E722">
+               <span class="count sev-2">
+                  1
+               </span>
+               <strong>E722:</strong> do not use bare 'except'
                
-               <p>Line too long (86 > 79 characters):</p>
+            </a>
+            <ul class="details">
+            <li>
                
-               <a href="quizproject.auth.source.html#l90">
-                  <tt><i>90</i>             <span class="n">user_password</span><span class="o">=</span><span class="n">generate_password_hash</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">password</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;sha256&quot;</span><span class="p">),</span></tt>
+               <a href="quizproject.services.answer_scorer.source.html#l53">
+                  <tt><i>53</i>             <span class="k">except</span><span class="p">:</span></tt>
                </a>
             </li>
             </ul>

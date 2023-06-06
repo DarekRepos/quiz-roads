@@ -29,7 +29,7 @@
                class="code sev- "><tt><i>4</i> <span class="kn">from</span> <span class="nn">flask_login</span> <span class="kn">import</span> <span class="n">LoginManager</span></tt>
             </div>
             <div id="l5"
-               class="code sev- "><tt><i>5</i> &nbsp;</tt>
+               class="code sev- "><tt><i>5</i> <span class="kn">from</span> <span class="nn">flask_mail</span> <span class="kn">import</span> <span class="n">Mail</span></tt>
             </div>
             <div id="l6"
                class="code sev- "><tt><i>6</i> <span class="kn">from</span> <span class="nn">flask_wtf.csrf</span> <span class="kn">import</span> <span class="n">CSRFProtect</span></tt>
@@ -44,129 +44,21 @@
                class="code sev- "><tt><i>9</i> <span class="kn">from</span> <span class="nn">flask_session</span> <span class="kn">import</span> <span class="n">Session</span></tt>
             </div>
             <div id="l10"
-               class="code sev- "><tt><i>10</i> &nbsp;</tt>
+               class="code sev- "><tt><i>10</i> <span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Celery</span></tt>
             </div>
             <div id="l11"
-               class="code sev- "><tt><i>11</i> <span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>11</i> <span class="kn">from</span> <span class="nn">config</span> <span class="kn">import</span> <span class="n">Config</span></tt>
             </div>
             <div id="l12"
                class="code sev- "><tt><i>12</i> &nbsp;</tt>
             </div>
             <div id="l13"
-               class="code sev- "><tt><i>13</i> &nbsp;</tt>
+               class="code sev- "><tt><i>13</i> <span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">()</span></tt>
             </div>
             <div id="l14"
-               class="code sev- "><tt><i>14</i> <span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span></tt>
+               class="code sev- "><tt><i>14</i> &nbsp;</tt>
             </div>
             <div id="l15"
-               class="code sev- "><tt><i>15</i>     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span></tt>
-            </div>
-            <div id="l16"
-               class="code sev- "><tt><i>16</i> &nbsp;</tt>
-            </div>
-            <div id="l17"
-               class="code sev- "><tt><i>17</i>     <span class="n">CONFIG_TYPE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CONFIG_TYPE&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;config.DevelopmentConfig&quot;</span><span class="p">)</span></tt>
-            </div>
-            <div id="l18"
-               class="code sev- "><tt><i>18</i>     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="n">CONFIG_TYPE</span><span class="p">)</span></tt>
-            </div>
-            <div id="l19"
-               class="code sev- "><tt><i>19</i>     <span class="c1">#  swagger = Swagger(app, config=config)</span></tt>
-            </div>
-            <div id="l20"
-               class="code sev- "><tt><i>20</i>     <span class="n">sess</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
-            </div>
-            <div id="l21"
-               class="code sev- "><tt><i>21</i> &nbsp;</tt>
-            </div>
-            <div id="l22"
-               class="code sev- "><tt><i>22</i>     <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
-            </div>
-            <div id="l23"
-               class="code sev- "><tt><i>23</i> &nbsp;</tt>
-            </div>
-            <div id="l24"
-               class="code sev- "><tt><i>24</i>     <span class="n">login_manager</span> <span class="o">=</span> <span class="n">LoginManager</span><span class="p">()</span></tt>
-            </div>
-            <div id="l25"
-               class="code sev- "><tt><i>25</i>     <span class="n">login_manager</span><span class="o">.</span><span class="n">login_view</span> <span class="o">=</span> <span class="s2">&quot;auth.login&quot;</span></tt>
-            </div>
-            <div id="l26"
-               class="code sev- "><tt><i>26</i>     <span class="n">login_manager</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
-            </div>
-            <div id="l27"
-               class="code sev- "><tt><i>27</i> &nbsp;</tt>
-            </div>
-            <div id="l28"
-               class="code sev- "><tt><i>28</i>     <span class="kn">from</span> <span class="nn">.models.users</span> <span class="kn">import</span> <span class="n">User</span></tt>
-            </div>
-            <div id="l29"
-               class="code sev- "><tt><i>29</i> &nbsp;</tt>
-            </div>
-            <div id="l30"
-               class="code sev- "><tt><i>30</i>     <span class="nd">@login_manager</span><span class="o">.</span><span class="n">user_loader</span></tt>
-            </div>
-            <div id="l31"
-               class="code sev- "><tt><i>31</i>     <span class="k">def</span> <span class="nf">load_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span></tt>
-            </div>
-            <div id="l32"
-               class="code sev- "><tt><i>32</i>         <span class="c1"># since the user_id is just the primary key of our user table,</span></tt>
-            </div>
-            <div id="l33"
-               class="code sev- "><tt><i>33</i>         <span class="c1"># use it in the query for the user</span></tt>
-            </div>
-            <div id="l34"
-               class="code sev- "><tt><i>34</i>         <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></tt>
-            </div>
-            <div id="l35"
-               class="code sev- "><tt><i>35</i> &nbsp;</tt>
-            </div>
-            <div id="l36"
-               class="code sev- "><tt><i>36</i>     <span class="n">csrf</span> <span class="o">=</span> <span class="n">CSRFProtect</span><span class="p">()</span></tt>
-            </div>
-            <div id="l37"
-               class="code sev- "><tt><i>37</i>     <span class="n">csrf</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
-            </div>
-            <div id="l38"
-               class="code sev- "><tt><i>38</i> &nbsp;</tt>
-            </div>
-            <div id="l39"
-               class="code sev- "><tt><i>39</i>     <span class="n">register_blueprints</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
-            </div>
-            <div id="l40"
-               class="code sev- "><tt><i>40</i> &nbsp;</tt>
-            </div>
-            <div id="l41"
-               class="code sev- "><tt><i>41</i>     <span class="n">sess</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
-            </div>
-            <div id="l42"
-               class="code sev- "><tt><i>42</i> &nbsp;</tt>
-            </div>
-            <div id="l43"
-               class="code sev- "><tt><i>43</i>     <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span></tt>
-            </div>
-            <div id="l44"
-               class="code sev- "><tt><i>44</i>         <span class="n">db</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span></tt>
-            </div>
-            <div id="l45"
-               class="code sev- "><tt><i>45</i> &nbsp;</tt>
-            </div>
-            <div id="l46"
-               class="code sev- "><tt><i>46</i>     <span class="n">configure_logging</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
-            </div>
-            <div id="l47"
-               class="code sev- "><tt><i>47</i> &nbsp;</tt>
-            </div>
-            <div id="l48"
-               class="code sev- "><tt><i>48</i>     <span class="k">return</span> <span class="n">app</span></tt>
-            </div>
-            <div id="l49"
-               class="code sev- "><tt><i>49</i> &nbsp;</tt>
-            </div>
-            <div id="l50"
-               class="code sev- "><tt><i>50</i> &nbsp;</tt>
-            </div>
-            <div id="l51"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -176,72 +68,30 @@
                      </span>
                      Too many leading '#' for block comment</li>
                
-               </ul><tt><i>51</i> <span class="c1">## Helper function</span></tt>
+               </ul><tt><i>15</i> <span class="c1">### Flask extension objects instantiation ###</span></tt>
             </div>
-            <div id="l52"
-               class="code sev- "><tt><i>52</i> &nbsp;</tt>
+            <div id="l16"
+               class="code sev- "><tt><i>16</i> <span class="n">mail</span> <span class="o">=</span> <span class="n">Mail</span><span class="p">()</span></tt>
             </div>
-            <div id="l53"
-               class="code sev- "><tt><i>53</i> &nbsp;</tt>
+            <div id="l17"
+               class="code sev- "><tt><i>17</i> &nbsp;</tt>
             </div>
-            <div id="l54"
-               class="code sev- "><tt><i>54</i> <span class="k">def</span> <span class="nf">register_blueprints</span><span class="p">(</span><span class="n">app</span><span class="p">):</span></tt>
+            <div id="l18"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E266
+                     </span>
+                     Too many leading '#' for block comment</li>
+               
+               </ul><tt><i>18</i> <span class="c1">### Instantiate Celery ###</span></tt>
             </div>
-            <div id="l55"
-               class="code sev- "><tt><i>55</i>     <span class="kn">from</span> <span class="nn">.auth</span> <span class="kn">import</span> <span class="n">auth</span> <span class="k">as</span> <span class="n">auth_settings</span></tt>
+            <div id="l19"
+               class="code sev- "><tt><i>19</i> <span class="n">celery</span> <span class="o">=</span> <span class="n">Celery</span><span class="p">(</span></tt>
             </div>
-            <div id="l56"
-               class="code sev- "><tt><i>56</i>     <span class="kn">from</span> <span class="nn">.main</span> <span class="kn">import</span> <span class="n">main</span> <span class="k">as</span> <span class="n">main_quizapp</span></tt>
-            </div>
-            <div id="l57"
-               class="code sev- "><tt><i>57</i>     <span class="kn">from</span> <span class="nn">.api</span> <span class="kn">import</span> <span class="n">question_api</span> <span class="k">as</span> <span class="n">apis</span></tt>
-            </div>
-            <div id="l58"
-               class="code sev- "><tt><i>58</i>     <span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="n">bp</span> <span class="k">as</span> <span class="n">errors_handlers</span></tt>
-            </div>
-            <div id="l59"
-               class="code sev- "><tt><i>59</i>     <span class="kn">from</span> <span class="nn">.commands.question_manager</span> <span class="kn">import</span> <span class="n">bp</span> <span class="k">as</span> <span class="n">questions_cli</span></tt>
-            </div>
-            <div id="l60"
-               class="code sev- "><tt><i>60</i> &nbsp;</tt>
-            </div>
-            <div id="l61"
-               class="code sev- "><tt><i>61</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">errors_handlers</span><span class="p">)</span></tt>
-            </div>
-            <div id="l62"
-               class="code sev- "><tt><i>62</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">auth_settings</span><span class="p">)</span></tt>
-            </div>
-            <div id="l63"
-               class="code sev- "><tt><i>63</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">main_quizapp</span><span class="p">)</span></tt>
-            </div>
-            <div id="l64"
-               class="code sev- "><tt><i>64</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">questions_cli</span><span class="p">)</span></tt>
-            </div>
-            <div id="l65"
-               class="code sev- "><tt><i>65</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">apis</span><span class="p">)</span></tt>
-            </div>
-            <div id="l66"
-               class="code sev- "><tt><i>66</i> &nbsp;</tt>
-            </div>
-            <div id="l67"
-               class="code sev- "><tt><i>67</i> &nbsp;</tt>
-            </div>
-            <div id="l68"
-               class="code sev- "><tt><i>68</i> <span class="k">def</span> <span class="nf">configure_logging</span><span class="p">(</span><span class="n">app</span><span class="p">):</span></tt>
-            </div>
-            <div id="l69"
-               class="code sev- "><tt><i>69</i>     <span class="kn">import</span> <span class="nn">logging</span></tt>
-            </div>
-            <div id="l70"
-               class="code sev- "><tt><i>70</i>     <span class="kn">from</span> <span class="nn">flask.logging</span> <span class="kn">import</span> <span class="n">default_handler</span></tt>
-            </div>
-            <div id="l71"
-               class="code sev- "><tt><i>71</i>     <span class="kn">from</span> <span class="nn">logging.handlers</span> <span class="kn">import</span> <span class="n">RotatingFileHandler</span></tt>
-            </div>
-            <div id="l72"
-               class="code sev- "><tt><i>72</i> &nbsp;</tt>
-            </div>
-            <div id="l73"
+            <div id="l20"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -251,18 +101,234 @@
                      </span>
                      Line too long (83 > 79 characters)</li>
                
-               </ul><tt><i>73</i>     <span class="c1"># Deactivate the default flask logger so that log messages don&#39;t get duplicated</span></tt>
+               </ul><tt><i>20</i>     <span class="vm">__name__</span><span class="p">,</span> <span class="n">broker</span><span class="o">=</span><span class="n">Config</span><span class="o">.</span><span class="n">CELERY_BROKER_URL</span><span class="p">,</span> <span class="n">result_backend</span><span class="o">=</span><span class="n">Config</span><span class="o">.</span><span class="n">RESULT_BACKEND</span></tt>
+            </div>
+            <div id="l21"
+               class="code sev- "><tt><i>21</i> <span class="p">)</span></tt>
+            </div>
+            <div id="l22"
+               class="code sev- "><tt><i>22</i> &nbsp;</tt>
+            </div>
+            <div id="l23"
+               class="code sev- "><tt><i>23</i> &nbsp;</tt>
+            </div>
+            <div id="l24"
+               class="code sev- "><tt><i>24</i> <span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span></tt>
+            </div>
+            <div id="l25"
+               class="code sev- "><tt><i>25</i>     <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span></tt>
+            </div>
+            <div id="l26"
+               class="code sev- "><tt><i>26</i> &nbsp;</tt>
+            </div>
+            <div id="l27"
+               class="code sev- "><tt><i>27</i>     <span class="n">CONFIG_TYPE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;CONFIG_TYPE&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;config.DevelopmentConfig&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l28"
+               class="code sev- "><tt><i>28</i>     <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="n">CONFIG_TYPE</span><span class="p">)</span></tt>
+            </div>
+            <div id="l29"
+               class="code sev- "><tt><i>29</i>     <span class="c1"># Configure celery</span></tt>
+            </div>
+            <div id="l30"
+               class="code sev- "><tt><i>30</i>     <span class="n">celery</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">)</span></tt>
+            </div>
+            <div id="l31"
+               class="code sev- "><tt><i>31</i> &nbsp;</tt>
+            </div>
+            <div id="l32"
+               class="code sev- "><tt><i>32</i>     <span class="c1">#  swagger = Swagger(app, config=config)</span></tt>
+            </div>
+            <div id="l33"
+               class="code sev- "><tt><i>33</i>     <span class="n">sess</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
+            </div>
+            <div id="l34"
+               class="code sev- "><tt><i>34</i> &nbsp;</tt>
+            </div>
+            <div id="l35"
+               class="code sev- "><tt><i>35</i>     <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
+            </div>
+            <div id="l36"
+               class="code sev- "><tt><i>36</i> &nbsp;</tt>
+            </div>
+            <div id="l37"
+               class="code sev- "><tt><i>37</i>     <span class="n">login_manager</span> <span class="o">=</span> <span class="n">LoginManager</span><span class="p">()</span></tt>
+            </div>
+            <div id="l38"
+               class="code sev- "><tt><i>38</i>     <span class="n">login_manager</span><span class="o">.</span><span class="n">login_view</span> <span class="o">=</span> <span class="s2">&quot;auth.login&quot;</span></tt>
+            </div>
+            <div id="l39"
+               class="code sev- "><tt><i>39</i>     <span class="n">login_manager</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
+            </div>
+            <div id="l40"
+               class="code sev- "><tt><i>40</i> &nbsp;</tt>
+            </div>
+            <div id="l41"
+               class="code sev- "><tt><i>41</i>     <span class="kn">from</span> <span class="nn">.models.users</span> <span class="kn">import</span> <span class="n">User</span></tt>
+            </div>
+            <div id="l42"
+               class="code sev- "><tt><i>42</i> &nbsp;</tt>
+            </div>
+            <div id="l43"
+               class="code sev- "><tt><i>43</i>     <span class="nd">@login_manager</span><span class="o">.</span><span class="n">user_loader</span></tt>
+            </div>
+            <div id="l44"
+               class="code sev- "><tt><i>44</i>     <span class="k">def</span> <span class="nf">load_user</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span></tt>
+            </div>
+            <div id="l45"
+               class="code sev- "><tt><i>45</i>         <span class="c1"># since the user_id is just the primary key of our user table,</span></tt>
+            </div>
+            <div id="l46"
+               class="code sev- "><tt><i>46</i>         <span class="c1"># use it in the query for the user</span></tt>
+            </div>
+            <div id="l47"
+               class="code sev- "><tt><i>47</i>         <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></tt>
+            </div>
+            <div id="l48"
+               class="code sev- "><tt><i>48</i> &nbsp;</tt>
+            </div>
+            <div id="l49"
+               class="code sev- "><tt><i>49</i>     <span class="n">csrf</span> <span class="o">=</span> <span class="n">CSRFProtect</span><span class="p">()</span></tt>
+            </div>
+            <div id="l50"
+               class="code sev- "><tt><i>50</i>     <span class="n">csrf</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
+            </div>
+            <div id="l51"
+               class="code sev- "><tt><i>51</i> &nbsp;</tt>
+            </div>
+            <div id="l52"
+               class="code sev- "><tt><i>52</i>     <span class="n">register_blueprints</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
+            </div>
+            <div id="l53"
+               class="code sev- "><tt><i>53</i> &nbsp;</tt>
+            </div>
+            <div id="l54"
+               class="code sev- "><tt><i>54</i>     <span class="n">sess</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
+            </div>
+            <div id="l55"
+               class="code sev- "><tt><i>55</i> &nbsp;</tt>
+            </div>
+            <div id="l56"
+               class="code sev- "><tt><i>56</i>     <span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">app_context</span><span class="p">():</span></tt>
+            </div>
+            <div id="l57"
+               class="code sev- "><tt><i>57</i>         <span class="n">db</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span></tt>
+            </div>
+            <div id="l58"
+               class="code sev- "><tt><i>58</i> &nbsp;</tt>
+            </div>
+            <div id="l59"
+               class="code sev- "><tt><i>59</i>     <span class="n">configure_logging</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></tt>
+            </div>
+            <div id="l60"
+               class="code sev- "><tt><i>60</i> &nbsp;</tt>
+            </div>
+            <div id="l61"
+               class="code sev- "><tt><i>61</i>     <span class="k">return</span> <span class="n">app</span></tt>
+            </div>
+            <div id="l62"
+               class="code sev- "><tt><i>62</i> &nbsp;</tt>
+            </div>
+            <div id="l63"
+               class="code sev- "><tt><i>63</i> &nbsp;</tt>
+            </div>
+            <div id="l64"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E266
+                     </span>
+                     Too many leading '#' for block comment</li>
+               
+               </ul><tt><i>64</i> <span class="c1">## Helper function</span></tt>
+            </div>
+            <div id="l65"
+               class="code sev- "><tt><i>65</i> &nbsp;</tt>
+            </div>
+            <div id="l66"
+               class="code sev- "><tt><i>66</i> &nbsp;</tt>
+            </div>
+            <div id="l67"
+               class="code sev- "><tt><i>67</i> <span class="k">def</span> <span class="nf">register_blueprints</span><span class="p">(</span><span class="n">app</span><span class="p">):</span></tt>
+            </div>
+            <div id="l68"
+               class="code sev- "><tt><i>68</i>     <span class="kn">from</span> <span class="nn">.auth</span> <span class="kn">import</span> <span class="n">auth</span> <span class="k">as</span> <span class="n">auth_settings</span></tt>
+            </div>
+            <div id="l69"
+               class="code sev- "><tt><i>69</i>     <span class="kn">from</span> <span class="nn">.main</span> <span class="kn">import</span> <span class="n">main</span> <span class="k">as</span> <span class="n">main_quizapp</span></tt>
+            </div>
+            <div id="l70"
+               class="code sev- "><tt><i>70</i>     <span class="kn">from</span> <span class="nn">.api</span> <span class="kn">import</span> <span class="n">question_api</span> <span class="k">as</span> <span class="n">apis</span></tt>
+            </div>
+            <div id="l71"
+               class="code sev- "><tt><i>71</i>     <span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="n">bp</span> <span class="k">as</span> <span class="n">errors_handlers</span></tt>
+            </div>
+            <div id="l72"
+               class="code sev- "><tt><i>72</i>     <span class="kn">from</span> <span class="nn">.commands.question_manager</span> <span class="kn">import</span> <span class="n">bp</span> <span class="k">as</span> <span class="n">questions_cli</span></tt>
+            </div>
+            <div id="l73"
+               class="code sev- "><tt><i>73</i> &nbsp;</tt>
             </div>
             <div id="l74"
-               class="code sev- "><tt><i>74</i>     <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">removeHandler</span><span class="p">(</span><span class="n">default_handler</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>74</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">errors_handlers</span><span class="p">)</span></tt>
             </div>
             <div id="l75"
-               class="code sev- "><tt><i>75</i> &nbsp;</tt>
+               class="code sev- "><tt><i>75</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">auth_settings</span><span class="p">)</span></tt>
             </div>
             <div id="l76"
-               class="code sev- "><tt><i>76</i>     <span class="c1"># Create a file handler object</span></tt>
+               class="code sev- "><tt><i>76</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">main_quizapp</span><span class="p">)</span></tt>
             </div>
             <div id="l77"
+               class="code sev- "><tt><i>77</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">questions_cli</span><span class="p">)</span></tt>
+            </div>
+            <div id="l78"
+               class="code sev- "><tt><i>78</i>     <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">apis</span><span class="p">)</span></tt>
+            </div>
+            <div id="l79"
+               class="code sev- "><tt><i>79</i> &nbsp;</tt>
+            </div>
+            <div id="l80"
+               class="code sev- "><tt><i>80</i> &nbsp;</tt>
+            </div>
+            <div id="l81"
+               class="code sev- "><tt><i>81</i> <span class="k">def</span> <span class="nf">configure_logging</span><span class="p">(</span><span class="n">app</span><span class="p">):</span></tt>
+            </div>
+            <div id="l82"
+               class="code sev- "><tt><i>82</i>     <span class="kn">import</span> <span class="nn">logging</span></tt>
+            </div>
+            <div id="l83"
+               class="code sev- "><tt><i>83</i>     <span class="kn">from</span> <span class="nn">flask.logging</span> <span class="kn">import</span> <span class="n">default_handler</span></tt>
+            </div>
+            <div id="l84"
+               class="code sev- "><tt><i>84</i>     <span class="kn">from</span> <span class="nn">logging.handlers</span> <span class="kn">import</span> <span class="n">RotatingFileHandler</span></tt>
+            </div>
+            <div id="l85"
+               class="code sev- "><tt><i>85</i> &nbsp;</tt>
+            </div>
+            <div id="l86"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (83 > 79 characters)</li>
+               
+               </ul><tt><i>86</i>     <span class="c1"># Deactivate the default flask logger so that log messages don&#39;t get duplicated</span></tt>
+            </div>
+            <div id="l87"
+               class="code sev- "><tt><i>87</i>     <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">removeHandler</span><span class="p">(</span><span class="n">default_handler</span><span class="p">)</span></tt>
+            </div>
+            <div id="l88"
+               class="code sev- "><tt><i>88</i> &nbsp;</tt>
+            </div>
+            <div id="l89"
+               class="code sev- "><tt><i>89</i>     <span class="c1"># Create a file handler object</span></tt>
+            </div>
+            <div id="l90"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -272,12 +338,12 @@
                      </span>
                      Line too long (86 > 79 characters)</li>
                
-               </ul><tt><i>77</i>     <span class="n">file_handler</span> <span class="o">=</span> <span class="n">RotatingFileHandler</span><span class="p">(</span><span class="s2">&quot;flaskapp.log&quot;</span><span class="p">,</span> <span class="n">maxBytes</span><span class="o">=</span><span class="mi">16384</span><span class="p">,</span> <span class="n">backupCount</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span></tt>
+               </ul><tt><i>90</i>     <span class="n">file_handler</span> <span class="o">=</span> <span class="n">RotatingFileHandler</span><span class="p">(</span><span class="s2">&quot;flaskapp.log&quot;</span><span class="p">,</span> <span class="n">maxBytes</span><span class="o">=</span><span class="mi">16384</span><span class="p">,</span> <span class="n">backupCount</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span></tt>
             </div>
-            <div id="l78"
-               class="code sev- "><tt><i>78</i> &nbsp;</tt>
+            <div id="l91"
+               class="code sev- "><tt><i>91</i> &nbsp;</tt>
             </div>
-            <div id="l79"
+            <div id="l92"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -287,43 +353,43 @@
                      </span>
                      Line too long (82 > 79 characters)</li>
                
-               </ul><tt><i>79</i>     <span class="c1"># Set the logging level of the file handler object so that it logs INFO and up</span></tt>
+               </ul><tt><i>92</i>     <span class="c1"># Set the logging level of the file handler object so that it logs INFO and up</span></tt>
             </div>
-            <div id="l80"
-               class="code sev- "><tt><i>80</i>     <span class="n">file_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span></tt>
+            <div id="l93"
+               class="code sev- "><tt><i>93</i>     <span class="n">file_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span></tt>
             </div>
-            <div id="l81"
-               class="code sev- "><tt><i>81</i> &nbsp;</tt>
+            <div id="l94"
+               class="code sev- "><tt><i>94</i> &nbsp;</tt>
             </div>
-            <div id="l82"
-               class="code sev- "><tt><i>82</i>     <span class="c1"># Create a file formatter object</span></tt>
+            <div id="l95"
+               class="code sev- "><tt><i>95</i>     <span class="c1"># Create a file formatter object</span></tt>
             </div>
-            <div id="l83"
-               class="code sev- "><tt><i>83</i>     <span class="n">file_formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span></tt>
+            <div id="l96"
+               class="code sev- "><tt><i>96</i>     <span class="n">file_formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span></tt>
             </div>
-            <div id="l84"
-               class="code sev- "><tt><i>84</i>         <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> </span><span class="si">%(levelname)s</span><span class="s2">: </span><span class="si">%(message)s</span><span class="s2"> [in </span><span class="si">%(filename)s</span><span class="s2">: </span><span class="si">%(lineno)d</span><span class="s2">]&quot;</span></tt>
+            <div id="l97"
+               class="code sev- "><tt><i>97</i>         <span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> </span><span class="si">%(levelname)s</span><span class="s2">: </span><span class="si">%(message)s</span><span class="s2"> [in </span><span class="si">%(filename)s</span><span class="s2">: </span><span class="si">%(lineno)d</span><span class="s2">]&quot;</span></tt>
             </div>
-            <div id="l85"
-               class="code sev- "><tt><i>85</i>     <span class="p">)</span></tt>
+            <div id="l98"
+               class="code sev- "><tt><i>98</i>     <span class="p">)</span></tt>
             </div>
-            <div id="l86"
-               class="code sev- "><tt><i>86</i> &nbsp;</tt>
+            <div id="l99"
+               class="code sev- "><tt><i>99</i> &nbsp;</tt>
             </div>
-            <div id="l87"
-               class="code sev- "><tt><i>87</i>     <span class="c1"># Apply the file formatter object to the file handler object</span></tt>
+            <div id="l100"
+               class="code sev- "><tt><i>100</i>     <span class="c1"># Apply the file formatter object to the file handler object</span></tt>
             </div>
-            <div id="l88"
-               class="code sev- "><tt><i>88</i>     <span class="n">file_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">file_formatter</span><span class="p">)</span></tt>
+            <div id="l101"
+               class="code sev- "><tt><i>101</i>     <span class="n">file_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">file_formatter</span><span class="p">)</span></tt>
             </div>
-            <div id="l89"
-               class="code sev- "><tt><i>89</i> &nbsp;</tt>
+            <div id="l102"
+               class="code sev- "><tt><i>102</i> &nbsp;</tt>
             </div>
-            <div id="l90"
-               class="code sev- "><tt><i>90</i>     <span class="c1"># Add file handler object to the logger</span></tt>
+            <div id="l103"
+               class="code sev- "><tt><i>103</i>     <span class="c1"># Add file handler object to the logger</span></tt>
             </div>
-            <div id="l91"
-               class="code sev- "><tt><i>91</i>     <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span></tt>
+            <div id="l104"
+               class="code sev- "><tt><i>104</i>     <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span></tt>
             </div>
             
          </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>flake8 violations: tests/unit/test_answer_scorer_class.py</title>
+      <title>flake8 violations: tests/functional/test_logger.py</title>
       <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
       <link rel="stylesheet" href="styles.css">
 <script>
@@ -33,35 +33,35 @@ window.addEventListener('DOMContentLoaded', function () {
 </script>
    </head>
    <body>
-      <div id="masthead" class="sev-2"></div>
+      <div id="masthead" class="sev-1"></div>
       <div id="page">
          <p id="srclink">
             <a title="View full annotated source"
-               href="tests.unit.test_answer_scorer_class.source.html">
+               href="tests.functional.test_logger.source.html">
                <img src="file.svg" alt="&#x2261;">
             </a></p>
          <h1>
             <a href="index.html">
                <img src="back.svg" alt="&#x2B05;">
-               tests/unit/test_answer_scorer_class.py
+               tests/functional/test_logger.py
             </a>
          </h1>
 
          <ul id="index">
          
          <li>
-            <a data-code="E501">
-               <span class="count sev-2">
+            <a data-code="F841">
+               <span class="count sev-1">
                   1
                </span>
-               <strong>E501:</strong> line too long (83 > 79 characters)
+               <strong>F841:</strong> local variable 'user_logs' is assigned to but never used
                
             </a>
             <ul class="details">
             <li>
                
-               <a href="tests.unit.test_answer_scorer_class.source.html#l37">
-                  <tt><i>37</i>     <span class="n">scorer</span><span class="o">.</span><span class="n">_get_correct_answers</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">])</span></tt>
+               <a href="tests.functional.test_logger.source.html#l5">
+                  <tt><i>5</i>     <span class="n">user_logs</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span></tt>
                </a>
             </li>
             </ul>

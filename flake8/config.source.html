@@ -149,96 +149,114 @@
                class="code sev- "><tt><i>38</i> &nbsp;</tt>
             </div>
             <div id="l39"
-               class="code sev- "><tt><i>39</i>     <span class="c1">#   Redis conf</span></tt>
+               class="code sev- "><tt><i>39</i>     <span class="n">CELERY_BROKER_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;CELERY_BROKER_URL &#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l40"
-               class="code sev- "><tt><i>40</i>     <span class="n">SESSION_TYPE</span> <span class="o">=</span> <span class="s2">&quot;redis&quot;</span></tt>
+               class="code sev- "><tt><i>40</i>     <span class="n">RESULT_BACKEND</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;RESULT_BACKEND&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l41"
-               class="code sev- "><tt><i>41</i>     <span class="n">SESSION_PERMANENT</span> <span class="o">=</span> <span class="kc">False</span></tt>
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        W293
+                     </span>
+                     Blank line contains whitespace</li>
+               
+               </ul><tt><i>41</i>     </tt>
             </div>
             <div id="l42"
-               class="code sev- "><tt><i>42</i>     <span class="n">SESSION_USE_SIGNER</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               class="code sev- "><tt><i>42</i>     <span class="c1">#   Redis conf</span></tt>
             </div>
             <div id="l43"
-               class="code sev- "><tt><i>43</i>     <span class="n">SESSION_REDIS</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SESSION_REDIS&quot;</span><span class="p">))</span></tt>
+               class="code sev- "><tt><i>43</i>     <span class="n">SESSION_TYPE</span> <span class="o">=</span> <span class="s2">&quot;redis&quot;</span></tt>
             </div>
             <div id="l44"
-               class="code sev- "><tt><i>44</i> &nbsp;</tt>
+               class="code sev- "><tt><i>44</i>     <span class="n">SESSION_PERMANENT</span> <span class="o">=</span> <span class="kc">False</span></tt>
             </div>
             <div id="l45"
-               class="code sev- "><tt><i>45</i>     <span class="c1"># Assets Management</span></tt>
+               class="code sev- "><tt><i>45</i>     <span class="n">SESSION_USE_SIGNER</span> <span class="o">=</span> <span class="kc">True</span></tt>
             </div>
             <div id="l46"
-               class="code sev- "><tt><i>46</i>     <span class="c1"># ASSETS_ROOT = os.getenv(&#39;ASSETS_ROOT&#39;, &#39;/static/otherfolder&#39;)</span></tt>
+               class="code sev- "><tt><i>46</i>     <span class="n">SESSION_REDIS</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SESSION_REDIS&quot;</span><span class="p">))</span></tt>
             </div>
             <div id="l47"
                class="code sev- "><tt><i>47</i> &nbsp;</tt>
             </div>
             <div id="l48"
-               class="code sev- "><tt><i>48</i> &nbsp;</tt>
+               class="code sev- "><tt><i>48</i>     <span class="c1"># Assets Management</span></tt>
             </div>
             <div id="l49"
-               class="code sev- "><tt><i>49</i> <span class="k">class</span> <span class="nc">DevelopmentConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>49</i>     <span class="c1"># ASSETS_ROOT = os.getenv(&#39;ASSETS_ROOT&#39;, &#39;/static/otherfolder&#39;)</span></tt>
             </div>
             <div id="l50"
-               class="code sev- "><tt><i>50</i>     <span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               class="code sev- "><tt><i>50</i> &nbsp;</tt>
             </div>
             <div id="l51"
-               class="code sev- "><tt><i>51</i>     <span class="n">PASSTHROUGH_ERRORS</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               class="code sev- "><tt><i>51</i> &nbsp;</tt>
             </div>
             <div id="l52"
-               class="code sev- "><tt><i>52</i>     <span class="n">USE_DEBUGGER</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               class="code sev- "><tt><i>52</i> <span class="k">class</span> <span class="nc">DevelopmentConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span></tt>
             </div>
             <div id="l53"
-               class="code sev- "><tt><i>53</i>     <span class="n">USE_RELOADER</span> <span class="o">=</span> <span class="kc">False</span></tt>
+               class="code sev- "><tt><i>53</i>     <span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span></tt>
             </div>
             <div id="l54"
-               class="code sev- "><tt><i>54</i>     <span class="n">SQLALCHEMY_DATABASE_URI</span> <span class="o">=</span> <span class="s2">&quot;sqlite:///dev.db&quot;</span></tt>
+               class="code sev- "><tt><i>54</i>     <span class="n">PASSTHROUGH_ERRORS</span> <span class="o">=</span> <span class="kc">True</span></tt>
             </div>
             <div id="l55"
-               class="code sev- "><tt><i>55</i> &nbsp;</tt>
+               class="code sev- "><tt><i>55</i>     <span class="n">USE_DEBUGGER</span> <span class="o">=</span> <span class="kc">True</span></tt>
             </div>
             <div id="l56"
-               class="code sev- "><tt><i>56</i> &nbsp;</tt>
+               class="code sev- "><tt><i>56</i>     <span class="n">USE_RELOADER</span> <span class="o">=</span> <span class="kc">False</span></tt>
             </div>
             <div id="l57"
-               class="code sev- "><tt><i>57</i> <span class="k">class</span> <span class="nc">TestingConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>57</i>     <span class="n">SQLALCHEMY_DATABASE_URI</span> <span class="o">=</span> <span class="s2">&quot;sqlite:///dev.db&quot;</span></tt>
             </div>
             <div id="l58"
-               class="code sev- "><tt><i>58</i>     <span class="n">TESTING</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               class="code sev- "><tt><i>58</i> &nbsp;</tt>
             </div>
             <div id="l59"
-               class="code sev- "><tt><i>59</i>     <span class="n">WTF_CSRF_ENABLED</span> <span class="o">=</span> <span class="kc">False</span></tt>
+               class="code sev- "><tt><i>59</i> &nbsp;</tt>
             </div>
             <div id="l60"
-               class="code sev- "><tt><i>60</i>     <span class="n">WTF_CSRF_CHECK_DEFAULT</span> <span class="o">=</span> <span class="kc">False</span></tt>
+               class="code sev- "><tt><i>60</i> <span class="k">class</span> <span class="nc">TestingConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span></tt>
             </div>
             <div id="l61"
-               class="code sev- "><tt><i>61</i>     <span class="n">MAIL_SUPPRESS_SEND</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               class="code sev- "><tt><i>61</i>     <span class="n">TESTING</span> <span class="o">=</span> <span class="kc">True</span></tt>
             </div>
             <div id="l62"
-               class="code sev- "><tt><i>62</i>     <span class="n">SQLALCHEMY_DATABASE_URI</span> <span class="o">=</span> <span class="s2">&quot;sqlite:///testdatabase.db&quot;</span></tt>
+               class="code sev- "><tt><i>62</i>     <span class="n">WTF_CSRF_ENABLED</span> <span class="o">=</span> <span class="kc">False</span></tt>
             </div>
             <div id="l63"
-               class="code sev- "><tt><i>63</i> &nbsp;</tt>
+               class="code sev- "><tt><i>63</i>     <span class="n">WTF_CSRF_CHECK_DEFAULT</span> <span class="o">=</span> <span class="kc">False</span></tt>
             </div>
             <div id="l64"
-               class="code sev- "><tt><i>64</i> &nbsp;</tt>
+               class="code sev- "><tt><i>64</i>     <span class="n">MAIL_SUPPRESS_SEND</span> <span class="o">=</span> <span class="kc">True</span></tt>
             </div>
             <div id="l65"
-               class="code sev- "><tt><i>65</i> <span class="k">class</span> <span class="nc">ProductionConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>65</i>     <span class="n">SQLALCHEMY_DATABASE_URI</span> <span class="o">=</span> <span class="s2">&quot;sqlite:///testdatabase.db&quot;</span></tt>
             </div>
             <div id="l66"
-               class="code sev- "><tt><i>66</i>     <span class="n">FLASK_ENV</span> <span class="o">=</span> <span class="s2">&quot;production&quot;</span></tt>
+               class="code sev- "><tt><i>66</i> &nbsp;</tt>
             </div>
             <div id="l67"
-               class="code sev- "><tt><i>67</i>     <span class="c1">#   This will create a file in &lt;app&gt; FOLDER</span></tt>
+               class="code sev- "><tt><i>67</i> &nbsp;</tt>
             </div>
             <div id="l68"
-               class="code sev- "><tt><i>68</i>     <span class="n">SQLALCHEMY_DATABASE_URI</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span></tt>
+               class="code sev- "><tt><i>68</i> <span class="k">class</span> <span class="nc">ProductionConfig</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span></tt>
             </div>
             <div id="l69"
+               class="code sev- "><tt><i>69</i>     <span class="n">FLASK_ENV</span> <span class="o">=</span> <span class="s2">&quot;production&quot;</span></tt>
+            </div>
+            <div id="l70"
+               class="code sev- "><tt><i>70</i>     <span class="c1">#   This will create a file in &lt;app&gt; FOLDER</span></tt>
+            </div>
+            <div id="l71"
+               class="code sev- "><tt><i>71</i>     <span class="n">SQLALCHEMY_DATABASE_URI</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span></tt>
+            </div>
+            <div id="l72"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -248,22 +266,22 @@
                      </span>
                      Line too long (84 > 79 characters)</li>
                
-               </ul><tt><i>69</i>         <span class="s2">&quot;PROD_DATABASE_URI&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;sqlite:///&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">basedir</span><span class="p">,</span> <span class="s2">&quot;prod.db&quot;</span><span class="p">)</span></tt>
-            </div>
-            <div id="l70"
-               class="code sev- "><tt><i>70</i>     <span class="p">)</span></tt>
-            </div>
-            <div id="l71"
-               class="code sev- "><tt><i>71</i>     <span class="c1"># Security</span></tt>
-            </div>
-            <div id="l72"
-               class="code sev- "><tt><i>72</i>     <span class="n">SESSION_COOKIE_HTTPONLY</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               </ul><tt><i>72</i>         <span class="s2">&quot;PROD_DATABASE_URI&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;sqlite:///&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">basedir</span><span class="p">,</span> <span class="s2">&quot;prod.db&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l73"
-               class="code sev- "><tt><i>73</i>     <span class="n">REMEMBER_COOKIE_HTTPONLY</span> <span class="o">=</span> <span class="kc">True</span></tt>
+               class="code sev- "><tt><i>73</i>     <span class="p">)</span></tt>
             </div>
             <div id="l74"
-               class="code sev- "><tt><i>74</i>     <span class="n">REMEMBER_COOKIE_DURATION</span> <span class="o">=</span> <span class="mi">3600</span></tt>
+               class="code sev- "><tt><i>74</i>     <span class="c1"># Security</span></tt>
+            </div>
+            <div id="l75"
+               class="code sev- "><tt><i>75</i>     <span class="n">SESSION_COOKIE_HTTPONLY</span> <span class="o">=</span> <span class="kc">True</span></tt>
+            </div>
+            <div id="l76"
+               class="code sev- "><tt><i>76</i>     <span class="n">REMEMBER_COOKIE_HTTPONLY</span> <span class="o">=</span> <span class="kc">True</span></tt>
+            </div>
+            <div id="l77"
+               class="code sev- "><tt><i>77</i>     <span class="n">REMEMBER_COOKIE_DURATION</span> <span class="o">=</span> <span class="mi">3600</span></tt>
             </div>
             
          </div>
