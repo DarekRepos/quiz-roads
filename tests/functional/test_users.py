@@ -1,5 +1,3 @@
-
-
 def test_home_page(client):
     """
     GIVEN a Flask application configured for testing
@@ -7,7 +5,7 @@ def test_home_page(client):
     THEN check that the response is valid
     """
 
-    response = client.get('/')
+    response = client.get("/")
     assert response.status_code == 200
 
 
@@ -18,5 +16,5 @@ def test_home_page_post(client):
     THEN check that the status code a '405' is returned
     """
 
-    response = client.post('/')
+    response = client.post("/")
     assert response.status_code == 405
