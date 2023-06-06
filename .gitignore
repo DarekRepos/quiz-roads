@@ -15,7 +15,7 @@ dev.db
 .coverage
 
 # ingore log files
-*.log
+*.log*
 
 # ignore vs code settings
 .vscode
