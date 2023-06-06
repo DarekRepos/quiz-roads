@@ -44,6 +44,15 @@ def login():
         # then we know the user has the right credentials
         login_user(user, remember=remember)
 
+        current_app.logger.info(f"User login : {str(user)}")
+
+        message_data = {
+            "subject": "Hello app!",
+            "body": "Thank you for the register.",
+            "recipients": user.user_email,
+        }
+        send_celery_email.apply_async(args=[message_data])
+
         return redirect(url_for("main.profile"))
 
     if not current_user.is_authenticated:
