@@ -43,10 +43,19 @@ class AnswerScorer:
             float: Value is in percent [%] unit ex. 43.89
         """
         for item in range(1, self.total_questions + 1):
-            user_answer = self.session["answers"][item]
-            correct_answers = self._get_correct_answers(item)
+            try:
+                user_answer = self.session["answers"][item]
+            except KeyError as error:
+                print(
+                    f"I got a KeyError - reason:  empty answer for questions {str(error)} "
+                )
+                continue
+            except:
+                print("I got another exception, but I should re-raise")
+                raise
 
-            valid_answers = [x in correct_answers for x in user_answer]
+            correct_answers = self._get_correct_answers(item)
+            valid_answers = [x in user_answer for x in correct_answers]
 
             if all(valid_answers) and valid_answers:
                 self.total_points += 1
