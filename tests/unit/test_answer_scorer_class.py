@@ -22,11 +22,11 @@ def test_score_answers_all_correct_with_empty(session, db):
     GIVEN
     4 questions
     WHEN
-    - user select 3 valid question and leave 1 empty question
+    - user select 1 valid question and leaves 3 empty questions
     - questions are multiple choice and single choice
     THEN
-    - user get score for all valid answers
-    - empty answer is treated as a wrong answer and user dont get any point
+    - the user get score for 1 valid answers
+    - empty answers are treated as a wrong answer and user don't get any points
 
     Args:
         session (_type_): session fixture
@@ -34,9 +34,12 @@ def test_score_answers_all_correct_with_empty(session, db):
     """
 
     scorer = AnswerScorer(session, db)
-    scorer._get_correct_answers = MagicMock(return_value=["A", "B", "C", "D", "E"])
+    AnswerScorer.session = MagicMock(
+        return_value={1: ["A", "B"], 2: []}
+    )
+    scorer._get_correct_answers = MagicMock(return_value=["A", "B"])
     percent = scorer.score_answers()
-    assert percent == 75
+    assert percent == 25
 
 
 # with muyltiple answers questions correct
@@ -83,7 +86,7 @@ def test_score_answers_all_correct_for_single_choice(session, db):
 def test_score_answers_with_multiple_choice_incomplete(session, db):
     """
     GIVEN
-    1 questions ( from 4 avaiable)
+    1 questions ( from 4 available) that have answer A and B
     WHEN
     - user did not mark all the correct answers for 1 multiple choice question
     THEN
@@ -97,7 +100,7 @@ def test_score_answers_with_multiple_choice_incomplete(session, db):
         db (_type_): database mock fixture
     """
     scorer = AnswerScorer(session, db)
-    scorer._get_correct_answers = MagicMock(return_value=["A"])
+    scorer.session["answers"] = MagicMock(return_value=["A"])
     percent = scorer.score_answers()
     assert percent == 0  # Assuming total_questions is 4
 
