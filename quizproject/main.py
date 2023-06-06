@@ -28,6 +28,7 @@ QUESTIONS_PER_PAGE = 1
 
 @main.route("/")
 def index():
+    current_app.logger.info("Visited index page")
     return render_template("index.html")
 
 
@@ -103,7 +104,8 @@ def quiz_viewer():
     if form2.validate_on_submit() and (request.method == "POST"):
         op1 = request.form.getlist("user_answers")
         user_answers = dict(groups_list)
-        current_app.logger.info("User answers", user_answers)
+
+        current_app.logger.info(f"User answers{str(user_answers)}")
 
         for key in user_answers:
             for answer_item in op1:
