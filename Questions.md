@@ -4,7 +4,7 @@
 - Materiał budowlany powstałą przez wymieszanie mieszanki kruszyw z cementem  o niskiej wytrzymałości na ściskanie i niskiej zwartosci cementu.
 - Materiał budowlany powstałą przez wymieszanie mieszanki kruszyw z cementem  o wysokiej wytrzymałości na ściskanie i niskiej zawartosci cementu.
 - Materiał budowlany, który składa się betonu, która ma cięnką grubość
-- Jest to basrdzo silna osoba i dosyć szczupła
+- Jest to bardzo silna osoba i dosyć szczupła
 2.  Jak się nazywa ważna arteria komunikacyjna, która była wznoszona od iv wieku p.n.e który pełnił również funkcje obronna?
 - mur berliński
 - mur chiński
@@ -31,16 +31,20 @@
 - Najniżej położona trasa bitumiczna
 - Najwyżej położona trasa betonowa
 - Najwyżej położona trasa gruntowa
+
 7. Drewniane ekrany wzduż dk51 wznoszone w 2016 służa do ochrony:
 - gęsi
 - pszczół
 - łosi
 - saren
+
 8. jak nazywa sie rondo o najdłuższej nazwie w wojewodztwie podlaskim w białymstoku w miejscu, gdzie krzyżuje sie droga krajowa nr 19 z drogowa wojewodzka nr 676.
 - rondo Białostockie
 - Rondo Arcybiskupa generała Mirona Chodakoweskiego Prawosławnego Ordynariusza Wojska Polskiego
 - rondo Generała Józefa Hallera w Białymstoku
 - rondo przy alei długiej
+
+
 9. W Województwie śwoetockrzyskim powiecie ostrowieckim w grminie Kunów, woska Doły Biskupie znajduje się ogromne figura zwierze przy drodze. Jakie to zwierzę?
 - Koń
 - łoś
@@ -51,7 +55,7 @@
 - koła
 - trójkąta
 - gwiazdy
-11. w miescie Putrajaya ktpre jest połozone na południe od kuala lumpur usytuowane jest najwiesze rondo na swiecie,  długosc drogi od pkt a wynosi az 3.5 km. Które miejsca nie znajduje się   w srodku ronda:
+11. w miescie Putrajaya które jest połozone na południe od kuala lumpur usytuowane jest najwiesze rondo na swiecie,  długosc drogi od pkt a wynosi az 3.5 km. Które miejsca nie znajduje się   w srodku ronda:
 - pałac
 - hotel
 - park
