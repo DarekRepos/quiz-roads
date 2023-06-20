@@ -1,0 +1,257 @@
+- question: Co to jest chudy beton?
+  category: Road
+  answers:
+    - answer: Materiał budowlany powstałą przez wymieszanie mieszanki kruszyw z cementem  o niskiej wytrzymałości na ściskanie i niskiej zwartosci cementu.
+      is_correct: true
+    - answer: Materiał budowlany powstałą przez wymieszanie mieszanki kruszyw z cementem  o wysokiej wytrzymałości na ściskanie i niskiej zawartosci cementu.
+      is_correct: false
+    - answer: Materiał budowlany, który składa się betonu, która ma cięnką grubość
+      is_correct: false
+    - answer: Jest to bardzo silna osoba i dosyć szczupła
+      is_correct: false
+
+- question: Jak się nazywa ważna arteria komunikacyjna, która była wznoszona od iv wieku p.n.e który pełnił również funkcje obronna?
+  category: Road
+  answers:
+    - answer: mur berliński
+      is_correct: false
+    - answer: mur chiński
+      is_correct: true
+    - answer: mural
+      is_correct: false
+
+- question: Najstarszy znak drogowy w polsce pochądzący z XII wieku to?
+  category: Road
+  answers:
+    - answer: znak droga z pierwszeństwem
+      is_correct: false
+    - answer: kamień milowy
+      is_correct: true
+    - answer: drewniana brama w kształcie prostokąta
+      is_correct: false
+    - answer: kamienny słup w kształcie kręgla
+      is_correct: false
+      
+- question: Najkrótszą drogą krajową w polsce, która ma 1,7 km długosci jest?
+  category: Road
+  answers:
+    - answer: DK6
+      is_correct: false
+    - answer: DK8
+      is_correct: false
+    - answer: DK75
+      is_correct: false
+    - answer: DK96
+      is_correct: true
+
+- question: Wzdłuż drogi ekspresowej S3 (województwo lubuskie) są specjalne siatki przeciwko jakim zwierzetom, latajacym?
+  category: Road
+  answers:
+    - answer: Kaczki
+      is_correct: true
+    - answer: Kuropatwy
+      is_correct: false
+    - answer: Nietoperze
+      is_correct: false
+    - answer: Sowy
+      is_correct: false
+    - answer: Konie
+      is_correct: false
+    
+- question: Obok Polany Głodówki (małopolska) leży droga wojewódzka nr 960. Jest to...
+  category: Road
+  answers:
+    - answer: Najwyżej położona trasa bitumiczna
+      is_correct: true
+    - answer: Najniżej położona trasa bitumiczna
+      is_correct: false
+    - answer: Najwyżej położona trasa betonowa
+      is_correct: false
+    - answer: Najwyżej położona trasa gruntowa
+      is_correct: false
+
+- question: Drewniane ekrany wzduż dk51 wznoszone w 2016 służa do ochrony
+  category: Road
+  answers:
+    - answer: gęsi
+      is_correct: false
+    - answer: pszczół
+      is_correct: true
+    - answer: łosi
+      is_correct: false
+    - answer: saren
+      is_correct: false
+  
+    
+- question: jak nazywa sie rondo o najdłuższej nazwie w wojewodztwie podlaskim w białymstoku w miejscu, gdzie krzyżuje sie droga krajowa nr 19 z drogowa wojewodzka nr 676?
+  category: Road
+  answers:
+    - answer: rondo Białostockie
+      is_correct: false
+    - answer: Rondo Arcybiskupa generała Mirona Chodakoweskiego Prawosławnego Ordynariusza Wojska Polskiego
+      is_correct: true
+    - answer: rondo Generała Józefa Hallera w Białymstoku
+      is_correct: false
+    - answer: rondo przy alei długiej
+      is_correct: false
+
+
+- question: W Województwie śwoetockrzyskim powiecie ostrowieckim w grminie Kunów, woska Doły Biskupie znajduje się ogromne figura zwierze przy drodze. Jakie to zwierzę?
+  category: Road
+  answers:
+    - answer: koń
+      is_correct: false
+    - answer: łoś
+      is_correct: false
+    - answer: pingwin
+      is_correct: true
+    - answer: niedzwiedź
+      is_correct: false
+      
+
+- question: Charakterystyczny układ dróg w miejscie framwpol w wojeodzctwie lubelskim oparte jest na planie jakiej figury?
+  category: road
+  answers:
+    - answer: kwadratu
+      is_correct: true
+    - answer: koła
+      is_correct: false
+    - answer: trójkąta
+      is_correct: false
+    - answer: gwiazdy
+      is_correct: false
+
+
+- question: w miescie Putrajaya które jest połozone na południe od kuala lumpur usytuowane jest najwiesze rondo na swiecie,  długosc drogi od pkt a wynosi az 3.5 km. Które miejsca nie znajduje się   w srodku ronda?
+  category: road
+  answers:
+    - answer: pałac
+      is_correct: false
+    - answer: hotel
+      is_correct: false
+    - answer: park
+      is_correct: false
+    - answer: stadion
+      is_correct: true
+
+- question: W centrum miasta japoni tokyo osaka jedna z łacznik przeprowadzona jest przez
+  category: road
+  answers:
+    - answer: wieżowiec
+      is_correct: true
+    - answer: dom jednorodzinny
+      is_correct: false
+    - answer: galerię handlową
+      is_correct: false
+    - answer: stadion
+      is_correct: false
+
+- question:  W miejscowosci Raczki Elblaskie jest punkt najnizszy w polsce i znajduje sie przy drodze w powiatowej. Ile ponizej poziomu moza znajduje sie ten punkt
+  category: road
+  answers:
+    - answer: 0,5 m
+      is_correct: false
+    - answer: 1 m
+      is_correct: false
+    - answer: 2 m
+      is_correct: true
+    - answer: 4 m
+      is_correct: false
+
+- question: Jak sie nazywa ulica w polsce poprowadzona korytem rzeki w miescie lesnica?
+  category: road
+  answers:
+    - answer: "nad wodą"
+      is_correct: true
+    - answer: "bystra woda"
+      is_correct: false
+    - answer: "biały strumień"
+      is_correct: false
+    - answer: "śnieżna"
+      is_correct: false
+
+- question: W miescie Wisła droga wojewodzka dw942 przechodzi przez
+  category: road
+  answers:
+    - answer: trybunę skoczni narciarskiej
+      is_correct: true
+    - answer: rynek
+      is_correct: false
+    - answer: górę "Trzy Kopce"
+      is_correct: false
+    - answer: drogę ekspresową S52
+      is_correct: false
+
+- question: Która autostrada w Polsce jest najdłuższa?
+  category: road
+  answers:
+    - answer: A1
+      is_correct: false
+    - answer: A2
+      is_correct: false
+    - answer: A3
+      is_correct: false
+    - answer: A4
+      is_correct: true
+      
+- question: Emilia to nazwa...
+  category: road
+  answers:
+    - answer: mostu w Gdańsku
+      is_correct: false
+    - answer: przejazdu promowego na Odrze
+      is_correct: false
+    - answer: węzła na Autostradzie A2
+      is_correct: true
+    - answer: drogi ekspresowej S14
+      is_correct: false
+
+- question: Ile odcinków dziś istniejących polskich autostrad powstało za czasów istnienia III Rzeszy?
+  category: road
+  answers:
+    - answer: 4
+      is_correct: false
+    - answer: 3
+      is_correct: true
+    - answer: 2
+      is_correct: false
+    - answer: 1
+      is_correct: false
+
+  
+- question: Najdłuższym mostem drogowym w Polsce jest...
+  category: brides
+  answers:
+    - answer: most Kotlarski w Krakowie
+      is_correct: false
+    - answer: most Solidarności w Płocku
+      is_correct: true
+    - answer: most Rędziński we Wrocławiu
+      is_correct: false
+    - answer: most im. Jana Pawła II w Puławach
+      is_correct: false    
+
+
+- question: Najczęściej występująca w Polsce nazwa ulicy to...
+  category: road
+  answers:
+    - answer: Leśna
+      is_correct: false
+    - answer: Polna
+      is_correct: true
+    - answer: Piłsudskiego
+      is_correct: false
+    - answer: Warszawska
+      is_correct: false    
+
+- question: Które oznaczenia numeracji dróg to oznaczenia drogowe
+  category: road
+  answers:
+    - answer: DK6
+      is_correct: true
+    - answer: DW747
+      is_correct: true
+    - answer: 600991K
+      is_correct: true
+    - answer: 1377R
+      is_correct: true   
