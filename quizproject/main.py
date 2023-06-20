@@ -58,9 +58,7 @@ def quiz_viewer():
 
     # get collections which has "Raods" question
     questions = db.paginate(
-        db.session.query(QCollection)
-        .join(Questions, QCollection.items)
-        .filter(QCollection.id == 1),
+        db.session.query(Questions),
         page=page,
         per_page=QUESTIONS_PER_PAGE,
     )
