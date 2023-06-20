@@ -62,13 +62,13 @@
                      </span>
                      'flask.appcontext_pushed' imported but unused</li>
                
-               </ul><tt><i>11</i> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">appcontext_popped</span><span class="p">,</span> <span class="n">appcontext_pushed</span></tt>
+               </ul><tt><i>11</i> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">appcontext_popped</span><span class="p">,</span> <span class="n">appcontext_pushed</span><span class="p">,</span> <span class="n">current_app</span></tt>
             </div>
             <div id="l12"
                class="code sev- "><tt><i>12</i> <span class="kn">from</span> <span class="nn">flask.cli</span> <span class="kn">import</span> <span class="n">with_appcontext</span></tt>
             </div>
             <div id="l13"
-               class="code sev- "><tt><i>13</i> &nbsp;</tt>
+               class="code sev- "><tt><i>13</i> <span class="kn">import</span> <span class="nn">yaml</span></tt>
             </div>
             <div id="l14"
                class="code sev- "><tt><i>14</i> &nbsp;</tt>
@@ -609,6 +609,228 @@
             </div>
             <div id="l187"
                class="code sev- "><tt><i>187</i>         <span class="p">)</span></tt>
+            </div>
+            <div id="l188"
+               class="code sev- "><tt><i>188</i> &nbsp;</tt>
+            </div>
+            <div id="l189"
+               class="code sev- "><tt><i>189</i> &nbsp;</tt>
+            </div>
+            <div id="l190"
+               class="code sev- "><tt><i>190</i> <span class="nd">@bp</span><span class="o">.</span><span class="n">cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s2">&quot;add_questions&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l191"
+               class="code sev- "><tt><i>191</i> <span class="nd">@with_appcontext</span></tt>
+            </div>
+            <div id="l192"
+               class="code sev- "><tt><i>192</i> <span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span></tt>
+            </div>
+            <div id="l193"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (87 > 79 characters)</li>
+               
+               </ul><tt><i>193</i>     <span class="s2">&quot;--file&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to the YAML file&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span></tt>
+            </div>
+            <div id="l194"
+               class="code sev- "><tt><i>194</i> <span class="p">)</span></tt>
+            </div>
+            <div id="l195"
+               class="code sev- "><tt><i>195</i> <span class="k">def</span> <span class="nf">add_questions</span><span class="p">(</span><span class="n">file</span><span class="p">):</span></tt>
+            </div>
+            <div id="l196"
+               class="code sev- "><tt><i>196</i>     <span class="k">try</span><span class="p">:</span></tt>
+            </div>
+            <div id="l197"
+               class="code sev- "><tt><i>197</i>         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span></tt>
+            </div>
+            <div id="l198"
+               class="code sev- "><tt><i>198</i>             <span class="n">questions</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></tt>
+            </div>
+            <div id="l199"
+               class="code sev- "><tt><i>199</i> &nbsp;</tt>
+            </div>
+            <div id="l200"
+               class="code sev- "><tt><i>200</i>         <span class="c1"># Process and validate each question</span></tt>
+            </div>
+            <div id="l201"
+               class="code sev- "><tt><i>201</i>         <span class="n">processed_questions</span> <span class="o">=</span> <span class="p">[]</span></tt>
+            </div>
+            <div id="l202"
+               class="code sev- "><tt><i>202</i>         <span class="k">for</span> <span class="n">question</span> <span class="ow">in</span> <span class="n">questions</span><span class="p">:</span></tt>
+            </div>
+            <div id="l203"
+               class="code sev- "><tt><i>203</i>             <span class="n">processed_question</span> <span class="o">=</span> <span class="n">process_question</span><span class="p">(</span><span class="n">question</span><span class="p">)</span></tt>
+            </div>
+            <div id="l204"
+               class="code sev- "><tt><i>204</i>             <span class="n">processed_questions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">processed_question</span><span class="p">)</span></tt>
+            </div>
+            <div id="l205"
+               class="code sev- "><tt><i>205</i> &nbsp;</tt>
+            </div>
+            <div id="l206"
+               class="code sev- "><tt><i>206</i>         <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;Questions added successfully.&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l207"
+               class="code sev- "><tt><i>207</i>     <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span></tt>
+            </div>
+            <div id="l208"
+               class="code sev- "><tt><i>208</i>         <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File &#39;</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l209"
+               class="code sev- "><tt><i>209</i>     <span class="k">except</span> <span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span></tt>
+            </div>
+            <div id="l210"
+               class="code sev- "><tt><i>210</i>         <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error parsing YAML file: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l211"
+               class="code sev- "><tt><i>211</i> &nbsp;</tt>
+            </div>
+            <div id="l212"
+               class="code sev- "><tt><i>212</i> &nbsp;</tt>
+            </div>
+            <div id="l213"
+               class="code sev- "><tt><i>213</i> <span class="k">def</span> <span class="nf">process_question</span><span class="p">(</span><span class="n">question</span><span class="p">):</span></tt>
+            </div>
+            <div id="l214"
+               class="code sev- "><tt><i>214</i>     <span class="c1"># Get the question text and category</span></tt>
+            </div>
+            <div id="l215"
+               class="code sev- "><tt><i>215</i>     <span class="n">question_text</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;question&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l216"
+               class="code sev- "><tt><i>216</i>     <span class="n">category</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l217"
+               class="code sev- "><tt><i>217</i> &nbsp;</tt>
+            </div>
+            <div id="l218"
+               class="code sev- "><tt><i>218</i>     <span class="c1"># Process and validate the answers</span></tt>
+            </div>
+            <div id="l219"
+               class="code sev- "><tt><i>219</i>     <span class="n">answers</span> <span class="o">=</span> <span class="n">question</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;answers&quot;</span><span class="p">,</span> <span class="p">[])</span></tt>
+            </div>
+            <div id="l220"
+               class="code sev- "><tt><i>220</i> &nbsp;</tt>
+            </div>
+            <div id="l221"
+               class="code sev- "><tt><i>221</i>     <span class="c1"># For example, let&#39;s check if there are at least two correct answers</span></tt>
+            </div>
+            <div id="l222"
+               class="code sev- "><tt><i>222</i>     <span class="n">correct_answers</span> <span class="o">=</span> <span class="p">[</span></tt>
+            </div>
+            <div id="l223"
+               class="code sev- "><tt><i>223</i>         <span class="n">answer</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="n">answers</span> <span class="k">if</span> <span class="n">answer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;is_correct&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l224"
+               class="code sev- "><tt><i>224</i>     <span class="p">]</span></tt>
+            </div>
+            <div id="l225"
+               class="code sev- "><tt><i>225</i>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">correct_answers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span></tt>
+            </div>
+            <div id="l226"
+               class="code sev- "><tt><i>226</i>         <span class="n">current_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span></tt>
+            </div>
+            <div id="l227"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E501
+                     </span>
+                     Line too long (114 > 79 characters)</li>
+               
+               </ul><tt><i>227</i>             <span class="sa">f</span><span class="s2">&quot;Warning: The question &#39;</span><span class="si">{</span><span class="n">question_text</span><span class="si">}</span><span class="s2">&#39; in category &#39;</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2">&#39; have at least two correct answers.&quot;</span></tt>
+            </div>
+            <div id="l228"
+               class="code sev- "><tt><i>228</i>         <span class="p">)</span></tt>
+            </div>
+            <div id="l229"
+               class="code sev- "><tt><i>229</i>         <span class="n">multianswer</span> <span class="o">=</span> <span class="mi">1</span></tt>
+            </div>
+            <div id="l230"
+               class="code sev- "><tt><i>230</i>     <span class="k">else</span><span class="p">:</span></tt>
+            </div>
+            <div id="l231"
+               class="code sev- "><tt><i>231</i>         <span class="n">multianswer</span> <span class="o">=</span> <span class="mi">0</span></tt>
+            </div>
+            <div id="l232"
+               class="code sev- "><tt><i>232</i> &nbsp;</tt>
+            </div>
+            <div id="l233"
+               class="code sev- "><tt><i>233</i>     <span class="c1"># question base variables</span></tt>
+            </div>
+            <div id="l234"
+               class="code sev- "><tt><i>234</i>     <span class="c1"># question_difficulty=5,</span></tt>
+            </div>
+            <div id="l235"
+               class="code sev- "><tt><i>235</i>     <span class="c1"># is_active=1,</span></tt>
+            </div>
+            <div id="l236"
+               class="code sev- "><tt><i>236</i>     <span class="n">processed_question</span> <span class="o">=</span> <span class="n">Questions</span><span class="p">(</span></tt>
+            </div>
+            <div id="l237"
+               class="code sev- "><tt><i>237</i>         <span class="n">question_text</span><span class="o">=</span><span class="n">question_text</span><span class="p">,</span></tt>
+            </div>
+            <div id="l238"
+               class="code sev- "><tt><i>238</i>         <span class="n">question_difficulty</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span></tt>
+            </div>
+            <div id="l239"
+               class="code sev- "><tt><i>239</i>         <span class="n">question_multianswer</span><span class="o">=</span><span class="n">multianswer</span><span class="p">,</span></tt>
+            </div>
+            <div id="l240"
+               class="code sev- "><tt><i>240</i>         <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span></tt>
+            </div>
+            <div id="l241"
+               class="code sev- "><tt><i>241</i>         <span class="n">is_active</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span></tt>
+            </div>
+            <div id="l242"
+               class="code sev- "><tt><i>242</i>     <span class="p">)</span></tt>
+            </div>
+            <div id="l243"
+               class="code sev- "><tt><i>243</i>     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">processed_question</span><span class="p">)</span></tt>
+            </div>
+            <div id="l244"
+               class="code sev- "><tt><i>244</i>     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></tt>
+            </div>
+            <div id="l245"
+               class="code sev- "><tt><i>245</i>     <span class="k">for</span> <span class="n">answer</span> <span class="ow">in</span> <span class="n">answers</span><span class="p">:</span></tt>
+            </div>
+            <div id="l246"
+               class="code sev- "><tt><i>246</i>         <span class="n">processed_answer</span> <span class="o">=</span> <span class="n">Answers</span><span class="p">(</span></tt>
+            </div>
+            <div id="l247"
+               class="code sev- "><tt><i>247</i>             <span class="n">question_id</span><span class="o">=</span><span class="n">processed_question</span><span class="o">.</span><span class="n">question_id</span><span class="p">,</span></tt>
+            </div>
+            <div id="l248"
+               class="code sev- "><tt><i>248</i>             <span class="n">question_answer</span><span class="o">=</span><span class="n">answer</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">],</span></tt>
+            </div>
+            <div id="l249"
+               class="code sev- "><tt><i>249</i>             <span class="n">question_correct</span><span class="o">=</span><span class="n">answer</span><span class="p">[</span><span class="s2">&quot;is_correct&quot;</span><span class="p">],</span></tt>
+            </div>
+            <div id="l250"
+               class="code sev- "><tt><i>250</i>         <span class="p">)</span></tt>
+            </div>
+            <div id="l251"
+               class="code sev- "><tt><i>251</i>         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">processed_answer</span><span class="p">)</span></tt>
+            </div>
+            <div id="l252"
+               class="code sev- "><tt><i>252</i> &nbsp;</tt>
+            </div>
+            <div id="l253"
+               class="code sev- "><tt><i>253</i>     <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></tt>
+            </div>
+            <div id="l254"
+               class="code sev- "><tt><i>254</i>     <span class="c1"># Return the processed question data</span></tt>
+            </div>
+            <div id="l255"
+               class="code sev- "><tt><i>255</i>     <span class="k">return</span> <span class="n">processed_question</span></tt>
             </div>
             
          </div>
