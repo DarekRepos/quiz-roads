@@ -8,9 +8,9 @@ from ..models.questions import Questions
 from ..models.answers import Answers
 
 
-from flask import Blueprint, appcontext_popped, appcontext_pushed
+from flask import Blueprint, appcontext_popped, appcontext_pushed, current_app
 from flask.cli import with_appcontext
-
+import yaml
 
 bp = Blueprint("questions", __name__)
 bp.cli.short_help = "Questions utilities"
@@ -185,3 +185,71 @@ def deleteall():
                 q=question_rows_deleted, a=answer_rows_deleted
             )
         )
+
+
+@bp.cli.command("add_questions")
+@with_appcontext
+@click.option(
+    "--file", type=click.Path(exists=True), help="Path to the YAML file", required=True
+)
+def add_questions(file):
+    try:
+        with open(file, "r") as f:
+            questions = yaml.safe_load(f)
+
+        # Process and validate each question
+        processed_questions = []
+        for question in questions:
+            processed_question = process_question(question)
+            processed_questions.append(processed_question)
+
+        click.echo("Questions added successfully.")
+    except FileNotFoundError:
+        click.echo(f"File '{file}' not found.")
+    except yaml.YAMLError as error:
+        click.echo(f"Error parsing YAML file: {error}")
+
+
+def process_question(question):
+    # Get the question text and category
+    question_text = question.get("question")
+    category = question.get("category")
+
+    # Process and validate the answers
+    answers = question.get("answers", [])
+
+    # For example, let's check if there are at least two correct answers
+    correct_answers = [
+        answer["answer"] for answer in answers if answer.get("is_correct")
+    ]
+    if len(correct_answers) > 1:
+        current_app.logger.info(
+            f"Warning: The question '{question_text}' in category '{category}' have at least two correct answers."
+        )
+        multianswer = 1
+    else:
+        multianswer = 0
+
+    # question base variables
+    # question_difficulty=5,
+    # is_active=1,
+    processed_question = Questions(
+        question_text=question_text,
+        question_difficulty=5,
+        question_multianswer=multianswer,
+        category=category,
+        is_active=1,
+    )
+    db.session.add(processed_question)
+    db.session.flush()
+    for answer in answers:
+        processed_answer = Answers(
+            question_id=processed_question.question_id,
+            question_answer=answer["answer"],
+            question_correct=answer["is_correct"],
+        )
+        db.session.add(processed_answer)
+
+    db.session.commit()
+    # Return the processed question data
+    return processed_question

@@ -8,6 +8,7 @@ class Questions(db.Model):
     question_difficulty = db.Column(db.Integer, nullable=False)
     question_multianswer = db.Column(db.Integer, nullable=False)
     question_text = db.Column(db.String(1000))
+    category = db.Column(db.String(100))
     is_active = db.Column(db.Integer)
 
     quiz = db.relationship("Quiz", back_populates="questions")

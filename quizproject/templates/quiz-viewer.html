@@ -1,20 +1,11 @@
 {% extends "base.html" %}
-
 {% block content %}
   <!-- progress bar -->
   <h1 class="title">Quiz about roads</h1>
   <!-- Quiz Questions - wyswiretl wszystkie pytania gdzie quiz = 1 -->
   <!-- Quiz Card -->
   <ul>
-    {% for column in questions.items %}
-      <li>
-        {% for item in column.items %}
-        {% if  item.question_id|int == questions.page|int%}
-        {{ item.question_text }}
-        {% endif %}
-        {% endfor %}
-      </li>
-    {% endfor %}
+    {% for column in questions %}<li>{{ column.question_text }}</li>{% endfor %}
   </ul>
   {% from "_util-field.html" import render_field %}
   <form method="POST" action="" role="form">
@@ -23,7 +14,7 @@
         {% if  a.question_multianswer == 1 %}
           <li>It is multianswer question</li>
         </ul>
-        {% set testing = "it worked" %}
+        {% set testing = "selected" %}
         {{ form2.hidden_tag() }}
         {% for option in form2.user_answers %}
           {% if  option.data|string in selections %}
@@ -37,7 +28,7 @@
       {% else %}
         {{ form1.hidden_tag() }}
         {% for option in form1.user_answers %}
-          {% if  option.data|string in selections %}
+         {% if option.data|string in selections %}
             <div>{{ testing }}</div>
             <div class="control">{{ option(checked=true) }} {{ option.label(class="radio") }}</div>
           {% else %}

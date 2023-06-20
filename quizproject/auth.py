@@ -12,12 +12,11 @@ from flask import (
     flash,
 )
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user, login_required, logout_user, current_user
 
 from quizproject.tasks.tasks import send_celery_email
-from .models.users import User
-from flask_login import login_user, login_required, logout_user, current_user
 from . import db
-
+from .models.users import User
 from .forms.login_form import LoginForm
 from .forms.signup_form import SignUpForm
 
@@ -37,7 +36,8 @@ def login():
         # check if the user actually exists
         # take the user-supplied password, hash it,
         # and compare it to the hashed password in the database
-        if not user or not check_password_hash(user.user_password, form.password.data):
+        if not user or not check_password_hash(
+                user.user_password, form.password.data):
             flash("Please check your login details and try again.")
             return render_template("login.html", form=form)
         # if the above check passes,
@@ -87,7 +87,8 @@ def signup():
         new_user = User(
             user_email=form.email.data,
             user_name=form.username.data,
-            user_password=generate_password_hash(form.password.data, method="sha256"),
+            user_password=generate_password_hash(
+                form.password.data, method="sha256"),
             register_time=register_time,
         )
 
@@ -107,6 +108,12 @@ def signup():
 @auth.route("/logout")
 @login_required
 def logout():
+    """
+    Log out the user and redirect to index page
+
+    Returns:
+        url: index page
+    """
     logout_user()
     session.clear()
     return redirect(url_for("main.index"))
