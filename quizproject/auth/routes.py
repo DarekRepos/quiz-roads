@@ -2,7 +2,6 @@ import datetime
 
 
 from flask import (
-    Blueprint,
     render_template,
     redirect,
     session,
@@ -15,17 +14,19 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
 
 from quizproject.tasks.tasks import send_celery_email
-from . import db
-from .models.users import User
-from .forms.login_form import LoginForm
-from .forms.signup_form import SignUpForm
+from .. import db
+from ..models.users import User
+from .forms import LoginForm, SignUpForm
+from . import bp
 
 
-auth = Blueprint("auth", __name__)
-
-
-@auth.route("/login", methods=["GET", "POST"])
+@bp.route("/login", methods=["GET", "POST"])
 def login():
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     form = LoginForm(request.form)
 
     remember = bool(form.remember_me.data)
@@ -36,10 +37,9 @@ def login():
         # check if the user actually exists
         # take the user-supplied password, hash it,
         # and compare it to the hashed password in the database
-        if not user or not check_password_hash(
-                user.user_password, form.password.data):
+        if not user or not check_password_hash(user.user_password, form.password.data):
             flash("Please check your login details and try again.")
-            return render_template("login.html", form=form)
+            return render_template("auth/login.html", form=form)
         # if the above check passes,
         # then we know the user has the right credentials
         login_user(user, remember=remember)
@@ -56,13 +56,18 @@ def login():
         return redirect(url_for("main.profile"))
 
     if not current_user.is_authenticated:
-        return render_template("login.html", form=form)
+        return render_template("auth/login.html", form=form)
 
-    return render_template("login.html", form=form)
+    return render_template("auth/login.html", form=form)
 
 
-@auth.route("/signup", methods=["GET", "POST"])
+@bp.route("/signup", methods=["GET", "POST"])
 def signup():
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     form = SignUpForm(request.form)
 
     if form.validate_on_submit():
@@ -87,8 +92,7 @@ def signup():
         new_user = User(
             user_email=form.email.data,
             user_name=form.username.data,
-            user_password=generate_password_hash(
-                form.password.data, method="sha256"),
+            user_password=generate_password_hash(form.password.data, method="sha256"),
             register_time=register_time,
         )
 
@@ -102,10 +106,10 @@ def signup():
 
         return redirect(url_for("auth.login"))
 
-    return render_template("signup.html", form=form)
+    return render_template("auth/signup.html", form=form)
 
 
-@auth.route("/logout")
+@bp.route("/logout")
 @login_required
 def logout():
     """

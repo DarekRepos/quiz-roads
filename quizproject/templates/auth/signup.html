@@ -12,7 +12,7 @@
                 {% endif %}
             {% endwith %}
             {% from "_util-field.html" import render_field %}
-            <form method="POST" action="/signup">
+            <form method="POST" action="{{ url_for("auth.signup") }}">
                 {{ form.hidden_tag() }}
                 <div class="field">
                     <div class="control">{{ render_field(form.username, placeholder="Username",class='input is-large') }}</div>

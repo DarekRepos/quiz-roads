@@ -37,8 +37,9 @@ def index():
 def profile():
     return render_template("profile.html", name=current_user.user_name)
 
+# TODO: contact page
+# TODO: about page - about project
 
-# TODO: add tests to route
 @main.route("/quiz")
 @login_required
 def quiz():
