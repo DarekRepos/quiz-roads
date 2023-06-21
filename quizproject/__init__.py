@@ -66,7 +66,7 @@ def create_app():
 
 def register_blueprints(app):
     from quizproject.auth import bp as auth_bp
-    from .main import main as main_quizapp
+    from quizproject.main import main as main_quizapp
     from .api import question_api as apis
     from .errors import bp as errors_handlers
     from .commands.question_manager import bp as questions_cli

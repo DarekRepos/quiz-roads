@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import MagicMock
 
-from quizproject.services.answer_scorer import AnswerScorer
+from quizproject.quiz.answer_scorer import AnswerScorer
 
 
 @pytest.fixture
