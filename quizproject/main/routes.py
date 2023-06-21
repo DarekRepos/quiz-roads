@@ -1,5 +1,4 @@
 from flask import (
-    Blueprint,
     current_app,
     redirect,
     render_template,
@@ -11,12 +10,9 @@ from flask import (
 from flask_login import login_required, current_user
 from sqlalchemy import func
 from quizproject import db
-from .forms import MultipleValidAnswersForm, OneValidAnswerForm, ResultForm
-
 from quizproject.models.answers import Answers
-from quizproject.models.question_collection import QCollection
-
 from quizproject.models.questions import Questions
+from .forms import MultipleValidAnswersForm, OneValidAnswerForm, ResultForm
 from .answer_scorer import AnswerScorer
 from . import main
 
@@ -25,6 +21,7 @@ QUESTIONS_PER_PAGE = 1
 
 @main.route("/")
 def index():
+    """home page"""
     current_app.logger.info("Visited index page")
     return render_template("main/index.html")
 
@@ -32,6 +29,7 @@ def index():
 @main.route("/profile")
 @login_required
 def profile():
+    """profile page"""
     return render_template("main/profile.html", name=current_user.user_name)
 
 
@@ -42,6 +40,7 @@ def profile():
 @main.route("/quiz")
 @login_required
 def quiz():
+    """quiz page"""
     question_number = db.session.query(func.count(Questions.question_id)).scalar()
     return render_template("main/quiz.html", question_number=question_number)
 
@@ -52,6 +51,7 @@ def quiz():
 @main.route("/quiz/viewer", methods=["GET", "POST"])
 @login_required
 def quiz_viewer():
+    """Quiz app is started after user press start button"""
     session["checked"] = "checked"
 
     page = request.args.get("page", 1, type=int)
@@ -131,6 +131,9 @@ def quiz_viewer():
 @main.route("/results", methods=["POST"])
 @login_required
 def results():
+    """After user click check results button he get result page
+    with his score
+    """
     scorer = AnswerScorer(session, db)
     percent = scorer.score_answers()
 
