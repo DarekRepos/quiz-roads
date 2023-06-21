@@ -7,7 +7,7 @@
                 {% if messages %}<div class="notification is-danger">{{ messages[0] }}</div>{% endif %}
             {% endwith %}
             {% from "_util-field.html" import render_field %}
-            <form method="POST" action="/login" role="form">
+            <form method="POST" action="{{ url_for("auth.login") }}" role="form">
                 {{ form.hidden_tag() }}
                 <div class="field">
                     <div class="control">{{ render_field(form.email, placeholder="email",class='input is-large') }}</div>
