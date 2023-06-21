@@ -1,11 +1,8 @@
 from flask import Blueprint, jsonify, json
+from . import question_api
 
-
-question_api = Blueprint("api", __name__)
-
-
-'''
-    view swager
+"""
+    view swagger
     ✅ GET /Questions: lists of all questions titles .
     ✅ GET /Questions: lists of all questions with answers.
     ✅ GET /Answers{questionid}/question: lists of all answers.
@@ -15,25 +12,21 @@ question_api = Blueprint("api", __name__)
     ✅ GET /questions: lists of all questions with pagination..
     
     ✅ GET /users/{userId}/quiz : lists of all orders for a particular user.
-
-    
-
     ✅ POST /users: creates a new user.
     ✅ PUT /users/{userId}: updates a user.
     ✅ DELETE /users/{userId}: deletes a specific user.
     ✅ PATCH /users/{userId}: partially updates a user.
     ✅ POST /users/{userId}/cart/checkout: runs the checkout process.
 
-    protect rouutes woth flask-api-key
+    protect routes with flask-api-key
 
-'''
+"""
 
 
-@question_api.route("/questions", methods=['GET'])
+@question_api.route("/questions", methods=["GET"])
 # @swag_from()
 def get_all_questions():
-
-    """  
+    """
     question = {
         'id': 1,
         'fromquizid': [2, 3]
