@@ -77,11 +77,11 @@ class AuthActions(object):
 
     def login(self, email, password):
         return self._client.post(
-            "/login", data={"email": email, "password": password}, follow_redirects=True
+            "/auth/login", data={"email": email, "password": password}, follow_redirects=True
         )
 
     def logout(self):
-        return self._client.get("/logout", follow_redirects=True)
+        return self._client.get("/auth/logout", follow_redirects=True)
 
 
 @pytest.fixture
