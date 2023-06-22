@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>flake8 violations: quizproject/api.py</title>
+      <title>flake8 violations: quizproject/api/api.py</title>
       <meta http-equiv="Content-Type" value="text/html; charset=UTF-8">
       <link rel="stylesheet" href="styles.css">
 <script>
@@ -37,13 +37,13 @@ window.addEventListener('DOMContentLoaded', function () {
       <div id="page">
          <p id="srclink">
             <a title="View full annotated source"
-               href="quizproject.api.source.html">
+               href="quizproject.api.api.source.html">
                <img src="file.svg" alt="&#x2261;">
             </a></p>
          <h1>
             <a href="index.html">
                <img src="back.svg" alt="&#x2B05;">
-               quizproject/api.py
+               quizproject/api/api.py
             </a>
          </h1>
 
@@ -52,15 +52,26 @@ window.addEventListener('DOMContentLoaded', function () {
          <li>
             <a data-code="F401">
                <span class="count sev-1">
-                  1
+                  2
                </span>
-               <strong>F401:</strong> 'flask.json' imported but unused
+               <strong>F401:</strong> 'flask.Blueprint' imported but unused
+               
+                  (and 1 similar)
                
             </a>
             <ul class="details">
             <li>
                
-               <a href="quizproject.api.source.html#l1">
+               <p>'flask.Blueprint' imported but unused:</p>
+               
+               <a href="quizproject.api.api.source.html#l1">
+                  <tt><i>1</i> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">json</span></tt>
+               </a>
+            </li><li>
+               
+               <p>'flask.json' imported but unused:</p>
+               
+               <a href="quizproject.api.api.source.html#l1">
                   <tt><i>1</i> <span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">json</span></tt>
                </a>
             </li>
@@ -70,7 +81,7 @@ window.addEventListener('DOMContentLoaded', function () {
          <li>
             <a data-code="W293">
                <span class="count sev-2">
-                  3
+                  2
                </span>
                <strong>W293:</strong> blank line contains whitespace
                
@@ -78,36 +89,13 @@ window.addEventListener('DOMContentLoaded', function () {
             <ul class="details">
             <li>
                
-               <a href="quizproject.api.source.html#l14">
-                  <tt><i>14</i> <span class="sd">    </span></tt>
+               <a href="quizproject.api.api.source.html#l11">
+                  <tt><i>11</i> <span class="sd">    </span></tt>
                </a>
             </li><li>
                
-               <a href="quizproject.api.source.html#l16">
-                  <tt><i>16</i> <span class="sd">    </span></tt>
-               </a>
-            </li><li>
-               
-               <a href="quizproject.api.source.html#l19">
-                  <tt><i>19</i> <span class="sd">    </span></tt>
-               </a>
-            </li>
-            </ul>
-         </li>
-         
-         <li>
-            <a data-code="W291">
-               <span class="count sev-2">
-                  1
-               </span>
-               <strong>W291:</strong> trailing whitespace
-               
-            </a>
-            <ul class="details">
-            <li>
-               
-               <a href="quizproject.api.source.html#l36">
-                  <tt><i>36</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;  </span></tt>
+               <a href="quizproject.api.api.source.html#l13">
+                  <tt><i>13</i> <span class="sd">    </span></tt>
                </a>
             </li>
             </ul>

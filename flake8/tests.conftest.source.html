@@ -297,9 +297,9 @@
                      <span class="count sev-2">
                         E501
                      </span>
-                     Line too long (88 > 79 characters)</li>
+                     Line too long (93 > 79 characters)</li>
                
-               </ul><tt><i>80</i>             <span class="s2">&quot;/login&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">email</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">},</span> <span class="n">follow_redirects</span><span class="o">=</span><span class="kc">True</span></tt>
+               </ul><tt><i>80</i>             <span class="s2">&quot;/auth/login&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">email</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">},</span> <span class="n">follow_redirects</span><span class="o">=</span><span class="kc">True</span></tt>
             </div>
             <div id="l81"
                class="code sev- "><tt><i>81</i>         <span class="p">)</span></tt>
@@ -311,7 +311,7 @@
                class="code sev- "><tt><i>83</i>     <span class="k">def</span> <span class="nf">logout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l84"
-               class="code sev- "><tt><i>84</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/logout&quot;</span><span class="p">,</span> <span class="n">follow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>84</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/auth/logout&quot;</span><span class="p">,</span> <span class="n">follow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></tt>
             </div>
             <div id="l85"
                class="code sev- "><tt><i>85</i> &nbsp;</tt>

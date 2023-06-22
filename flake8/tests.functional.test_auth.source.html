@@ -119,7 +119,7 @@
                class="code sev- "><tt><i>19</i> &nbsp;</tt>
             </div>
             <div id="l20"
-               class="code sev- "><tt><i>20</i>     <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></tt>
+               class="code sev- "><tt><i>20</i>     <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/auth/login&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></tt>
             </div>
             <div id="l21"
                class="code sev- "><tt><i>21</i> &nbsp;</tt>
@@ -269,7 +269,7 @@
                class="code sev- "><tt><i>66</i>             <span class="s2">&quot;dareczek046&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l67"
-               class="code sev- "><tt><i>67</i>             <span class="sa">b</span><span class="s2">&quot;login&quot;</span><span class="p">,</span></tt>
+               class="code sev- "><tt><i>67</i>             <span class="sa">b</span><span class="s2">&quot;auth/login&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l68"
                class="code sev- "><tt><i>68</i>         <span class="p">),</span></tt>
@@ -362,13 +362,13 @@
                class="code sev- "><tt><i>94</i> &nbsp;</tt>
             </div>
             <div id="l95"
-               class="code sev- "><tt><i>95</i>     <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/signup&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></tt>
+               class="code sev- "><tt><i>95</i>     <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/auth/signup&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></tt>
             </div>
             <div id="l96"
                class="code sev- "><tt><i>96</i>     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span></tt>
             </div>
             <div id="l97"
-               class="code sev- "><tt><i>97</i>         <span class="s2">&quot;/signup&quot;</span><span class="p">,</span></tt>
+               class="code sev- "><tt><i>97</i>         <span class="s2">&quot;/auth/signup&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l98"
                class="code sev- "><tt><i>98</i>         <span class="n">data</span><span class="o">=</span><span class="p">{</span></tt>
@@ -428,7 +428,7 @@
                class="code sev- "><tt><i>116</i>             <span class="s2">&quot;dareczek046&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l117"
-               class="code sev- "><tt><i>117</i>             <span class="s2">&quot;/login&quot;</span><span class="p">,</span></tt>
+               class="code sev- "><tt><i>117</i>             <span class="s2">&quot;/auth/login&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l118"
                class="code sev- "><tt><i>118</i>         <span class="p">),</span></tt>
@@ -449,7 +449,7 @@
                class="code sev- "><tt><i>123</i>             <span class="s2">&quot;dareczek014&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l124"
-               class="code sev- "><tt><i>124</i>             <span class="s2">&quot;/signup&quot;</span><span class="p">,</span></tt>
+               class="code sev- "><tt><i>124</i>             <span class="s2">&quot;/auth/signup&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l125"
                class="code sev- "><tt><i>125</i>         <span class="p">),</span></tt>
@@ -470,7 +470,7 @@
                class="code sev- "><tt><i>130</i>             <span class="s2">&quot;dareczek014&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l131"
-               class="code sev- "><tt><i>131</i>             <span class="s2">&quot;/signup&quot;</span><span class="p">,</span></tt>
+               class="code sev- "><tt><i>131</i>             <span class="s2">&quot;/auth/signup&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l132"
                class="code sev- "><tt><i>132</i>         <span class="p">),</span></tt>
@@ -530,13 +530,13 @@
                class="code sev- "><tt><i>147</i> &nbsp;</tt>
             </div>
             <div id="l148"
-               class="code sev- "><tt><i>148</i>     <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/signup&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></tt>
+               class="code sev- "><tt><i>148</i>     <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/auth/signup&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span></tt>
             </div>
             <div id="l149"
                class="code sev- "><tt><i>149</i>     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span></tt>
             </div>
             <div id="l150"
-               class="code sev- "><tt><i>150</i>         <span class="s2">&quot;/signup&quot;</span><span class="p">,</span></tt>
+               class="code sev- "><tt><i>150</i>         <span class="s2">&quot;/auth/signup&quot;</span><span class="p">,</span></tt>
             </div>
             <div id="l151"
                class="code sev- "><tt><i>151</i>         <span class="n">data</span><span class="o">=</span><span class="p">{</span></tt>
