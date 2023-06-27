@@ -1,9 +1,8 @@
 import datetime
-import os
-import flask
-
+import scrypt
 import pytest
 from sqlalchemy import delete
+from config import Config
 
 
 # import the module
@@ -21,8 +20,8 @@ def app():
     """
     app = create_app()
 
-    app.config.from_object('config.TestingConfig')
-    
+    app.config.from_object("config.TestingConfig")
+
     # app.config.setdefault('WTF_CSRF_METHODS', ['POST', 'PUT', 'PATCH'])
 
     ctx = app.test_request_context()
@@ -47,7 +46,14 @@ def app_with_user(app_with_db):
     new_user = User(
         user_email="dareczek014@gmail.com",
         user_name="dareczek014",
-        user_password=generate_password_hash("dareczek014", method="sha256"),
+        user_password=scrypt.hash(
+            password="dareczek014",
+            salt=Config.SALT,
+            N=2048,
+            r=8,
+            p=1,
+            buflen=32,
+        ),
         register_time=register_time,
     )
 
@@ -77,7 +83,9 @@ class AuthActions(object):
 
     def login(self, email, password):
         return self._client.post(
-            "/auth/login", data={"email": email, "password": password}, follow_redirects=True
+            "/auth/login",
+            data={"email": email, "password": password},
+            follow_redirects=True,
         )
 
     def logout(self):

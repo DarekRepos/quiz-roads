@@ -71,14 +71,14 @@ def test_logout(client, auth, app_with_user):
             "newdareczek014@gmail.com",
             "dareczek14",
             "dareczek014",
-            b"already registered",
+            "already registered",
         ),
         (
             "newdareczek014",
             "dareczek014@gmail.com",
             "dareczek14",
             "dareczek014",
-            b"already registered",
+            "already registered",
         ),
     ],
 )

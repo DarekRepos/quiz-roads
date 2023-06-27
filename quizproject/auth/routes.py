@@ -1,5 +1,5 @@
 import datetime
-
+import scrypt
 
 from flask import (
     render_template,
@@ -12,6 +12,7 @@ from flask import (
 )
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
+from config import Config
 
 from quizproject.tasks.tasks import send_celery_email
 from .. import db
@@ -37,9 +38,24 @@ def login():
         # check if the user actually exists
         # take the user-supplied password, hash it,
         # and compare it to the hashed password in the database
-        if not user or not check_password_hash(user.user_password, form.password.data):
+
+        # Verify the hashed password
+        is_password_valid = (
+            scrypt.hash(
+                form.password.data.encode("utf-8"),
+                salt=Config.SALT,
+                N=2048,
+                r=8,
+                p=1,
+                buflen=32,
+            )
+            == user.user_password
+        )
+
+        if not user or not is_password_valid:
             flash("Please check your login details and try again.")
             return render_template("auth/login.html", form=form)
+
         # if the above check passes,
         # then we know the user has the right credentials
         login_user(user, remember=remember)
@@ -89,10 +105,18 @@ def signup():
             return redirect(url_for("auth.signup"))
 
         # Create new User from form data
+
         new_user = User(
             user_email=form.email.data,
             user_name=form.username.data,
-            user_password=generate_password_hash(form.password.data, method="sha256"),
+            user_password=scrypt.hash(
+                form.password.data.encode("utf-8"),
+                salt=Config.SALT,
+                N=2048,
+                r=8,
+                p=1,
+                buflen=32,
+            ),
             register_time=register_time,
         )
 

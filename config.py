@@ -19,7 +19,7 @@ class Config(object):
     TESTING = False
     WTF_CSRF_ENABLED = True
     WTF_CSRF_CHECK_DEFAULT = True
-
+    SALT = b"aa1f2d3f4d23ac44e9c5a6c3d8f9ee8c"
     # Settings applicable to all environments
 
     SECRET_KEY = os.getenv("SECRET_KEY", default="A very terrible secret key")
@@ -36,9 +36,9 @@ class Config(object):
     MAIL_DEFAULT_SENDER = os.getenv("MAIL_USERNAME", default="")
     MAIL_SUPPRESS_SEND = False
 
-    CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL ')
-    RESULT_BACKEND = os.getenv('RESULT_BACKEND')
-    
+    CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL ")
+    RESULT_BACKEND = os.getenv("RESULT_BACKEND")
+
     #   Redis conf
     SESSION_TYPE = "redis"
     SESSION_PERMANENT = False
