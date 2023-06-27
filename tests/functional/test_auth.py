@@ -64,7 +64,7 @@ def test_logout(client, auth, app_with_user):
             "dareczek046@gmail.com",
             "dareczek046",
             "dareczek046",
-            "login",
+            b"auth/login",
         ),
         (
             "dareczek014",
