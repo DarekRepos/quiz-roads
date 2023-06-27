@@ -63,6 +63,7 @@ python-dotenv==1.0.0
 PyYAML==6.0
 redis==4.5.5
 regex==2023.5.5
+scrypt==0.8.20
 six==1.16.0
 SQLAlchemy==2.0.12
 tomli==2.0.1

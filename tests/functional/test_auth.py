@@ -17,7 +17,7 @@ def test_login(client, auth, app_with_user):
          check that user is successfully redirected to profile pageB
     """
 
-    assert client.get("/login").status_code == 200
+    assert client.get("/auth/login").status_code == 200
 
     response = auth.login(email="dareczek014@gmail.com", password="dareczek014")
 
@@ -64,21 +64,21 @@ def test_logout(client, auth, app_with_user):
             "dareczek046@gmail.com",
             "dareczek046",
             "dareczek046",
-            b"login",
+            "login",
         ),
         (
             "dareczek014",
             "newdareczek014@gmail.com",
             "dareczek14",
             "dareczek014",
-            b"already registered",
+            "already registered",
         ),
         (
             "newdareczek014",
             "dareczek014@gmail.com",
             "dareczek14",
             "dareczek014",
-            b"already registered",
+            "already registered",
         ),
     ],
 )
@@ -92,9 +92,9 @@ def test_register_validation(
 
     """
 
-    assert client.get("/signup").status_code == 200
+    assert client.get("/auth/signup").status_code == 200
     response = client.post(
-        "/signup",
+        "/auth/signup",
         data={
             "username": username,
             "email": email,
@@ -114,21 +114,21 @@ def test_register_validation(
             "dareczek046@gmail.com",
             "dareczek046",
             "dareczek046",
-            "/login",
+            "/auth/login",
         ),
         (
             "dareczek014",
             "newdareczek014@gmail.com",
             "dareczek14",
             "dareczek014",
-            "/signup",
+            "/auth/signup",
         ),
         (
             "newdareczek014",
             "dareczek014@gmail.com",
             "dareczek14",
             "dareczek014",
-            "/signup",
+            "/auth/signup",
         ),
     ],
 )
@@ -145,9 +145,9 @@ def test_register(
          check that user was redirect to page that he can change USERNAME
     """
 
-    assert client.get("/signup").status_code == 200
+    assert client.get("/auth/signup").status_code == 200
     response = client.post(
-        "/signup",
+        "/auth/signup",
         data={
             "username": username,
             "email": email,
