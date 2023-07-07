@@ -7,9 +7,8 @@ from wtforms.validators import DataRequired
 
 
 class OneValidAnswerForm(FlaskForm):
-    """ Form for one valid answer in radio fields
+    """Form for one valid answer in radio fields"""
 
-    """
     user_answers = RadioField(
         "Label", coerce=int, choices=[], validators=[DataRequired()]
     )
@@ -19,25 +18,21 @@ class OneValidAnswerForm(FlaskForm):
 
 class MultipleCheckBoxField(SelectMultipleField):
 
-    """Override class for SelectedMultiple field
-
-    """
+    """Override class for SelectedMultiple field"""
 
     widget = widgets.ListWidget(prefix_label=False)
     option_widget = widgets.CheckboxInput()
 
 
 class MultipleValidAnswersForm(FlaskForm):
-    """ Form for multiple valid answers in checkboxes
+    """Form for multiple valid answers in checkboxes"""
 
-    """
-
-    user_answers = MultipleCheckBoxField("Label", coerce=int, choices=[], validators=[])
+    user_answers = MultipleCheckBoxField("Label", coerce=int, choices=[],
+                                         validators=[])
     submit = SubmitField("Save")
 
 
 class ResultForm(FlaskForm):
-    """ Result button that submit all answers and get score
-    """
+    """Result button that submit all answers and get score"""
 
-    submit = SubmitField("Complete Quiz & Check Yours Results")
+    submit = SubmitField("Check Yours Results")

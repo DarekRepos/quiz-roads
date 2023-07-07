@@ -8,31 +8,32 @@
     {% for column in questions %}<li>{{ column.question_text }}</li>{% endfor %}
   </ul>
   {% from "_util-field.html" import render_field %}
-  <form method="POST" action="" role="form">
+  <form method="post" action="" role="form">
     {% for a in multianswer %}
       <ul>
-        {% if  a.question_multianswer == 1 %}
+        {% if a.question_multianswer == 1 %}
           <li>It is multianswer question</li>
         </ul>
         {% set testing = "selected" %}
         {{ form2.hidden_tag() }}
         {% for option in form2.user_answers %}
-          {% if  option.data|string in selections %}
+          {% if option.data|string in selections %}
             <div>{{ testing }}</div>
-            <div class="control">{{ option(checked=true) }} {{ option.label(class="checkbox") }}</div>
-          {% else %}
-            <div class="control">{{ option }} {{ option.label(class="checkbox") }}</div>
+    
+            <div class="form-check custom-control custom-checkbox mt-2 rounded border quizitem">{{ option(checked=true) }} {{ option.label(class="checkbox") }}</div>
+            {% else %}
+            <div class="form-check custom-control custom-checkbox mt-2 rounded border quizitem">{{ option }} {{ option.label(class="checkbox") }}</div>
           {% endif %}
         {% endfor %}
         {{ form1.submit(class="button is-block is-info is-large is-fullwidth") }}
       {% else %}
         {{ form1.hidden_tag() }}
         {% for option in form1.user_answers %}
-         {% if option.data|string in selections %}
+         {% if option.data|string in  selections %}
             <div>{{ testing }}</div>
-            <div class="control">{{ option(checked=true) }} {{ option.label(class="radio") }}</div>
+            <div class="radio form-check custom-control custom-checkbox mt-2 rounded border quizitem">{{ option(checked=true) }} {{ option.label(class="radio") }}</div>
           {% else %}
-            <div class="control">{{ option }} {{ option.label(class="radio") }}</div>
+            <div class="radio form-check custom-control custom-checkbox mt-2 rounded border quizitem">{{ option }} {{ option.label(class="radio") }}</div>
           {% endif %}
         {% endfor %}
         {{ form1.submit(class="button is-block is-info is-large is-fullwidth") }}
@@ -40,7 +41,7 @@
     {% endfor %}
   </form>
   {% if questions.page == questions.pages %}
-    <form method="POST" action="/results" role="form">
+    <form method="post" action="{{ url_for('main.results') }}" role="form">
       {{ form3.hidden_tag() }}
       {{ form3.submit(class="button is-block is-info is-large is-fullwidth") }}
     </form>
@@ -82,4 +83,4 @@
   </nav>
   <p class="text-right mt-3">Showing question {{ questions.page }} of {{ questions.pages }}</p>
   <!-- Quiz control (next, check answer=)-->
-{% endblock %}
+{% endblock content %}

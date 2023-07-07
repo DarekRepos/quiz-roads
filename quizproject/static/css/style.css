@@ -56,7 +56,7 @@ Error pages
     padding: 5px;
     z-index: 5;
     font-size: 25px;
-    margin: 0 auto;
+    margin: 0 0;
     color: #33cc99;
     text-decoration: none;
     margin-right: 10px
@@ -243,3 +243,163 @@ Error pages
         margin-left: -1000px;
     }
 }
+
+/* Quiz Card */
+.form-check {
+    display: grid;
+    grid-template-columns: 1fr 30fr; 
+    grid-gap: 10px; 
+}
+
+.custom-control {
+    position: relative;
+    -moz-box-align: center;
+    align-items: center;
+    border-radius: var(--sampler-theme-border-radius);
+    background-color: rgba(0, 57, 40, 0.1);
+    box-shadow: rgba(0, 57, 40, 0.6) 0px 0px 0px 1px inset;
+    color: rgb(0, 57, 40);
+    max-width: 100%;
+    height: inherit;
+    min-height: 40px;
+    outline: 0px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    transition-duration: 0.1s;
+    transition-property: background-color, color, border-color, opacity, box-shadow;
+    transition-timing-function: ease-out;
+    width: 100%;
+    word-break: break-word;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.custom-checkbox {
+    border: 1px solid #dee2e6 !important;
+}
+
+.mt-2 {
+    margin-top: .5625rem !important;
+}
+
+.rounded {
+    border: 1px solid #dee2e6 !important;
+}
+
+.border {
+    border: 1px solid #dee2e6 !important;
+}
+
+.quizitem {
+    transition: box-shadow .2s;
+    transition: transform .2s;
+    cursor: pointer;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+
+.quizitem.radio+.radio {
+    margin-left: 0;
+
+}
+
+/* custom radio button */
+
+input[type=radio] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    -moz-appearance: none;
+         appearance: none;
+    /* For iOS < 15 */
+    background-color: var(--form-background);
+    /* Not removed via appearance */
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+  }
+  
+  input[type=radio]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+  }
+  
+  input[type=radio]:checked::before {
+    transform: scale(1);
+  }
+  
+  input[type=radio]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+  }
+
+  /* custom checkbox */
+  
+input[type=checkbox] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    -moz-appearance: none;
+         appearance: none;
+    /* For iOS < 15 */
+    background-color: var(--form-background);
+    /* Not removed via appearance */
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+  }
+  
+  input[type=checkbox]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    -webkit-clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+  }
+  
+  input[type=checkbox]:checked::before {
+    transform: scale(1);
+  }
+  
+  input[type=checkbox]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+  }
+  
+  input[type=checkbox]:disabled {
+    --form-control-color: var(--form-control-disabled);
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+  }
+
+  .button{
+   margin: 1rem 0 1rem; 
+  }
