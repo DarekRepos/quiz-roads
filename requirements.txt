@@ -17,7 +17,7 @@ coverage==7.2.5
 cssbeautifier==1.14.7
 dill==0.3.6
 djlint==1.28.0
-dnspython==2.3.0
+dnspython==2.6.1
 EditorConfig==0.12.3
 email-validator==2.0.0.post2
 exceptiongroup==1.1.1
