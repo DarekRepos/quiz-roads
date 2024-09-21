@@ -22,7 +22,7 @@ EditorConfig==0.12.3
 email-validator==2.0.0.post2
 exceptiongroup==1.1.1
 flasgger==0.9.5
-Flask==3.0.2
+Flask==3.0.3
 Flask-Login==0.6.3
 Flask-Mail==0.9.1
 Flask-Migrate==4.0.4
@@ -76,6 +76,6 @@ typing_extensions==4.5.0
 tzdata==2023.3
 vine==5.0.0
 wcwidth==0.2.6
-Werkzeug==3.0.1
+Werkzeug==3.0.4
 wrapt==1.15.0
 WTForms==3.0.1
